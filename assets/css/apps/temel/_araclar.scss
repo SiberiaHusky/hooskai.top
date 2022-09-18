@@ -1,0 +1,246 @@
+//yazı ortalama
+.h-yazi-ortalama {text-align: center; @include responsive(telefon) {text-align: center; margin-left: 0; padding: 3rem;} @include responsive(tablet-kucuk) {text-align: center; margin-left: 0;padding: 3rem;}}
+.h-yazi-solda {text-align: left;}
+.h-yazi-ozel {text-align: center;margin-left: -120px;}
+
+//yazı boşluk
+.h-yazi-margin-kucuk{margin-bottom: 1.5rem !important;}
+
+.h-yazi-margin-kucuk{
+    margin-bottom: -1rem;
+}
+
+.buton-ortalama-blog {
+    margin-top: 20rem;
+    text-align: center;
+}
+.buton-ortalama-team {
+    margin-top: 13rem;
+    text-align: center;
+}
+
+.h-yazi-margin-orta{
+    margin-bottom: 4rem !important;
+
+    @include responsive(tablet-kucuk) {
+        margin-bottom: 3rem !important;
+    }
+
+}
+.h-yazi-margin-buyuk{
+    margin-bottom: 3rem !important;
+
+    @include responsive(tablet-kucuk) {
+        margin-bottom: -5rem !important;
+    }
+}
+
+.h-yazi-margin-buyuk-2{
+    margin-bottom: 12rem !important;
+
+    @include responsive(tablet-kucuk) {
+        margin-bottom: -5rem !important;
+    }
+}
+
+.h-yazi-margin-buyuk-3{
+    margin-top: -2.5rem;
+
+    @include responsive(tablet-kucuk) {
+        margin-top: -2.5rem;
+    }
+}
+
+.h-yazi-margin-buyuk-4{
+    margin-bottom: 12rem;
+
+    @include responsive(tablet-kucuk) {
+        margin-bottom: 3rem;
+    }
+}
+
+.h-yazi-margin-orta-2 {
+    margin-bottom: -5rem !important;
+
+    @include responsive(tablet-kucuk) {
+        margin-bottom: 8rem !important;
+    }
+}
+
+.h-yazi-margin-orta-3 {
+    margin-bottom: 1rem !important;
+    text-align: center;
+
+    @include responsive(tablet-kucuk) {
+        margin-bottom: 3rem !important;
+        text-align: center;
+    }
+
+}
+
+.h-yazi-margin-orta-4 {
+    margin-bottom: 1rem !important;
+
+    @include responsive(tablet-kucuk) {
+        margin-bottom: -3rem !important;
+    }
+
+}
+
+.h-yazi-margin-5{
+    margin-top: 10rem;
+
+    @include responsive(tablet-kucuk) {
+        margin-top: -20rem;
+    }
+}
+.h-yazi-margin-50{
+    margin-top: 0rem;
+
+    @include responsive(tablet-kucuk) {
+        margin-top: 1rem;
+    }
+}
+.h-yazi-margin-4{
+    margin-top: 2rem;
+    text-align: center;
+
+    @include responsive(tablet-kucuk) {
+        margin-top: 1rem;
+        text-align: center;
+    }
+}
+
+.h-yazi-margin-altta {
+    margin-top: 40.5rem;
+
+    @include responsive(tablet-kucuk) {
+        margin-top: 50rem;
+    }
+
+}
+
+.h-yazi-margin-ozel{
+    margin-bottom: 4rem !important;
+
+    @include responsive(tablet-kucuk) {
+        margin-bottom: 3rem !important;
+    }
+
+}
+
+.h-yazi-margin-ustte-buyuk{margin-top: 8rem;}
+.h-yazi-margin-ustte-enbuyuk{
+    margin-top: 10rem;
+
+    @include responsive(tablet-kucuk) {
+        margin-top: 1rem;
+    }
+}
+
+.h-yazi-margin-kucuk-1{
+    margin-top: -1rem;
+
+    @media only screen and (max-width: 812px) {
+        margin-left: 11rem;
+    }
+
+    @media only screen and (max-width: 375px) {
+        margin-left: 16rem;
+    }
+
+    @include responsive(tablet-kucuk) {
+        margin-top: 1rem;
+        text-align: center;
+    }
+}
+
+.h-yazi-margin-kucuk-21{
+    margin-top: -1rem;
+
+    @media only screen and (max-width: 812px) {
+      
+    }
+
+    @media only screen and (max-width: 375px) {
+        /*margin-left: 16rem;*/
+    }
+
+    @include responsive(tablet-kucuk) {
+        margin-top: 1rem;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+.h-yazi-margin-5{
+    margin-top: 5rem;
+    text-align: center;
+
+    @include responsive(tablet-kucuk) {
+        margin-top: -15rem;
+        text-align: center;
+    }
+}
+
+.h-yazi-margin-st{
+    margin-top: 5rem;
+    text-align: center;
+
+    @include responsive(tablet-kucuk) {
+        margin-top: 5rem;
+        text-align: center;
+    }
+}
+
+.h-yazi-margin-55{
+    margin-top: -1rem;
+    text-align: center;
+    padding: 35px;
+
+    @include responsive(tablet-kucuk) {
+        margin-top: -15rem;
+        text-align: center;
+    }
+}
+
+.h-yazi-margin-6{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+    @include responsive(tablet-kucuk) {
+        margin-top: -2rem;
+    }
+}
+
+// link alt çizgi kaldırma
+a {text-decoration: none;color:#fff;}
+
+.container {
+    padding: 0rem;
+    margin: 0 auto;
+}
+
+.bosluk {
+   
+    @include responsive(tablet-kucuk) {
+        margin-top: -40rem;
+    }
+    @include responsive(telefon) {
+        margin-top: -40rem;
+    }
+}
+
+.bosluk1 {
+    margin-top: 13rem;
+   
+    @include responsive(tablet-kucuk) {
+        margin-top: 10rem;
+    }
+    @include responsive(telefon) {
+        margin-top: 10rem;
+    }
+}

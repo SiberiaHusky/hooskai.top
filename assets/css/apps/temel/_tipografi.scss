@@ -1,0 +1,847 @@
+body{
+    font-family: "Poppins", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #797979;
+}
+
+.header__slider-alani{
+    position: absolute;
+    top:40%;
+    left:40%;
+    transform: translate(-30%,-30%);
+    text-align: center;
+}
+
+.golge {
+    font-size: 9.2rem;
+    color: #212529;
+    line-height: 42px;
+    font-weight: 900;
+    letter-spacing: -.05em;
+    -webkit-text-fill-color: #FFF;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #2a2a2a;
+    white-space: nowrap;
+    opacity: .1 !important;
+    text-align: center;
+
+    @include responsive(telefon) {
+        margin-top: 86rem;
+    }
+    @media only screen and (max-width: 375px) {
+        margin-top: 102rem;
+    }
+    @media (min-width: 645px) and (max-width: 764px) {
+        margin-top: 70rem;
+    }
+    @media (min-width: 768px) and (max-width: 900px) {
+        margin-top: 57rem;
+    }
+    @media (min-width: 901px) and (max-width: 998px) {
+        margin-top: 28rem;
+    }
+    @media (min-width: 1000px) and (max-width: 1024px) {
+        margin-top: 20rem;
+    }
+    @media (min-width: 1025px) and (max-width: 1088px) {
+        margin-top: -20rem;
+    }
+    @media (min-width: 1090px) and (max-width: 1190px) {
+        margin-top: -20rem;
+    }
+    @media (min-width: 1191px) and (max-width: 1350px) {
+        margin-top: -15rem;
+    }
+}
+
+.divider {
+    opacity: .5;
+    height: auto;
+    max-width: 100%;
+    vertical-align: top;
+}
+
+.alan {
+    margin-top: -80px;
+    @media only screen and (max-width: 1024px) {
+		display: none;
+	}
+
+	@include responsive(tablet-kucuk) {
+        display: none;
+	  }
+
+}
+
+.alanb {
+    margin-top: -30px;
+    @media only screen and (max-width: 1024px) {
+		display: none;
+	}
+
+	@include responsive(tablet-kucuk) {
+        display: none;
+	  }
+
+}
+
+.slider-yazi-icerikleri{
+color: $beyaz-renk;
+text-transform: uppercase;
+margin-bottom: 2rem;
+backface-visibility: hidden;
+
+&--1{
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3rem;
+    
+    animation-name: solahareket;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+
+    @include responsive(telefon) {
+        letter-spacing: 1rem;
+        font-size: 5rem;
+    }
+
+    }
+    
+&--2{
+    display: block;
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: 1rem;
+    
+    animation: sagahareket 1s ease-out;
+    
+    
+    @include responsive(telefon) {
+        letter-spacing: .5rem;
+    }
+    
+    }
+
+}
+
+.h2-baslik-anasayfa {
+font-size:4rem;
+font-weight: 900;
+text-transform: uppercase;
+display: inline-block;
+background-image: linear-gradient(to right, $anarenk-acik-mavi,$anarenk-koyu-mavi);
+-webkit-background-clip: text;
+color: transparent;
+letter-spacing: .2rem;
+transition: all .2s;
+border-bottom: .1rem solid $anarenk-acik-mavi;
+
+
+    @include responsive(tablet-kucuk) {
+    font-size: 6rem;
+    }
+
+    @include responsive(telefon) {
+    font-size: 4.7rem;
+    }
+   
+    &:hover{
+        transform: skewY(2deg) skewX(15deg) scale(1.1);
+        /*text-shadow: .5rem 1rem 2rem rgba($siyah-renk,.2);*/
+    }
+
+}
+
+.h2-baslik-anasayfa-ozel {
+    font-size:2.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: inline-block;
+    background-image: linear-gradient(to right, $anarenk-normal-kirmizi, $anarenk-koyu-kirmizi);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .1rem;
+
+    @include responsive(tablet-kucuk) {
+        font-size: 5rem;
+    }
+    
+}
+
+// anasayfa hakkımızda başlık
+.h2-baslik-ahb{
+    font-size:2.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    background-image: linear-gradient(to right, $anarenk-normal-kirmizi, $anarenk-koyu-kirmizi);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .1rem;
+    text-align: center;
+
+    @include responsive(tablet-kucuk) {
+        font-size: 5rem;
+    }
+    
+}
+// bottom
+.h2-baslik-bottom {
+    font-size:1.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: inline-block;
+    background-image: linear-gradient(to right, $anarenk-normal-kirmizi, $anarenk-koyu-kirmizi);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .1rem;
+
+    @include responsive(tablet-kucuk) {
+        font-size: 3rem;
+    }
+    
+}
+
+// 404 başlık 
+
+.h2-baslik-404 {
+    font-size:5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: inline-block;
+    background-image: linear-gradient(to right, $anarenk-normal-kirmizi, $anarenk-koyu-kirmizi);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .2rem;
+    margin-bottom: 3rem;
+
+    @include responsive(tablet-kucuk) {
+        font-size: 7rem;
+    }
+    
+}
+
+// footer başlık 
+
+.h2-baslik-footer {
+    font-size:3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: inline-block;
+    background-image: linear-gradient(to right, $beyaz-renk, $beyaz-renk);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .2rem;
+    margin-bottom: 3rem;
+
+    @include responsive(tablet-kucuk) {
+        font-size: 7rem;
+    }
+    
+}
+
+.h2-baslik-projeler-ozel {
+    font-size:3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: inline-block;
+    background-image: linear-gradient(to right, $anarenk-normal-mavi, $anarenk-acik-mavi);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .2rem;
+    margin-bottom: 3rem;
+
+    @include responsive(tablet-kucuk) {
+        font-size: 7rem;
+    }
+    
+}
+
+.h2-baslik-iletisim-ozel {
+    font-size:4rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: inline-block;
+    background-image: linear-gradient(to right, $anarenk-normal-kirmizi, $anarenk-koyu-kirmizi);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .2rem;
+    margin-bottom: 3rem;
+    
+    @include responsive(tablet-kucuk) {
+        font-size: 7rem;
+        margin-top: -90px
+    }
+        
+}    
+
+.h2-baslik-popup {
+    font-size:3rem;
+    font-weight: 900;
+    text-align: left;
+    text-transform: uppercase;
+    background-image: linear-gradient(to right, $anarenk-normal-mavi, $anarenk-acik-mavi);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .2rem;
+    transition: all .2s;
+    margin-bottom: 3rem;
+               
+        
+    @include responsive(tablet-kucuk) {
+        margin-top: .1rem;
+        font-size: 5rem;
+    }
+            
+}
+
+.paragraf-popup {
+    font-size:1.8rem;
+    font-weight: 300;
+    color: #797979;
+    text-align: left;
+    
+    &:not(:last-child) {
+        margin-bottom: 2rem;
+        margin-top: -.8rem;
+    }
+ 
+    @include responsive(tablet-kucuk) {
+     font-size: 2.1rem;
+    } 
+
+}
+               
+
+.baslik-3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: $anarenk-normal-kirmizi;
+    text-align: center;
+
+    @include responsive(tablet-kucuk) {
+        font-size: 3.9rem;
+        text-align: center;
+        /*padding: 1rem;*/
+    }
+
+}
+
+.baslik-3-1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: $anarenk-normal-kirmizi;
+    text-align: left;
+
+    @include responsive(tablet-kucuk) {
+        font-size: 3.9rem;
+        /*padding: 1rem;*/
+    }
+
+}
+
+.baslik-3-h {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: $anarenk-normal-kirmizi;
+    text-align: left;
+
+    @include responsive(tablet-kucuk) {
+        font-size: 3.9rem;
+        /*padding: 1rem;*/
+    }
+
+}
+
+.baslik-33 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: $anarenk-normal-kirmizi;
+    text-align: center;
+
+    @include responsive(tablet-kucuk) {
+        font-size: 3.9rem;
+        /*padding: 1rem;*/
+    }
+
+}
+
+.baslik-star{
+    font-size: 3.8rem;
+    font-weight: 700;
+    color: $anarenk-normal-kirmizi;
+    text-align: center;
+
+    @include responsive(tablet-kucuk) {
+        font-size: 3.9rem;
+        /*padding: 1rem;*/
+    }
+
+}
+
+.baslik-3-2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    color: $beyaz-renk;
+
+    @include responsive(tablet-kucuk) {
+        font-size: 3.9rem;
+        text-align: center;
+        /*padding: 1rem;*/
+    }
+
+}
+
+.paragraf {
+   font-size:1.4rem;
+   font-weight: 400;
+   color: #797979;
+
+   a {
+       color: $anarenk-koyu-mavi;
+   }
+   
+   &:not(:last-child) {
+       margin-bottom: 1.4rem;
+   }
+
+   @include responsive(tablet-kucuk) {
+    font-size: 3.4rem;
+}
+}
+
+// ansayfa hakkımızda paragraf
+
+.paragraf-ahp {
+    font-size:1.4rem;
+    font-weight: 400;
+    color: #797979;
+    text-align: center;
+ 
+    a {
+        color: $anarenk-koyu-mavi;
+    }
+    
+    &:not(:last-child) {
+        margin-bottom: 1.4rem;
+    }
+ 
+    @include responsive(tablet-kucuk) {
+     font-size: 3.4rem;
+ }
+ }
+
+// proje detay paragraf 
+
+.paragraf-pdetay {
+    font-size:1.8rem;
+    font-weight: 300;
+    color: #797979;
+ 
+    a {
+        color: $anarenk-koyu-mavi;
+    }
+    
+    &:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+ 
+    @include responsive(tablet-kucuk) {
+     font-size: 3.2rem;
+     margin-bottom: -20rem;
+ }
+ }
+
+// 404 paragraf
+
+.paragraf-404 {
+    font-size:1.8rem;
+    font-weight: 300;
+    color: #797979;
+    line-height: 4rem;
+ 
+    a {
+        color: $anarenk-normal-kirmizi;
+    }
+    
+    &:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+ 
+    @include responsive(tablet-kucuk) {
+     font-size: 3.4rem;
+ }
+ }
+
+.proje-detay-paragraf {
+    font-size:1.8rem;
+    font-weight: 300;
+    padding: 0rem 15rem 0rem 15rem;
+    
+    &:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+ 
+    @include responsive(tablet-kucuk) {
+     padding: 0rem 5rem 0rem 5rem;
+     font-size: 3.4rem;
+ }
+
+}
+
+.h2-baslik-hizmetler {
+    font-size:2.7rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: inline-block;
+    background-image: linear-gradient(to right, $anarenk-normal-mavi, $anarenk-acik-mavi);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .2rem;
+    margin-bottom: 1rem;
+
+    &__paragraf {
+            font-size: 2.4rem;
+            font-weight: 300;
+            color: $anarenk-normal-mavi;
+            text-align: left;
+
+        &:not(:last-child) {
+                margin-bottom: 5rem;
+                @include responsive(tablet-kucuk) {
+                    margin-bottom: -9rem;
+                    text-align: center;
+        }
+    }
+    
+    @include responsive(tablet-kucuk) {
+        font-size: 3.5rem;
+        }
+    }
+
+    @include responsive(tablet-kucuk) {
+        font-size: 7rem;
+    }
+    
+}
+.h2-baslik-hizmetler-4 {
+    font-size:2.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: inline-block;
+    background-image: linear-gradient(to right, $beyaz-renk, $beyaz-renk);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .1rem;
+    text-align: center;
+
+        &__paragraf {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: $beyaz-renk;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-align: center;
+
+            &:not(:last-child) {
+                margin-bottom: 3rem;
+                @include responsive(tablet-kucuk) {
+                    margin-bottom: -9rem;
+                }
+            }
+            @include responsive(tablet-kucuk) {
+                font-size: 3.5rem;
+                text-align: center;
+                padding: 3rem;
+            }
+        }
+
+        @include responsive(tablet-kucuk) {
+            font-size: 5rem;
+        }
+    
+    }
+
+.h2-baslik-hizmetler-2 {
+        font-size:2.6rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        display: inline-block;
+        background-image: linear-gradient(to right, $anarenk-normal-kirmizi, $anarenk-koyu-kirmizi);
+        -webkit-background-clip: text;
+        color: transparent;
+        letter-spacing: .1rem;
+        text-align: center;
+
+            &__paragraf {
+                font-size: 1.6rem;
+                font-weight: 400;
+                color: #797979;
+                text-align: center;
+                margin-bottom: 3rem;
+                text-align: center;
+
+                &:not(:last-child) {
+                    margin-bottom: -1rem;
+                    @include responsive(tablet-kucuk) {
+                        margin-bottom: -2rem;
+                    }
+                }
+                @include responsive(tablet-kucuk) {
+                    font-size: 3.5rem;
+                    text-align: center;
+                    padding: 3rem;
+                }
+            }
+
+            @include responsive(tablet-kucuk) {
+                font-size: 5rem;
+            }
+        
+        }
+
+.h2-baslik-hizmetler-5 {
+    font-size:2.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: inline-block;
+    background-image: linear-gradient(to right, $anarenk-normal-kirmizi, $anarenk-koyu-kirmizi);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .1rem;
+    text-align: center;
+
+        &__paragraf {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #797979;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-align: center;
+
+            &:not(:last-child) {
+                margin-bottom: 2rem;
+                @include responsive(tablet-kucuk) {
+                    margin-bottom: -2rem;
+                }
+            }
+            @include responsive(tablet-kucuk) {
+                font-size: 3.5rem;
+                text-align: center;
+                padding: 3rem;
+            }
+        }
+
+        @include responsive(tablet-kucuk) {
+            font-size: 5rem;
+        }
+    
+    }        
+
+
+.h2-baslik-hizmetler-3 {
+    font-size:2.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: inline-block;
+    background-image: linear-gradient(to right, $anarenk-normal-kirmizi, $anarenk-koyu-kirmizi);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .1rem;
+
+        &__paragraf {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #797979;
+            text-align: center;
+            margin-bottom: 1rem;
+
+            &:not(:last-child) {
+                @include responsive(tablet-kucuk) {
+                    margin-bottom: -5rem;
+                    text-align: center;
+                    align-items: center;
+                    clear: both;
+                    margin: auto;
+                }
+            }
+            @include responsive(tablet-kucuk) {
+                font-size: 3.5rem;
+                text-align:left;
+                padding: 3rem;
+            }
+        }
+
+        @include responsive(tablet-kucuk) {
+            font-size: 5rem;
+        }
+    
+    }
+
+        // hizmet detay
+
+        ul.hizmetdetay {
+            padding-left: 2rem;
+            line-height: 4rem;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: $anarenk-yazi;
+
+            @include responsive(tablet-kucuk) {
+                padding-left: 2rem;
+                line-height: 8rem;
+                font-size: 3rem;
+            }
+
+            @include responsive(telefon) {
+                padding-left: 2rem;
+                line-height: 8rem;
+                font-size: 3rem;
+            }
+
+
+}
+
+summary {
+    font-size: 1.7rem;
+    font-weight: 600;
+    background-color: #fafafa;
+    background-image: radial-gradient(circle at 40% 91%, rgba(251, 251, 251,0.04) 0%, rgba(251, 251, 251,0.04) 50%,rgba(229, 229, 229,0.04) 50%, rgba(229, 229, 229,0.04) 100%),radial-gradient(circle at 66% 97%, rgba(36, 36, 36,0.04) 0%, rgba(36, 36, 36,0.04) 50%,rgba(46, 46, 46,0.04) 50%, rgba(46, 46, 46,0.04) 100%),radial-gradient(circle at 86% 7%, rgba(40, 40, 40,0.04) 0%, rgba(40, 40, 40,0.04) 50%,rgba(200, 200, 200,0.04) 50%, rgba(200, 200, 200,0.04) 100%),radial-gradient(circle at 15% 16%, rgba(99, 99, 99,0.04) 0%, rgba(99, 99, 99,0.04) 50%,rgba(45, 45, 45,0.04) 50%, rgba(45, 45, 45,0.04) 100%),radial-gradient(circle at 75% 99%, rgba(243, 243, 243,0.04) 0%, rgba(243, 243, 243,0.04) 50%,rgba(37, 37, 37,0.04) 50%, rgba(37, 37, 37,0.04) 100%),linear-gradient(90deg, $anarenk-acik-mavi,$anarenk-normal-mavi);
+    color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    outline: none;
+    border-radius: 0.25rem;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+  }
+  p { text-align: left; }
+  details[open] summary ~ * {
+    animation: sweep .5s ease-in-out;
+  }
+  @keyframes sweep {
+    0%    {opacity: 0; margin-top: -10px}
+    100%  {opacity: 1; margin-top: 0px}
+  }
+  details > summary::after {
+    position: absolute;
+    content: "+";
+    right: 20px;
+  }
+  details[open] > summary::after {
+    position: absolute;
+    content: "-";
+    right: 20px;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+  details {
+    padding: 0px 100px 0px;
+
+    @include responsive(tablet-kucuk) {
+        padding: 0px 10px 0px;
+    }
+  }
+    
+  .bosluk {
+    margin-top: 20rem;
+}
+
+.bosluk3 {
+    margin-top: 4rem;
+}
+.bosluk4 {
+    @include responsive(tablet-kucuk) {
+        margin-top: -15rem;
+    }
+}
+
+.bosluk5 {
+    @include responsive(tablet-kucuk) {
+        margin-top: -40rem;
+    }
+}
+
+
+.bosluk6 {
+    margin-top: -40rem;
+    @include responsive(tablet-kucuk) {
+        margin-top: -40rem;
+    }
+}
+
+.bosluk7 {
+    @include responsive(tablet-kucuk) {
+        margin-top: 20rem;
+    }
+}
+
+.bosluk8 {
+    margin-top: 9rem;
+
+    @media screen and (min-width: 1000px) and (max-width: 1024px) {
+        margin-top: 18rem;
+    } 
+
+    @media screen and (min-width: 800px) and (max-width: 812px) {
+        margin-top: 42rem;
+    } 
+
+    @media screen and (min-width: 760px) and (max-width: 768px) {
+        margin-top: -12rem;
+    } 
+
+    @include responsive(tablet-kucuk) {
+
+    }
+}
+
+.bosluk9 {
+    margin-top: 2rem;
+}
+
+.bosluk10 {
+    margin-top: 1rem;
+}
+
+.h2-baslik-hizmetler-yorum {
+    font-size:2.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: inline-block;
+    background-image: linear-gradient(to right, $anarenk-normal-kirmizi, $anarenk-koyu-kirmizi);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .1rem;
+
+        &__yorum {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #797979;
+            text-align: center;
+            margin-bottom: 1rem;
+
+            &:not(:last-child) {
+                margin-bottom: -7rem;
+                @include responsive(tablet-kucuk) {
+                    margin-bottom: -9rem;
+                    text-align: center;
+                }
+            }
+            @include responsive(tablet-kucuk) {
+                font-size: 3.5rem;
+                text-align:left;
+                padding: 3rem;
+            }
+        }
+
+        @include responsive(tablet-kucuk) {
+            font-size: 5rem;
+        }
+    
+    }

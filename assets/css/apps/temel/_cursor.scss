@@ -1,0 +1,27 @@
+#pointer-dot {
+    left: 0;
+    top: 0;
+    margin-top: -.5rem;
+    margin-left: -.3rem;
+    width: 0;
+    height: 0;
+    border: 2.5px solid $anarenk-normal-altin;
+    position: fixed;
+    border-radius: .4rem;
+    pointer-events: none;
+    transition: border-color 0.5s;
+    z-index: 9999;
+}
+
+#pointer-ring {
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    padding: 1.5rem;
+    border: .2rem solid #f1f1f1;
+    position: fixed;
+    border-radius: 10rem;
+    pointer-events: none;
+    z-index: 9999;
+}
