@@ -60,17 +60,17 @@ input, select, textarea {
   -ms-appearance: none;
   appearance: none; }
 
+.imgAvatar {
+  width: 100px;
+  border-radius: 50%;
+  overflow: hidden; }
+
 /* Basic */
 @-ms-viewport {
   width: device-width; }
 
 body {
   -ms-overflow-style: scrollbar; }
-
-.imgAvatar {
-  width: 100px;
-  border-radius: 50%;
-  overflow: hidden; }
 
 @media screen and (max-width: 480px) {
   html, body {
