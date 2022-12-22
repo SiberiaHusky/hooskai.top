@@ -67,7 +67,7 @@ input, select, textarea {
 body {
   -ms-overflow-style: scrollbar; }
 
-#imgAvatar {
+.imgAvatar {
   width: 100px;
   border-radius: 50%;
   overflow: hidden; }
