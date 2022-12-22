@@ -83,7 +83,7 @@ html {
   box-sizing: inherit; }
 
 html, body {
-  height: 150%;
+  height: 125%;
   overflow-x: hidden;
   width: 100%; }
   @media screen and (max-height: 640px) {
