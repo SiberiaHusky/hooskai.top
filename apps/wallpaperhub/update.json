@@ -1,5 +1,4 @@
 {
-    "version": 2.0.1.1,
     "versioncode": 20230101,
     "log_en": "This update includes:\n\nUpdate reconstruct the application UI;Improved stability and speed of the app;\nFixed some known errors.",
     "log_cn": "本次更新内容包括：\n\n更新重构应用UI；\n优化了应用的稳定性和速度；\n修复了一些已知的错误。",
