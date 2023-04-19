@@ -20,10 +20,10 @@
 		<!-- Scripts -->
 			<script type="text/javascript">
 				// 获取今天的日期
-				let today = new Date();
+				var today = new Date();
 
 				// 设置3月14日的日期
-				let piDay = new Date(today.getFullYear(), 2, 14);
+				var piDay = new Date(today.getFullYear(), 2, 14);
 
 				//如果今天的日期已经超过3月14，则设置为下一年的3月14日
 				if (today > piDay) {
@@ -31,7 +31,7 @@
 				}
 
 				// 计算剩余天数
-				let timeLeft = Math.round(piDay - tosay) / (1000 * 60 * 60 * 24));
+				var timeLeft = Math.round(piDay - tosay) / (1000 * 60 * 60 * 24));
 
 				// 在网页上显示倒计时（中文）
 				document.getElementById("countdownCN").innerHTML = "距离圆周率日还有" + timeLeft + "天！"
