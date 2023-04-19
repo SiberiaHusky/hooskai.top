@@ -35,17 +35,17 @@
 				//如果今天的日期已经超过3月14，则设置为下一年的3月14日并隐藏piday
 				if (today > piDay) {
 					piDay.setFullYear(piDay.getFullYear() + 1);
-					document.getElementsByClass("piday").style.display = "none";
+					document.getElementsByClassName("piday").style.display = "none";
 				}
 
 				//如果今天是3月14则隐藏countdown显示piday
 				else if (today == piDay) {
-					document.getElementsByClass("countdown").style.display = "none";
-					document.getElementsByClass("piday").style.display = "block";
+					document.getElementsByClassName("countdown").style.display = "none";
+					document.getElementsByClassName("piday").style.display = "block";
 				}
 
 				//如果今天的日期还不到3月14，则隐藏 piday
-				esle {
+				else {
 					document.getElementsByClass("piday").style.display = "none";
 				}
 
