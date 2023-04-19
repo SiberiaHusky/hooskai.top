@@ -11,12 +11,12 @@
 	<body class="is-preload">
 		<!-- Header -->
 			<header id="header">
-				<h1><a href="javascript:history.back()" class="icon solid fa-exclamation"></a>圆周率日倒计时</h1>
-				<p>Countdown to Pi day</p>
+				<h1><a href="javascript:history.back()" class="icon solid fa-exclamation"></a></h1>
 			</header>
 		<!-- Body -->
-			<p id="countdownCN"></p>
-			<p id="countdownEN"></p>
+			<p>距离圆周率日还有</p>
+			<h1 id="countdown"></h1>
+			<p>天！ / days until Pi day!</p>
 		<!-- Scripts -->
 			<script type="text/javascript">
 				// 获取今天的日期
@@ -34,10 +34,7 @@
 				var timeLeft = Math.round((piDay - today) / (1000 * 60 * 60 * 24));
 
 				// 在网页上显示倒计时（中文）
-				document.getElementById("countdownCN").innerHTML = "距离圆周率日还有" + timeLeft + "天！"
-
-				// 在网页上显示倒计时（英文）
-				document.getElementById("countdownEN").innerHTML = timeLeft + "days until Pi day!"
+				document.getElementById("countdown").innerHTML = timeLeft
 			</script>
 			<script src="/assets/js/main.js"></script>
 	</body>
