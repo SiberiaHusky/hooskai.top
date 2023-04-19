@@ -14,9 +14,16 @@
 				<h1><a href="javascript:history.back()" class="icon solid fa-exclamation"></a></h1>
 			</header>
 		<!-- Body -->
-			<h1>距离圆周率日还有</h1>
-			<h1 id="countdown"></h1>
-			<h1>天！ / days until Pi day!</h1>
+			<div class="countdown">
+				<h1>距离圆周率日还有</h1>
+				<h1 id="countdown"></h1>
+				<h1>天！ / days until Pi day!</h1>
+			</div>
+			<div class="piday">
+				<h1>今天是 / Today is</h1>
+				<h1>圆周率日！ / Pi day!</h1>
+				<h1><em>3.14</em>15926</h1>
+			</div>
 		<!-- Scripts -->
 			<script type="text/javascript">
 				// 获取今天的日期
@@ -25,9 +32,18 @@
 				// 设置3月14日的日期
 				var piDay = new Date(today.getFullYear(), 2, 14);
 
-				//如果今天的日期已经超过3月14，则设置为下一年的3月14日
+				//如果今天的日期已经超过3月14，则设置为下一年的3月14日 隐藏piday
 				if (today > piDay) {
 					piDay.setFullYear(piDay.getFullYear() + 1);
+					document.getElementByClass("piday").style.display = "none";
+
+				  //如果今天是3月14则隐藏countdown显示piday
+				  elseif (today == piDay) {
+					  document.getElementByClass("countdown").style.display = "none";
+				  esle {
+					  document.getElementByClass("piday").style.display = "none";
+				  }
+				  }
 				}
 
 				// 计算剩余天数
