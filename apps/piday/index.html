@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>圆周率日倒计时 Countdown to Pi day</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="msapplication-TileImage" content="/images/favicon.png">
+		<link rel="icon" href="/images/favicon.png">
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+		<!-- Header -->
+			<header id="header">
+				<h1><a href="javascript:history.back()" class="icon solid fa-exclamation"></a>圆周率日倒计时</h1>
+				<p>Countdown to Pi day</p>
+			</header>
+		<!-- Body -->
+			<p id="countdownCN"></p>
+			<p id="countdownEN"></p>
+		<!-- Scripts -->
+			<script src="/assets/js/main.js"></script>
+			<script>
+				// 获取今天的日期
+				let today = new Date();
+
+				// 设置3月14日的日期
+				let piDay = new Date(today.getFullYear(), 2, 14);
+
+				//如果今天的日期已经超过3月14，则设置为下一年的3月14日
+				if (today > piDay) {
+					piDay.setFullYear(piDay.getFullYear() + 1);
+				}
+
+				// 计算剩余天数
+				let timeLeft = Math.round(piDay - tosay) / (1000 * 60 * 60 * 24));
+
+				// 在网页上显示倒计时（中文）
+				document.getElementById("countdownCN").innerHTML = "距离圆周率日还有" + timeLeft + "天！"
+
+				// 在网页上显示倒计时（英文）
+				document.getElementById("countdownEN").innerHTML = timeLeft + "days until Pi day!"
+			</script>
+	</body>
+</html>
