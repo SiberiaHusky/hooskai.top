@@ -30,20 +30,23 @@
 				var today = new Date();
 
 				// 设置3月14日的日期
-				var piDay = new Date(today.getFullYear(), 2, 14);
+				var piDay = new Date(today.getFullYear(), 3-1, 14);
 
-				//如果今天的日期已经超过3月14，则设置为下一年的3月14日 隐藏piday
+				//如果今天的日期已经超过3月14，则设置为下一年的3月14日并隐藏piday
 				if (today > piDay) {
 					piDay.setFullYear(piDay.getFullYear() + 1);
-					document.getElementByClass("piday").style.display = "none";
+					document.getElementsByClass("piday").style.display = "none";
+				}
 
-				  //如果今天是3月14则隐藏countdown显示piday
-				  else if (today == piDay) {
-					  document.getElementByClass("countdown").style.display = "none";
-				  esle {
-					  document.getElementByClass("piday").style.display = "none";
-				  }
-				  }
+				//如果今天是3月14则隐藏countdown显示piday
+				else if (today == piDay) {
+					document.getElementsByClass("countdown").style.display = "none";
+					document.getElementsByClass("piday").style.display = "block";
+				}
+
+				//如果今天的日期还不到3月14，则隐藏 piday
+				esle {
+					document.getElementsByClass("piday").style.display = "none";
 				}
 
 				// 计算剩余天数
