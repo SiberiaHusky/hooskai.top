@@ -46,11 +46,11 @@
 
 				//如果今天的日期还不到3月14，则隐藏 piday
 				else {
-					document.getElementsByClass("piday").style.display = "none";
+					document.getElementsByClassName("piday").style.display = "none";
 				}
 
 				// 计算剩余天数
-				var timeLeft = Math.round((piDay - today) / (1000 * 60 * 60 * 24));
+				var timeLeft = Math.round((piDay.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 
 				// 在网页上显示倒计时（中文）
 				document.getElementById("countdown").innerHTML = timeLeft
