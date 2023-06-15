@@ -1,42 +1,110 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>你好! Hello!</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="msapplication-TileImage" content="/images/favicon.png">
-		<link rel="icon" href="/images/favicon.png">
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
-		<!-- Header -->
-			<header id="header">
-				<img src="/images/avatar.jpg" width="100px" class="imgAvatar">
-				<h1>你好！我是胡斯凯 Husky</h1>
-				<p>Hello! My name is pronounced "hoo-skai".</p>
-			</header>
-		<!-- Body -->
-			<ul class="works">
-				<li><a href="/apps/piday/">圆周率日倒计时 Countdown to Pi day</a></li>
-				<li><a href="/apps/moyu/">摸老师の节目金句汇总 Moyu's quote</a></li>
-				<li><a href="//stats.uptimerobot.com/5XXzmSM9NJ" target="_blank">我的网站状态 My site status</a></li>
-				<li><a href="/links.html">友链 Friend links</a></li>
-			</ul>
-		<!-- Footer -->
-			<footer id="footer">
-				<ul class="icons">
-					<li><a href="//twitter.com/hhusky0314" class="icon brands fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
-					<li><a href="//github.com/siberiahusky" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
-					<li><a href="//wildbox.cn/husky" class="icon solid fa-paw" target="_blank"><span class="label">Wildbox</span></a></li>
-					<li><a href="mailto:mail@hooskai.ml" class="icon fa-envelope" target="_blank"><span class="label">Email</span></a></li>
-					<li><a href="https://icp.gov.moe/?keyword=20238314" target="_blank">萌ICP备20238314号</a></li>
-				</ul>
-				<ul class="copyright">
-					<li>&copy; 2022-Now 胡斯凯 (Siberia Husky)</li>
-				</ul>
-			</footer>
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+<head>
+    <meta content="text/html"; charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link rel="icon" href="./images/favicon.png">
+    <title>胡斯凱的個人網站</title>
+    <!--nav needs-->
+    <link rel="stylesheet" href="nav/style.css">
+    <!--fontawesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+<body>
+    <!--nav-->
+    <header>
+        <h3>胡斯凱 Husky</h3>
+        <nav>
+            <ul>
+                <li><a href="#"><i class="fa-solid fa-arrow-up"></i>回到上方</a></li>
+                <li><a href="#intro"><i class="fa-solid fa-circle-info"></i>簡介</a></li>
+                <li><a href="#products"><i class="fa-solid fa-code"></i>作品</a></li>
+                <li><a href="#contacts"><i class="fa-solid fa-hashtag"></i>聯絡方式</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!--title-->
+    <h2 id="title">
+        I'm lovin'
+        <div class="mask">
+            <span data-show>game.</span>
+            <span>foods.</span>
+            <span>video.</span>
+            <span>code.</span>
+        </div>
+    </h2>
+    <!--language notice-->
+    <div class="card" id="notice">
+        <h3><i class="fa-solid fa-xmark" id="notice cancel"></i>Need english? <a href="javascript:alert('I am kidding you :P\nactually, I have not gotten around to it yet :P');"><!--a href="./eng/index.html"-->Click here!</h3></a>
+    </div>
+    <!--language notice JavaScript-->
+    <script>
+        const noticeDiv = document.querySelector('#notice');
+        const noticeKey = 'hideNotice';
 
-		<!-- Scripts -->
-			<script src="assets/js/main.js"></script>
-	</body>
+        if (!localStorage.getItem(noticeKey)) {
+            noticeDiv.style.display = 'block';
+        }
+
+        document.getElementById('notice cancel').addEventListener('click', function() {
+            localStorage.setItem(noticeKey, true);
+            noticeDiv.style.display = 'none';
+        }, false);
+    </script>
+    <!--introduction-->
+    <div class="card" id="introduction">
+        <h3><i class="fa-solid fa-circle-info"></i>簡介 Introduction</h3>
+        <p>首先，你好！很高興認識你！(￣▽￣)／</p>
+        <p>我呢，喜歡玩遊戲，看視頻和寫代碼。</p>
+        <p>對於我來說，遊戲是一種放鬆的方式<span class="spoiler">雖然往往都會適得其反讓自己生氣，甚至曾導致熒幕-1</span>，<br>無論是獨立遊戲還是網遊，只要是能符合我興趣的遊戲我都喜歡。</p>
+        <p>而編程，算是在我無聊的時候填充時間的一種方式，到現在，我略懂 <a href="https://www.lua.org">Lua</a> / <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML">HTML</a> / <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">CSS</a>，正在嘗試深入學習……</p>
+        <p>我也十分熱衷看各種類型的影片，比如影視劇、遊戲實況主、科技資訊等。這些視頻不僅可以讓我開心，有些還能拓寬我的認知、增長我的知識。</p>
+        <p>至於食物嘛，有誰會不喜歡美食呢 (*^▽^*)</p>
+        <p><span class="spoiler">因為我的文筆很差，所以這個簡介是用 <a href="https://chat.openai.com/">Chat GPT</a> 生成然後我自己潤色的(*･ω< ) </span></p>
+    </div>
+    <!--productions-->
+    <div class="card" id="productions">
+        <h3><i class="fa-solid fa-code"></i>作品 Productions</h3>
+        <ul>
+            <li><a href="./apps/piday/index.html">圓周率日倒計時 Countdown to Pi day</a></li>
+            <li><a href="//stats.uptimerobot.com/5XXzmSM9NJ" target="_blank">我的網站狀態 My site status<i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
+            <li><a href="./links.html">友鏈 Friend links</a></li>
+            <li><a href="./eng/index.html">英文版 English</a></li>
+        </ul>
+    </div>
+    <!--contacts-->
+    <div class="card" id="productions">
+        <h3><i class="fa-solid fa-hashtag"></i>聯絡方式 Contacts</h3>
+        <ul>
+            <li><a href="//twitter.com/hhusky0314" target="_blank"><i class="fa-brands fa-twitter"></i>推特 Twitter<i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
+            <li><a href="//space.bilibili.com/66560652"><i class="fa-brands fa-bilibili"></i>嗶哩嗶哩 BiliBili<i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
+            <li><a href="//github.com/siberiahusky" target="_blank"><i class="fa-brands fa-github"></i>GitHub<i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
+            <li><a href="//wildbox.cn/husky" target="_blank"><i class="fa-solid fa-paw"></i>野獸盒子 WildBox<i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
+            <li><a href="mailto:mail@hooskai.ml"><i class="fa-solid fa-envelope"></i></i>E-Mail</a></li>
+        </ul>
+    </div>
+    <!--頁尾版權訊息-->
+    <footer>
+        <ul>
+            <p>&copy; 2020-Now 胡斯凱(Siberia Husky)</p>
+            <p><a href="https://icp.gov.moe/?keyword=20238314">萌ICP备20238314号<i class="fa-solid fa-arrow-up-right-from-square"></i></a></p>
+        </ul>
+    </footer>
+</body>
+<!--script>
+    // 點擊 a 更改標題
+    document.getElementById('navTop').addEventListener('click', function() {
+        document.title = '胡斯凱的個人網站';
+    });
+
+    document.getElementById('navIntroduction').addEventListener('click', function() {
+        document.title = '簡介 | 胡斯凱的個人網站';
+    });
+
+    document.getElementById('navProductions').addEventListener('click', function() {
+        document.title = '作品 | 胡斯凱的個人網站';
+    });
+</script-->
 </html>

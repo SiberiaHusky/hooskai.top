@@ -1,0 +1,44 @@
+header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2px;
+  z-index: 1;
+  background-color: rgba(30, 134, 221, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+header h3{
+  margin-left: 32px;
+  color: white;
+}
+
+header p, header a {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+header h3:hover {
+  color: black;
+}
+
+nav {
+  margin-right: 32px;
+}
+
+nav li:not(:last-child) {
+  margin-right: 24px;
+}
+
+nav a {
+  color: white;
+}
+
+nav a:hover {
+  color: black;
+}

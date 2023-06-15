@@ -1,60 +1,86 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>圆周率日倒计时 Countdown to Pi day | 胡斯凯</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="msapplication-TileImage" content="/images/favicon.png">
-		<link rel="icon" href="/images/favicon.png">
-		<link rel="stylesheet" href="/assets/css/main.css" />
-	</head>
-	<body class="is-preload">
-		<!-- Header -->
-			<header id="header">
-				<h1><a href="javascript:history.back()" class="icon solid fa-exclamation"></a> 圆周率倒计时</h1>
-			</header>
-		<!-- Body -->
-			<div class="countdownDiv">
-				<p>距离圆周率日还有</p>
-				<h1 id="countdown"></h1>
-				<p>天！ / days until Pi day!</p>
-			</div>
-			<div class="pidayDiv">
-				<h1>今天是 / Today is</h1>
-				<h1>圆周率日！ / Pi day!</h1>
-				<h1><em>3.14</em>15926</h1>
-			</div>
-		<!-- Scripts -->
-			<script type="text/javascript">
-				// 获取今天的日期
-				let today = new Date();
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+<head>
+    <meta content="text/html"; charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css">
+    <script src="../../script.js"></script>
+    <link rel="icon" href="../../images/favicon.png">
+    <title>圓周率日倒計時 | 胡斯凱的個人網站</title>
+    <!--nav needs-->
+    <link rel="stylesheet" href="../../nav/style.css">
+    <!--fontawesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+<body>
+    <!--nav-->
+    <header>
+        <a href="javascript:history.back()"><h3><i class="fa-solid fa-arrow-left"></i>圓周率日倒計時</h3></a>
+    </header>
+    <!--introduction-->
+    <div class="card" style="margin-top: 128px">
+        <div class="countdownDiv">
+            <p><i class="fa-solid fa-clock"></i></i>距離圓周率日還有</p>
+            <h3 id="countdown"></h3>
+            <p>天</p>
+        </div>
+        <div class="pidayDiv">
+            <p><i class="fa-solid fa-exclamation"></i></i>今天是</p>
+            <h3>圓周率日</h3>
+            <p>Yeah~ (ﾉﾟ▽ﾟ)ﾉ</p>
+        </div>
+    </div>
+    <!--圓周率日倒計時 JavaScript-->
+    <script type="text/javascript">
+        // 获取今天的日期
+        let today = new Date();
 
-				// 设置3月14日的日期
-				let piDay = new Date(today.getFullYear(), 3-1, 14);
+        // 设置3月14日的日期
+        let piDay = new Date(today.getFullYear(), 3-1, 14);
 
-				//如果今天的日期已经超过3月14，则设置为下一年的3月14日并隐藏piday
-				if (today > piDay) {
-					piDay.setFullYear(piDay.getFullYear() + 1);
-					document.querySelector(".pidayDiv").style.display = "none";
-				}
+        //如果今天的日期已经超过3月14，则设置为下一年的3月14日并隐藏piday
+        if (today > piDay) {
+            piDay.setFullYear(piDay.getFullYear() + 1);
+            document.querySelector(".pidayDiv").style.display = "none";
+        }
 
-				//如果今天是3月14则隐藏countdown显示piday
-				else if (today == piDay) {
-					document.querySelector(".countdownDiv").style.display = "none";
-					document.querySelector(".pidayDiv").style.display = "block";
-				}
+        //如果今天是3月14则隐藏countdown显示piday
+        else if (today == piDay) {
+            document.querySelector(".countdownDiv").style.display = "none";
+            document.querySelector(".pidayDiv").style.display = "block";
+        }
 
-				//如果今天的日期还不到3月14，则隐藏 piday
-				else {
-					document.querySelector(".pidayDiv").style.display = "none";
-				}
+        //如果今天的日期还不到3月14，则隐藏 piday
+        else {
+            document.querySelector(".pidayDiv").style.display = "none";
+        }
 
-				// 计算剩余天数
-				let timeLeft = Math.round((piDay.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+        // 计算剩余天数
+        let timeLeft = Math.round((piDay.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 
-				// 在网页上显示倒计时（中文）
-				document.getElementById("countdown").innerHTML = timeLeft
-			</script>
-			<script src="/assets/js/main.js"></script>
-	</body>
+        // 在网页上显示倒计时（中文）
+        document.getElementById("countdown").innerHTML = timeLeft
+    </script>
+    <!--頁尾版權訊息-->
+    <footer>
+        <ul>
+            <p>&copy; 2020-Now 胡斯凱(Siberia Husky)</p>
+            <p><a href="https://icp.gov.moe/?keyword=20238314">萌ICP备20238314号<i class="fa-solid fa-arrow-up-right-from-square"></i></a></p>
+        </ul>
+    </footer>
+</body>
+<!--script>
+    // 點擊 a 更改標題
+    document.getElementById('navTop').addEventListener('click', function() {
+        document.title = '胡斯凱的個人網站';
+    });
+
+    document.getElementById('navIntroduction').addEventListener('click', function() {
+        document.title = '簡介 | 胡斯凱的個人網站';
+    });
+
+    document.getElementById('navProductions').addEventListener('click', function() {
+        document.title = '作品 | 胡斯凱的個人網站';
+    });
+</script-->
 </html>
