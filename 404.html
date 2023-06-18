@@ -4,169 +4,40 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale-1">
         <title>404 | 胡斯凱的網站</title>
+        <link rel="icon" href="./images/favicon.png">
         <!--Bootstrap-->
         <link href="//cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
         <!--fontawesome-->
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
         <!--styles-->
-        <link href="./style.css" rel="stylesheet">
-        <script src="./script.js"></script>
+        <link href="./assets/style.css" rel="stylesheet">
+        <script src="./assets/script.js"></script>
     </head>
-    <body>
+    <body style="background-color: black;">
         <!--navbar-->
         <nav class="navbar navbar-dark fixed-top" style="background-color: #1e86dd;">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">胡斯凱 Husky</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-                    <span class="navbar-toggler-icon"></span>
+                <a class="navbar-brand" href="./index.html">未找到網頁</a>
+                <button class="btn btn-outline" id="backBtn" style="color: white;" type="button">
+                    <i class="fa-solid fa-arrow-left"></i>
                 </button>
-                <div class="offcanvas offcanvas-end text-white" data-bs-scroll="true" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel" style="height: 100%;">
-                    <div class="offcanvas-header" style="background-color: #1e86dd;">
-                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">你好啊 :)</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body" style="height: 100%; background-color: #1e86dd;">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-arrow-up"></i>最上方</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#introduciton"><i class="fa-solid fa-circle-info"></i>簡介</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#productions"><i class="fa-solid fa-code"></i>作品</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#contacts">聯繫方式</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" aria-current="page" href="eng.hooskai.ml">English</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </nav>
-        <!--main container-->
-        <!--title-->
-        <h2 id="title" style="margin-top: 78px;">
-            I'm lovin'
-            <div class="mask">
-                <span data-show>game.</span>
-                <span>foods.</span>
-                <span>video.</span>
-                <span>code.</span>
-            </div>
-        </h2>
-        <!--english-->
-        <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-            <div class="toast-body">
-            Hello, world! This is a toast message.
-            </div>
-            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            </div>
-        <!--introduction-->
-        <div class="card" id="introduciton" style="margin: 16px;">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <i class="fa-solid fa-circle-info"></i> 簡介 Introduction
-                </h5>
-                <p class="card-text">
-                    <p>首先，你好！很高興認識你！(￣▽￣)／</p>
-                    <p>我呢，喜歡玩遊戲，看視頻和寫代碼。</p>
-                    <p>對於我來說，遊戲是一種放鬆的方式<span class="spoiler">雖然往往都會適得其反讓自己生氣，甚至曾導致熒幕-1</span>，<br>無論是獨立遊戲還是網遊，只要是能符合我興趣的遊戲我都喜歡。</p>
-                    <p>而編程，算是在我無聊的時候填充時間的一種方式，到現在，我略懂 <a href="https://www.lua.org">Lua</a> / <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML">HTML</a> / <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">CSS</a>，正在嘗試深入學習……</p>
-                    <p>我也十分熱衷看各種類型的影片，比如影視劇、遊戲實況主、科技資訊等。這些視頻不僅可以讓我開心，有些還能拓寬我的認知、增長我的知識。</p>
-                    <p>至於食物嘛，有誰會不喜歡美食呢 (*^▽^*)</p>
-                    <p><span class="spoiler">因為我的文筆很差，所以這個簡介是用 <a href="https://chat.openai.com/" title="很方便不是嗎（ゝω・）">Chat GPT</a> 生成然後我自己潤色的(*･ω< ) </span></p>
-                </p>
-            </div>
-        </div>
-        <!--productions-->
-        <div class="card" id="productions" style="margin: 16px; margin-top: 32px;">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <i class="fa-solid fa-code"></i> 作品 Productions
-                </h5>
-                <p class="card-text">
-                    我的一些作品、網頁相關的東西
-                </p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a href="./apps/piday/index.html">圓周率日倒計時</a></li>
-                <li class="list-group-item"><a href="//stats.uptimerobot.com/5XXzmSM9NJ" target="_blank">我的網站狀態<i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
-                <li class="list-group-item"><a href="./links.html">友鏈</a></li>
-                <li class="list-group-item"><a href="//eng.hooskai.ml/index.html">English 英文版</a></li>
-            </ul>
-        </div>
-        <!--contacts-->
-        <div class="card" id="contacts" style="margin: 16px; margin-top: 32px;">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <i class="fa-solid fa-hashtag"></i> 聯繫方式 Contacts
-                </h5>
-                <p class="card-text">
-                    我在各大平台的網址及 E-Mail
-                </p>
-            </div>
-            <!--row-->
-            <div class="row row-cols-1 row-cols-md-2 g-4" style="margin: 8px; margin-top: -16px;">
-                <!--Twitter-->
-                <div class="col" style="padding-left: 16px; padding-right: 16px;">
-                    <div class="card text-white" style="background-color: #1C9BF0;">
-                        <div class="card-body" style="backdrop-filter: blur(128px);">
-                            <h5 class="card-title"><i class="fa-brands fa-twitter"></i> 推特 Twitter</h5>
-                            <a href="//twitter.com/hhusky0314" target="_blank" class="btn" style="background-color: white; color: #1C9BF0; font-weight: bold; font-family: 'Montserrat';">胡斯凱</a>
-                        </div>
-                    </div>
-                </div>
-                <!--bilibili-->
-                <div class="col" style="padding-left: 16px; padding-right: 16px;">
-                    <div class="card text-white" style="background-color: #00A0D8;">
-                        <div class="card-body" style="backdrop-filter: blur(128px);">
-                            <h5 class="card-title"><i class="fa-brands fa-bilibili"></i> 嗶哩嗶哩 bilibili</h5>
-                            <a href="//space.bilibili.com/66560652" target="_blank" class="btn" style="background-color: white; color: #00A0D8; font-weight: bold; font-family: 'Montserrat';">胡斯凯 Husky</a>
-                        </div>
-                    </div>
-                </div>
-                <!--GitHub-->
-                <div class="col" style="padding-left: 16px; padding-right: 16px;">
-                    <div class="card text-white" style="background-color: #24292F;">
-                        <div class="card-body" style="backdrop-filter: blur(128px);">
-                            <h5 class="card-title"><i class="fa-brands fa-github"></i> GitHub</h5>
-                            <a href="//github.com/siberiahusky" target="_blank" class="btn" style="background-color: white; color: #24292F; font-weight: bold; font-family: 'Montserrat';">SiberiaHusky</a>
-                        </div>
-                    </div>
-                </div>
-                <!--WildBox-->
-                <div class="col" style="padding-left: 16px; padding-right: 16px;">
-                    <div class="card text-white" style="background-color: #FF7E10;">
-                        <div class="card-body" style="backdrop-filter: blur(128px);">
-                            <h5 class="card-title"><i class="fa-solid fa-paw"></i> 野獸盒子 WildBox</h5>
-                            <a href="//github.com/siberiahusky" target="_blank" class="btn" style="background-color: white; color: #FF7E10; font-weight: bold; font-family: 'Montserrat';">胡斯凯</a>
-                        </div>
-                    </div>
-                </div>
-                <!--E-Mail-->
-                <div class="col" style="padding: 16px; padding-top: 0;">
-                    <div class="card text-white" style="background-color: #1e86dd;">
-                        <div class="card-body" style="backdrop-filter: blur(128px);">
-                            <h5 class="card-title"><i class="fa-solid fa-envelope"></i> E-Mail</h5>
-                            <p>網站郵件服務由 <a href="//mail.ru" style="color: white; font-weight: bold;">Mail.ru</a> 提供</p>
-                            <a href="mailto:mail@hooskai.ml" target="_blank" class="btn" style="background-color: white; color: #1e86dd; font-weight: bold; font-family: 'Montserrat';">發送郵件</a>
-                        </div>
-                    </div>
-                </div>
-                <!---->
-            </div>
-        </div>
+        <!--back script-->
+        <script>
+            var backButton = document.getElementById("backBtn");
+            backButton.addEventListener("click", function() {
+                history.back();
+            });
+        </script>
+        <!--picture-->
+        <img src="./images/404.jpg" width="100%" style="margin-top: 64px;">
         <!--footer-->
-        <footer style="margin: 16px;">
-            <p>&copy; 2019-Now 胡斯凱(SiberiaHusky)</p>
+        <footer class="panel-footer d-flex" style="margin: 16px;">
+            <p style="color: white; font-family: 'Montserrat';">&copy; 2019-Now SiberiaHusky</p>
+            <a style="color: gray; margin-left: 16px;" href="//icp.gov.moe/?keyword=20238314"><p style="font-family: 'Montserrat';">萌ICP备20238314号</p></a>
         </footer>
         <!--script-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
