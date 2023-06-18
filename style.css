@@ -11,29 +11,22 @@ body {
     background-repeat: no-repeat;
 }
 
+h1, h2, h3, h4, h5, p, a {
+    font-family: "Montserrat";
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: bold;
+}
+
 h2 {
-    margin: 64px;
-    font-size: 64px;
+    margin: 32px;
+    font-size: 48px;
     font-family: "Montserrat";
-    line-height: 1;
+    line-height: 1.18;
     letter-spacing: -0.02em;
+    font-weight: bold;
     color: #1d1d1f;
-}
-
-h3 {
-    font-size: 24px;
-    font-family: "Montserrat";
-    letter-spacing: -0.02em;
-    color: black;
-}
-
-h2:first-of-type {
-    margin-top: 128px;
-}
-
-footer {
-    margin: 48px;
-    margin-bottom: 32px;
 }
 
 a {
@@ -51,23 +44,13 @@ a i {
     margin-left: 8px;
 }
 
-ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-li:not(:last-child) {
-    margin-right: 8px;
-}
-
-i {
+.nav-link i {
+    margin-left: 0;
     margin-right: 8px;
 }
 
 .mask {
-    height: 70px;
+    height: 48px;
     position: relative;
     overflow: hidden;
     margin-top: var(--offset);
@@ -77,9 +60,8 @@ i {
     display: block;
     box-sizing: border-box;
     position: absolute;
-    top: 64px;
+    top: 56px;
     padding-bottom: var(--offset);
-    background-size: 100% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -112,65 +94,6 @@ i {
     background-image: linear-gradient(45deg, #fa7671 50%, #f45f7f);
 }
 
-/*卡片*/
-.card {
-    justify-content: space-between;
-    align-items: center;
-    top: 0;
-    left: 0;
-    margin: 32px;
-    border-width: 2px;
-    border-color: #e0e0e0;
-    border-radius: 1rem;
-    border-style: solid;
-}
-
-.card h3 {
-    padding: 0;
-    padding-top: 8px;
-    padding-left: 24px;
-    padding-right: 24px;
-}
-
-.card p {
-    padding: 0;
-    padding-left: 24px;
-    font-size: 20px;
-    font-family: "Montserrat";
-}
-
-.card p:last-child {
-    padding-right: 16px;
-    padding-bottom: 8px;
-}
-
-.card ul {
-    display: inline-block;
-    list-style-type: none;
-}
-
-.card li {
-    padding: 0;
-    padding-left: 24px;
-    padding-bottom: 24px;
-    font-size: 20px;
-    font-family: "Montserrat";
-    display: inline-block;
-}
-
-.card li:last-child {
-    padding-right: 24px;
-}
-
-.card a:hover {
-    color: #1e86dd
-}
-
-/*語言提示卡片*/
-#notice h3 i:hover {
-    color: red;
-}
-
 /*劇透遮蓋*/
 .spoiler {
     background-color: #252525;
@@ -179,7 +102,7 @@ i {
 }
 
 .spoiler:hover, .spoiler:active {
-    color: white !important;
+    color: white;
 }
 
 .spoiler:hover a {
@@ -188,18 +111,4 @@ i {
 
 .spoiler:hover a:hover {
     color: lightblue;
-}
-
-/*頁尾版權信息*/
-footer {
-    margin-top: 0px;
-}
-
-footer p {
-    font-size: 20px;
-    font-family: "Montserrat";
-}
-
-footer p:last-child {
-    margin-left: 16px;
 }
