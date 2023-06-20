@@ -1,86 +1,95 @@
 <!DOCTYPE html>
 <html lang="zh-hant-TW">
-<head>
-    <meta content="text/html"; charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../style.css">
-    <script src="../../script.js"></script>
-    <link rel="icon" href="../../images/favicon.png">
-    <title>圓周率日倒計時 | 胡斯凱的個人網站</title>
-    <!--nav needs-->
-    <link rel="stylesheet" href="../../nav/style.css">
-    <!--fontawesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-</head>
-<body>
-    <!--nav-->
-    <header>
-        <a href="javascript:history.back()"><h3><i class="fa-solid fa-arrow-left"></i>圓周率日倒計時</h3></a>
-    </header>
-    <!--introduction-->
-    <div class="card" style="margin-top: 128px">
-        <div class="countdownDiv">
-            <p><i class="fa-solid fa-clock"></i></i>距離圓周率日還有</p>
-            <h3 id="countdown"></h3>
-            <p>天</p>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale-1">
+        <title>胡斯凱的網站</title>
+        <link rel="icon" href="/images/favicon.png">
+        <!--描述-->
+        <meta name="description" content="鏈接更寬闊的世界">
+        <!--關鍵詞-->
+        <meta name="keywords" content="胡斯凯,胡斯凱,hooskai,siberia husky,SiberiaHusky,pi,pi day,圓周率日.圆周率日,3.14">
+        <!--Bootstrap-->
+        <link href="//cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!--fontawesome-->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+        <!--styles-->
+        <link href="/assets/style.css" rel="stylesheet">
+        <script src="/assets/script.js"></script>
+    </head>
+    <body>
+        <!--navbar-->
+        <!--navbar-->
+        <nav class="navbar navbar-dark fixed-top" style="background-color: #1e86dd;">
+            <div class="container-fluid">
+                <a class="navbar-brand">圓周率日倒計時</a>
+                <button class="btn btn-outline" id="backBtn" style="color: white;" type="button">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </div>
+        </nav>
+        <!--back script-->
+        <script>
+            var backButton = document.getElementById("backBtn");
+            backButton.addEventListener("click", function() {
+                history.back();
+            });
+        </script>
+        <!--main container-->
+        <div class="card" style="margin: 16px; margin-top: 72px;">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fa-solid fa-clock"></i> 距離圓周率日還有
+                </h5>
+                <p class="card-text">
+                <div class="countdownDiv">
+                    <h5 id="countdown" style="font-size: xx-large; font-weight: bold;"></h5>
+                    <h5>天</h5>
+                </div>
+                <div class="pidayDiv">
+                    <p><i class="fa-solid fa-exclamation"></i></i>今天是</p>
+                    <h3>圓周率日</h3>
+                    <p>耶~ (ﾉﾟ▽ﾟ)ﾉ</p>
+                </div>
+            </div>
         </div>
-        <div class="pidayDiv">
-            <p><i class="fa-solid fa-exclamation"></i></i>今天是</p>
-            <h3>圓周率日</h3>
-            <p>Yeah~ (ﾉﾟ▽ﾟ)ﾉ</p>
-        </div>
-    </div>
-    <!--圓周率日倒計時 JavaScript-->
-    <script type="text/javascript">
-        // 获取今天的日期
-        let today = new Date();
+        <!--圓周率日倒計時 JavaScript-->
+        <script type="text/javascript">
+            // 獲取今天的日期
+            let today = new Date();
 
-        // 设置3月14日的日期
-        let piDay = new Date(today.getFullYear(), 3-1, 14);
+            // 設置3月14日的日期
+            let piDay = new Date(today.getFullYear(), 3-1, 14);
 
-        //如果今天的日期已经超过3月14，则设置为下一年的3月14日并隐藏piday
-        if (today > piDay) {
-            piDay.setFullYear(piDay.getFullYear() + 1);
-            document.querySelector(".pidayDiv").style.display = "none";
-        }
+            // 若今天日期已超過3月14日，則設置為下一年的3月14日並隱藏piday
+            if (today > piDay) {
+                piDay.setFullYear(piDay.getFullYear() + 1);
+                document.querySelector(".pidayDiv").style.display = "none";
+            }
 
-        //如果今天是3月14则隐藏countdown显示piday
-        else if (today == piDay) {
-            document.querySelector(".countdownDiv").style.display = "none";
-            document.querySelector(".pidayDiv").style.display = "block";
-        }
+            // 若今天為3月14日，則隱藏countdown並顯示piday
+            else if (today == piDay) {
+                document.querySelector(".countdownDiv").style.display = "none";
+                document.querySelector(".pidayDiv").style.display = "block";
+            }
 
-        //如果今天的日期还不到3月14，则隐藏 piday
-        else {
-            document.querySelector(".pidayDiv").style.display = "none";
-        }
+            // 若今天的日期還未到3月14日，則隱藏piday
+            else {
+                document.querySelector(".pidayDiv").style.display = "none";
+            }
 
-        // 计算剩余天数
-        let timeLeft = Math.round((piDay.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+            // 計算剩餘天數
+            let timeLeft = Math.round((piDay.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 
-        // 在网页上显示倒计时（中文）
-        document.getElementById("countdown").innerHTML = timeLeft
-    </script>
-    <!--頁尾版權訊息-->
-    <footer>
-        <ul>
-            <p>&copy; 2020-Now 胡斯凱(Siberia Husky)</p>
-            <p><a href="https://icp.gov.moe/?keyword=20238314">萌ICP备20238314号<i class="fa-solid fa-arrow-up-right-from-square"></i></a></p>
-        </ul>
-    </footer>
-</body>
-<!--script>
-    // 點擊 a 更改標題
-    document.getElementById('navTop').addEventListener('click', function() {
-        document.title = '胡斯凱的個人網站';
-    });
-
-    document.getElementById('navIntroduction').addEventListener('click', function() {
-        document.title = '簡介 | 胡斯凱的個人網站';
-    });
-
-    document.getElementById('navProductions').addEventListener('click', function() {
-        document.title = '作品 | 胡斯凱的個人網站';
-    });
-</script-->
+            // 在網頁上顯示倒計時
+            document.getElementById("countdown").innerHTML = timeLeft
+        </script>
+        <!--footer-->
+        <footer class="panel-footer d-flex" style="margin: 16px;">
+            <p style="font-family: 'Montserrat';">&copy; 2019-Now SiberiaHusky</p>
+            <a style="margin-left: 16px;" href="//icp.gov.moe/?keyword=20238314"><p style="font-family: 'Montserrat';">萌ICP备20238314号</p></a>
+        </footer>
+        <!--script-->
+        <script src="//cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
 </html>
