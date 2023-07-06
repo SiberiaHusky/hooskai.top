@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-hans-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale-1">
+        <title>北京奥运会 | 胡斯凯的网站
+        </title>
+        <link rel="icon" href="//hooskai.ml/images/beijing2008.webp">
+        <!--description-->
+        <meta name="description" content="链接更宽阔的世界">
+        <!--keywords-->
+        <meta name="keywords" content="胡斯凯,胡斯凱,hooskai,siberia husky,SiberiaHusky,北京奥运会,奥运会,Beijing Olympics,olympics,beijing2008,北京2008">
+        <!--bootstrap-->
+        <link href="//mirror.hooskai.ml/bootstrap/bootstrap.min.css" rel="stylesheet">
+        <!--fontawesome-->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+        <!--styles-->
+        <link href="//hooskai.ml/assets/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <!--navbar-->
+        <!--navbar-->
+        <nav class="navbar navbar-dark fixed-top" style="background-color: #CE161E;">
+            <div class="container-fluid">
+                <a class="navbar-brand">北京奥运会 2008</a>
+                <button class="btn btn-outline" id="backBtn" style="color: white;" type="button">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </div>
+        </nav>
+        <!--back script-->
+        <script>
+            var backButton = document.getElementById("backBtn");
+            backButton.addEventListener("click", function() {
+                window.location.replace('//hooskai.ml')
+            });
+        </script>
+        <!--2008countdown-->
+        <div class="card" style="margin: 16px; margin-top: 72px;">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <h5 style="margin-top: -8px;">距2008年8月8日　开赛</h5>
+                </h5>
+                <p class="card-text">
+                <div class="row align-items-center" style="margin-bottom: -16px;">
+                    <div class="col-auto">
+                        <h5>倒计时</h5>
+                    </div>
+                    <div class="col-auto">
+                        <h5 id="countdown2008" style="font-size: xx-large; margin-left: -16px; margin-right: -16px; color: #CE161E;"></h5>
+                    </div>
+                    <div class="col-auto">
+                        <h5>天</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--2007countdown-->
+        <div class="card" style="margin: 16px;">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <h5 style="margin-top: -8px;">距2007年11月28日　测试赛</h5>
+                </h5>
+                <p class="card-text">
+                <div class="row align-items-center" style="margin-bottom: -16px;">
+                    <div class="col-auto">
+                        <h5>倒计时</h5>
+                    </div>
+                    <div class="col-auto">
+                        <h5 id="countdown2007" style="font-size: xx-large; margin-left: -16px; margin-right: -16px; color: #CE161E;"></h5>
+                    </div>
+                    <div class="col-auto">
+                        <h5>天</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--倒计时 JavaScript-->
+        <script type="text/javascript">
+            // 获取今天的日期
+            let today = new Date();
+
+            // 设置2008年8月8日的日期
+            let targetDate2008 = new Date(2008, 8-1, 8);
+
+            // 设置2007年8月8日的日期
+            let targetDate2007 = new Date(2007, 11-1, 28);
+
+            // 计算剩余天数
+            let timeLeft2008 = Math.round((today.getTime() - targetDate2008.getTime()) / (1000 * 60 * 60 * 24));
+
+            // 计算剩余天数
+            let timeLeft2007 = Math.round((today.getTime() - targetDate2007.getTime()) / (1000 * 60 * 60 * 24));
+    
+            // 在网页上显示倒计时
+            document.getElementById("countdown2008").innerHTML += `<p>-${timeLeft2008}</p>`;
+
+            // 在网页上显示倒计时
+            document.getElementById("countdown2007").innerHTML += `<p>-${timeLeft2007}</p>`;
+        </script>
+        <!--footer-->
+        <footer class="panel-footer d-flex" style="margin: 16px;">
+            <p style="font-family: 'Montserrat';">&copy; 2001-2008 SiberiaHusky</p>
+        </footer>
+        <!--script-->
+        <script src="//mirror.hooskai.ml/bootstrap/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
