@@ -164,24 +164,20 @@
         <footer class="panel-footer d-flex" style="margin: 16px;">
             <p style="font-family: 'Montserrat';">&copy; 2019-Now SiberiaHusky</p>
             <a style="margin-left: 16px;" href="//icp.gov.moe/?keyword=20238314"><p style="font-family: 'Montserrat';">萌ICP备20238314号</p></a>
-            <p id="yiyan_text"></p>
+            <div id="yiyan_container"></div>
         </footer>
         <!--script-->
         <script src="//mirror.hooskai.ml/bootstrap/bootstrap.bundle.min.js"></script>
         <!--yiyan script-->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-            window.addEventListener('DOMContentLoaded', (event) => {
-                const url = 'http://yiyan.cf/text.php';
-                
-                fetch(url)
-                    .then(response => response.text())
-                    .then(data => {
-                        const textElement = document.getElementById('yiyan_text');
-                        textElement.textContent = data;
-                    })
-                    .catch(error => {
-                        console.log('发生错误:', error);
-                    });
+            $(document).ready(function() {
+                $.ajax({
+                    url: 'http://yiyan.cf/website.php',
+                    success: function(response) {
+                        $('#yiyan_container').html(response);
+                    }
+                });
             });
         </script>
     </body>
