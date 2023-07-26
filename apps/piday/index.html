@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="zh-hant-TW">
+<html lang="zh-hans-CN">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale-1">
-        <title>胡斯凱的網站</title>
-        <link rel="icon" href="../images/favicon.png">
-        <!--描述-->
-        <meta name="description" content="鏈接更寬闊的世界">
-        <!--關鍵詞-->
-        <meta name="keywords" content="胡斯凯,胡斯凱,hooskai,siberia husky,SiberiaHusky,pi,pi day,圓周率日.圆周率日,3.14">
-        <!--Bootstrap-->
-        <link href="//mirror.hooskai.ml/bootstrap/bootstrap.min.css" rel="stylesheet">
+        <title>圆周率日倒计时 | 胡斯凯的网站</title>
+        <link rel="icon" href="//hooskai.top/images/favicon.png">
+        <!--description-->
+        <meta name="description" content="链接更宽阔的世界">
+        <!--keywords-->
+        <meta name="keywords" content="胡斯凯,胡斯凱,hooskai,siberia husky,SiberiaHusky">
+        <!--bootstrap-->
+        <link href="//mirror.hooskai.top/bootstrap/bootstrap.min.css" rel="stylesheet">
         <!--fontawesome-->
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
         <!--styles-->
-        <link href="../../assets/style.css" rel="stylesheet">
-        <script src="../../assets/script.js"></script>
+        <link href="//hooskai.top/assets/style.css" rel="stylesheet">
+        <script src="//hooskai.top/assets/script.js"></script>
     </head>
     <body>
         <!--navbar-->
         <!--navbar-->
         <nav class="navbar navbar-dark fixed-top" style="background-color: #1e86dd;">
             <div class="container-fluid">
-                <a class="navbar-brand">圓周率日倒計時</a>
+                <a class="navbar-brand">圆周率日倒计时</a>
                 <button class="btn btn-outline" id="backBtn" style="color: white;" type="button">
                     <i class="fa-solid fa-arrow-left"></i>
                 </button>
@@ -32,14 +32,14 @@
         <script>
             var backButton = document.getElementById("backBtn");
             backButton.addEventListener("click", function() {
-                window.location.replace('//hooskai.ml')
+                window.location.replace('//hooskai.top')
             });
         </script>
         <!--main container-->
         <div class="card" style="margin: 16px; margin-top: 72px;">
             <div class="card-body">
                 <h5 class="card-title">
-                    <i class="fa-solid fa-clock"></i> 距離圓周率日還有
+                    <i class="fa-solid fa-clock"></i> 距离圆周率日还有
                 </h5>
                 <p class="card-text">
                 <div class="countdownDiv">
@@ -48,48 +48,48 @@
                 </div>
                 <div class="pidayDiv">
                     <p><i class="fa-solid fa-exclamation"></i></i>今天是</p>
-                    <h3>圓周率日</h3>
+                    <h3>圆周率日</h3>
                     <p>耶~ (ﾉﾟ▽ﾟ)ﾉ</p>
                 </div>
             </div>
         </div>
-        <!--圓周率日倒計時 JavaScript-->
+        <!--圆周率日倒计时 JavaScript-->
         <script type="text/javascript">
-            // 獲取今天的日期
+            // 获取今天的日期
             let today = new Date();
 
-            // 設置3月14日的日期
+            // 设置 3 月 14 日的日期
             let piDay = new Date(today.getFullYear(), 3-1, 14);
 
-            // 若今天日期已超過3月14日，則設置為下一年的3月14日並隱藏piday
+            // 若今天日期已超过 3 月 14 日，则设置为下一年的 3 月 14 日并隐藏 piday
             if (today > piDay) {
                 piDay.setFullYear(piDay.getFullYear() + 1);
                 document.querySelector(".pidayDiv").style.display = "none";
             }
 
-            // 若今天為3月14日，則隱藏countdown並顯示piday
+            // 若今天为 3 月 14 日，则隐藏 countdown 并显示 piday
             else if (today == piDay) {
                 document.querySelector(".countdownDiv").style.display = "none";
                 document.querySelector(".pidayDiv").style.display = "block";
             }
 
-            // 若今天的日期還未到3月14日，則隱藏piday
+            // 若今天的日期还未到 3 月 14 日，则隐藏 piday
             else {
                 document.querySelector(".pidayDiv").style.display = "none";
             }
 
-            // 計算剩餘天數
+            // 计算剩余天数
             let timeLeft = Math.round((piDay.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 
-            // 在網頁上顯示倒計時
+            // 在网页上显示倒计时
             document.getElementById("countdown").innerHTML = timeLeft
         </script>
         <!--footer-->
         <footer class="panel-footer d-flex" style="margin: 16px;">
             <p style="font-family: 'Montserrat';">&copy; 2019-Now SiberiaHusky</p>
-            <a style="margin-left: 16px;" href="//icp.gov.moe/?keyword=20238314"><p style="font-family: 'Montserrat';">萌ICP备20238314号</p></a>
+            <a style="margin-left: 16px;" href="//icp.gov.moe/?keyword=20238314"><p style="font-family: 'Montserrat';">萌 ICP 备 20238314 号</p></a>
         </footer>
         <!--script-->
-        <script src="//mirror.hooskai.ml/bootstrap/bootstrap.bundle.min.js"></script>
+        <script src="//mirror.hooskai.top/bootstrap/bootstrap.bundle.min.js"></script>
     </body>
 </html>
