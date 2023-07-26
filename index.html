@@ -160,16 +160,6 @@
                 <!---->
             </div>
         </div>
-        <!--yiyan-->
-        <div class="card" id="yiyan" style="margin: 16px; margin-top: 32px;">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <i class="fa-solid fa-code"></i> 一言 Mr Song's quote
-                </h5>
-                <div id="yiyan_container">
-                </div>
-            </div>
-        </div>
         <!--footer-->
         <footer class="panel-footer d-flex" style="margin: 16px;">
             <p style="font-family: 'Montserrat';">&copy; 2019-Now SiberiaHusky</p>
@@ -177,17 +167,6 @@
         </footer>
         <!--script-->
         <script src="//mirror.hooskai.top/bootstrap/bootstrap.bundle.min.js"></script>
-        <!--yiyan script-->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $.ajax({
-                    url: 'http://yiyan.cf/website.php',
-                    success: function(response) {
-                        $('#yiyan_container').html(response);
-                    }
-                });
-            });
-        </script>
     </body>
 </html>
