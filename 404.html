@@ -1,47 +1,64 @@
 <!DOCTYPE html>
-<html lang="zh-hant-TW">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale-1">
-        <title>404 | 胡斯凱的網站</title>
-        <link rel="icon" href="/images/favicon.png">
-        <!--描述-->
-        <meta name="description" content="鏈接更寬闊的世界">
-        <!--關鍵詞-->
-        <meta name="keywords" content="胡斯凯,胡斯凱,hooskai,siberia husky,SiberiaHusky">
-        <!--Bootstrap-->
-        <link href="//mirror.hooskai.top/bootstrap/bootstrap.min.css" rel="stylesheet">
-        <!--fontawesome-->
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-        <!--styles-->
-        <link href="//hooskai.top/assets/style.css" rel="stylesheet">
-        <script src="//hooskai.top/assets/script.js"></script>
-    </head>
-    <body style="background-color: black;">
-        <!--navbar-->
-        <nav class="navbar navbar-dark fixed-top" style="background-color: #1e86dd;">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/index.html">未找到網頁</a>
-                <button class="btn btn-outline" id="backBtn" style="color: white;" type="button">
-                    <i class="fa-solid fa-arrow-left"></i>
-                </button>
+<html lang="zh-hans-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1">
+    <title>404 | Husky's Word View</title>
+    <link rel="icon" href="https://hooskai.top/images/favicon.png">
+    <!-- Description -->
+    <meta name="description" content="Connecting a Wider World">
+    <!-- Keywords -->
+    <meta name="keywords" content="胡斯凯,胡斯凱,hooskai,siberia husky,SiberiaHusky">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <!-- Style -->
+    <link href="https://ui.hooskai.top/assets/style.css" rel="stylesheet">
+</head>
+
+<body class="us-n">
+    <!-- nav bar -->
+    <nav>
+        <div class="navbar" style="vertical-align: text-bottom;">
+            <p>404</p>
+            <a href="https://hooskai.top/">
+                <p style="font-size: large;">Husky's World View</p>
+            </a>
+        </div>
+    </nav>
+
+    <!-- cover & slogan -->
+    <div style="position: relative; width: 100%;">
+        <img src="https://hooskai.top/images/404.jpg" style="width: 100%;">
+    </div>
+
+    <div class="container">
+        <!--  footer -->
+        <div class="card">
+            <div>
+                <p>Copyrights &copy; 2019-<span id="this_year"></span> <a href="/">胡斯凯(SiberiaHusky)</a>. All rights
+                    reserved.</p>
+
+                <ul style="margin-top: 16px;">
+                    <li><a href="https://icp.gov.moe/?keyword=20238314" target="_blank">萌ICP备20238314号</a></li>
+                    <li><a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank"
+                            data-title="CC BY-SA 4.0 DEED"><i class="fa-brands fa-creative-commons"></i> <i
+                                class="fa-brands fa-creative-commons-by"></i> <i
+                                class="fa-brands fa-creative-commons-sa"></i></a></li>
+                    <li><a href="https://ui.hooskai.top/" target="_blank" data-title="由胡斯凯使用 Welt UI 制作"><img
+                                src="https://ui.hooskai.top/assets/img/Logo_White.png" style="height: 12px;"></a></li>
+                    <li><a href="https://httpcats.com/" target="_blank">Http Cats</a></li>
+                </ul>
             </div>
-        </nav>
-        <!--back script-->
-        <script>
-            var backButton = document.getElementById("backBtn");
-            backButton.addEventListener("click", function() {
-                window.location.replace('//hooskai.top')
-            });
-        </script>
-        <!--picture-->
-        <img src="//hooskai.top/images/404.jpg" width="100%" style="margin-top: 64px;">
-        <!--footer-->
-        <footer class="panel-footer d-flex" style="margin: 16px;">
-            <p style="color: white; font-family: 'Montserrat';">&copy; 2019-Now SiberiaHusky</p>
-            <a style="color: gray; margin-left: 16px;" href="//icp.gov.moe/?keyword=20238314"><p style="font-family: 'Montserrat';">萌ICP备20238314号</p></a>
-        </footer>
-        <!--script-->
-        <script src="//mirror.hooskai.top/bootstrap/bootstrap.bundle.min.js"></script>
-    </body>
+        </div>
+    </div>
+</body>
+
+<!-- date javasript -->
+<script type="text/javascript">
+    var date = new Date();
+
+    document.querySelector('#this_year').innerText = date.getFullYear();
+</script>
+
 </html>

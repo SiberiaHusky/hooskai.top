@@ -1,173 +1,283 @@
 <!DOCTYPE html>
 <html lang="zh-hans-CN">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale-1">
-        <title>胡斯凯的网站</title>
-        <link rel="icon" href="//hooskai.top/images/favicon.png">
-        <!--description-->
-        <meta name="description" content="链接更宽阔的世界">
-        <!--keywords-->
-        <meta name="keywords" content="胡斯凯,胡斯凱,hooskai,siberia husky,SiberiaHusky">
-        <!--bootstrap-->
-        <link href="//mirror.hooskai.top/bootstrap/bootstrap.min.css" rel="stylesheet">
-        <!--fontawesome-->
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-        <!--styles-->
-        <link href="//hooskai.top/assets/style.css" rel="stylesheet">
-        <script src="//hooskai.top/assets/script.js"></script>
-    </head>
-    <body>
-        <!--navbar-->
-        <nav class="navbar navbar-dark fixed-top" style="background-color: #1e86dd;">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">胡斯凯 Husky</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="offcanvas offcanvas-end text-white" data-bs-scroll="true" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel" style="height: 100%;">
-                    <div class="offcanvas-header" style="background-color: #1e86dd;">
-                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">你好啊 :)</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body" style="height: 100%; background-color: #1e86dd;">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-arrow-up"></i>最上方</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#introduciton"><i class="fa-solid fa-circle-info"></i>简介</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#productions"><i class="fa-solid fa-code"></i>作品</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#contacts">联系方式</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="intl.hooskai.top">English 英文版</a>
-                            </li>
-                        </ul>
-                    </div>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1">
+    <title>Husky's World View</title>
+    <link rel="icon" href="https://hooskai.top/images/favicon.png">
+    <!-- Description -->
+    <meta name="description" content="链接更宽阔的世界">
+    <!-- Keywords -->
+    <meta name="keywords" content="胡斯凯,胡斯凱,hooskai,siberia husky,SiberiaHusky">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <!-- Style -->
+    <link href="https://ui.hooskai.top/assets/style.css" rel="stylesheet">
+</head>
+
+<body class="us-n">
+    <!-- nav bar -->
+    <nav>
+        <div class="navbar" style="vertical-align: text-bottom;">
+            <p>Husky</p>
+            <p style="font-size: large; margin-left: 2px;">'s World View</p>
+        </div>
+    </nav>
+
+    <!-- cover & slogan -->
+    <div style="position: relative; width: 100%;">
+        <div class="image-container">
+            <img src="https://api.dujin.org/bing/1920.php" style="width: 100%;">
+            <div class="gradient-overlay"></div>
+        </div>
+        <div
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 2;">
+            <h1 style="font-size: xx-large;">链接更宽阔的世界</h1>
+        </div>
+    </div>
+
+    <!-- contents -->
+    <div class="container">
+        <!-- tags -->
+        <div class="card">
+            <header style="position: relative;">
+                <div style="padding: 0;">
+                    <p style="color: rgba(var(--text-color-primary-rgb), 0.25);">首先，很高兴见到你 :)</p>
+                    <h1>我的标签</h1>
                 </div>
-            </div>
-        </nav>
-        <!--main container-->
-        <!--title-->
-        <h2 id="title" style="margin-top: 78px;">
-            I'm lovin'
-            <div class="mask">
-                <span data-show>game.</span>
-                <span>foods.</span>
-                <span>video.</span>
-                <span>code.</span>
-            </div>
-        </h2>
-        <!--introduction-->
-        <div class="card" id="introduciton" style="margin: 16px;">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <i class="fa-solid fa-circle-info"></i> 简介 Introduction
-                </h5>
-                <p class="card-text">
-                    <p>首先，你好！很高兴认识你！(￣▽￣)／</p>
-                    <p>我呢，喜欢玩游戏，看视频和写代码。</p>
-                    <p>对于我来说，游戏是一种放松的方式<span class="spoiler">虽然往往会适得其反让自己生气，甚至曾导致屏幕-1</span>，<br>无论是独立游戏还是网游，只要是能符合我兴趣的游戏我都喜欢。</p>
-                    <p>而编程，算是在我无聊的时候填充时间的一种方式，到现在，我略懂 <a href="https://www.lua.org">Lua</a> / <a href="https://developer.mozilla.org/zh-CN/docs/Web/html">html</a> / <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">CSS</a>，正在尝试深入学习……</p>
-                    <p>我也十分热衷看各类的视频，比如影视剧、游戏区Up主、科技区Up主等。这些视频不仅可以让我开心，有些还能拓宽我的认知、增长我的知识。</p>
-                    <p>至于食物嘛，有谁会不喜欢美食呢 (^▽^)</p>
-                    <p><span class="spoiler">因为我的文笔很差，所以这个简介是用 <a href="https://chat.openai.com/" title="很方便不是吗（ゝω・）">Chat GPT</a> 生成然后我自己润色的 (*･ω< )</span></p>
-                </p>
+            </header>
+            <hr>
+
+            <div>
+                <ul>
+                    <li>用我的一生讲述无数个倒霉的故事</li>
+                    <li>为地球建设而生 <span class="censord" style="cursor: text;"><span id="age"></span></span> 年</li>
+                    <li>Furry Republic 海边居民</li>
+                    <li>INFP</li>
+                    <li>LGBT 🌈</li>
+                    <li>社交恐惧症患者（自认）</li>
+                    <li>喜欢随便写些东西</li>
+                </ul>
             </div>
         </div>
-        <!--productions-->
-        <div class="card" id="productions" style="margin: 16px; margin-top: 32px;">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <i class="fa-solid fa-code"></i> 作品 Productions
-                </h5>
-                <p class="card-text">
-                    我的一些作品、网页相关的东西
-                </p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a href="/fonts/index.html">Hooskai Chamfered Square 字体</a></li>
-                <li class="list-group-item"><a href="/apps/piday/index.html">圆周率日倒计时</a></li>
-                <li class="list-group-item"><a href="/apps/nbnhhsh/index.html">能不能好好说话</a></li>
-                <li class="list-group-item"><a href="/apps/beijingolympics/index.html">北京奥运会</a></li>
-                <li class="list-group-item"><a href="//stats.uptimerobot.com/5XXzmSM9NJ" target="_blank">我的网站状态<i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
-                <li class="list-group-item"><a href="/links.html">友链</a></li>
-                <li class="list-group-item"><a href="//intl.hooskai.top">English 英文版</a></li>
-            </ul>
-        </div>
-        <!--contacts-->
-        <div class="card" id="contacts" style="margin: 16px; margin-top: 32px;">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <i class="fa-solid fa-hashtag"></i> 联系方式 Contacts
-                </h5>
-                <p class="card-text">
-                    我在各大社交平台的网名及 E-Mail
-                </p>
-            </div>
-            <!--row-->
-            <div class="row row-cols-1 row-cols-md-2 g-4" style="margin: 8px; margin-top: -16px;">
-                <!--Twitter-->
-                <div class="col" style="padding-left: 16px; padding-right: 16px;">
-                    <div class="card text-white" style="background-color: #1C9BF0;">
-                        <div class="card-body" style="backdrop-filter: blur(128px);">
-                            <h5 class="card-title"><i class="fa-brands fa-twitter"></i> 推特 Twitter</h5>
-                            <a href="//twitter.com/hhusky0314" target="_blank" class="btn" style="background-color: white; color: #1C9BF0; font-weight: bold; font-family: 'Montserrat';">胡斯凱</a>
-                        </div>
-                    </div>
+
+        <!-- favorites foods -->
+        <div class="card">
+            <header style="position: relative;">
+                <div style="padding: 0;">
+                    <p style="color: rgba(var(--text-color-primary-rgb), 0.25);">谁不喜欢好吃的呢？</p>
+                    <h1>我喜欢的吃的</h1>
                 </div>
-                <!--bilibili-->
-                <div class="col" style="padding-left: 16px; padding-right: 16px;">
-                    <div class="card text-white" style="background-color: #00A0D8;">
-                        <div class="card-body" style="backdrop-filter: blur(128px);">
-                            <h5 class="card-title"><i class="fa-brands fa-bilibili"></i> 哔哩哔哩 bilibili</h5>
-                            <a href="//space.bilibili.com/66560652" target="_blank" class="btn" style="background-color: white; color: #00A0D8; font-weight: bold; font-family: 'Montserrat';">胡斯凯 Husky</a>
-                        </div>
-                    </div>
-                </div>
-                <!--GitHub-->
-                <div class="col" style="padding-left: 16px; padding-right: 16px;">
-                    <div class="card text-white" style="background-color: #24292F;">
-                        <div class="card-body" style="backdrop-filter: blur(128px);">
-                            <h5 class="card-title"><i class="fa-brands fa-github"></i> GitHub</h5>
-                            <a href="//github.com/siberiahusky" target="_blank" class="btn" style="background-color: white; color: #24292F; font-weight: bold; font-family: 'Montserrat';">SiberiaHusky</a>
-                        </div>
-                    </div>
-                </div>
-                <!--WildBox-->
-                <div class="col" style="padding-left: 16px; padding-right: 16px;">
-                    <div class="card text-white" style="background-color: #FF7E10;">
-                        <div class="card-body" style="backdrop-filter: blur(128px);">
-                            <h5 class="card-title"><i class="fa-solid fa-paw"></i> 野兽盒子 WildBox</h5>
-                            <a href="//wildbox.cn/Husky" target="_blank" class="btn" style="background-color: white; color: #FF7E10; font-weight: bold; font-family: 'Montserrat';">胡斯凯</a>
-                        </div>
-                    </div>
-                </div>
-                <!--E-Mail-->
-                <div class="col" style="padding: 16px; padding-top: 0;">
-                    <div class="card text-white" style="background-color: #1e86dd;">
-                        <div class="card-body" style="backdrop-filter: blur(128px);">
-                            <h5 class="card-title"><i class="fa-solid fa-envelope"></i> E-Mail</h5>
-                            <p>网站邮件服务由 <a href="//mail.ru" style="color: white; font-weight: bold;">Mail.ru</a> 提供</p>
-                            <a href="mailto:mail@hooskai.top" target="_blank" class="btn" style="background-color: white; color: #1e86dd; font-weight: bold; font-family: 'Montserrat';">发送邮件</a>
-                        </div>
-                    </div>
-                </div>
-                <!---->
+            </header>
+
+            <hr>
+
+            <div>
+                <ul>
+                    <li>肉</li>
+                    <li>炸肉</li>
+                    <li>生三文鱼</li>
+                    <li>马铃薯（各种做法都行，除了生的）<span class="censord">（红薯不是薯！）</span></li>
+                    <li>汉堡和三明治</li>
+                </ul>
             </div>
         </div>
-        <!--footer-->
-        <footer class="panel-footer d-flex" style="margin: 16px;">
-            <p style="font-family: 'Montserrat';">&copy; 2019-Now SiberiaHusky</p>
-            <a style="margin-left: 16px;" href="//icp.gov.moe/?keyword=20238314"><p style="font-family: 'Montserrat';">萌ICP备20238314号</p></a>
-        </footer>
-        <!--script-->
-        <script src="//mirror.hooskai.top/bootstrap/bootstrap.bundle.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    </body>
+
+        <!-- works -->
+        <div class="card">
+            <header style="position: relative;">
+                <div style="padding: 0;">
+                    <p style="color: rgba(var(--text-color-primary-rgb), 0.25);">我的一些作品、网页相关的东西</p>
+                    <h1>我的作品</h1>
+                </div>
+            </header>
+
+            <hr>
+
+            <div>
+                <ul class="flex">
+                    <li>
+                        <a href="/projects/Pi_day/">
+                            <div class="card">
+                                <p>圆周率日倒计时</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/SiberiaHusky/Hooskai-Chamfered-Square/blob/main/README.md"
+                            target="_blank">
+                            <div class="card">
+                                <p>Hooskai Chamfered Square 字体<i class="fa-solid fa-arrow-up-right-from-square"
+                                        id="icon-left"></i></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://pj.hooskai.top/furski/" target="_blank">
+                            <div class="card">
+                                <p>Furski<i class="fa-solid fa-arrow-up-right-from-square" id="icon-left"></i></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://ui.hooskai.top/" target="_blank">
+                            <div class="card">
+                                <p>Welt UI<i class="fa-solid fa-arrow-up-right-from-square" id="icon-left"></i></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://stats.uptimerobot.com/5XXzmSM9NJ" target="_blank">
+                            <div class="card">
+                                <p>我的网站状态<i class="fa-solid fa-arrow-up-right-from-square" id="icon-left"></i></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/links">
+                            <div class="card">
+                                <p>友链</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/projects/Beijing_2008">
+                            <div class="card">
+                                <p>2008 北京奥运会</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://intl.hooskai.top">
+                            <div class="card">
+                                <p>English 英语 Английский</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://ru.hooskai.top">
+                            <div class="card">
+                                <p>Руссий 俄语 Russian</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- contacts -->
+        <div class="card">
+            <header style="position: relative;">
+                <div style="padding: 0;">
+                    <p style="color: rgba(var(--text-color-primary-rgb), 0.25);">我在各大社交平台的网名及 E-Mail</p>
+                    <h1>我的联系方式</h1>
+                </div>
+            </header>
+
+            <hr>
+
+            <div>
+                <ul class="flex">
+                    <li>
+                        <a href="https://twitter.com/hhusky0314" target="_blank" data-title="hhusky0314">
+                            <div class="card">
+                                <p>推特<i class="fa-solid fa-arrow-up-right-from-square"></i></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/siberiahusky" target="_blank" data-title="SiberiaHusky">
+                            <div class="card">
+                                <p>GitHub<i class="fa-solid fa-arrow-up-right-from-square"></i></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://space.bilibili.com/66560652" target="_blank" data-title="胡斯凯Husky">
+                            <div class="card">
+                                <p>哔哩哔哩<i class="fa-solid fa-arrow-up-right-from-square"></i></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wildbox.cn/Husky" target="_blank" data-title="胡斯凯">
+                            <div class="card">
+                                <p>野兽盒子<i class="fa-solid fa-arrow-up-right-from-square"></i></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:mail@hooskai.top" target="_blank">
+                            <div class="card">
+                                <p>E-Mail</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- hitokoto & footer -->
+        <div class="card">
+            <a id="hitokoto" target="_blank">
+                <header>
+                    <p id="hitokoto_from" style="color: rgba(var(--text-color-primary-rgb), 0.25);"></p>
+                    <h1 id="hitokoto_text">获取一言中 :D</h1>
+                </header>
+            </a>
+
+            <hr>
+
+            <div>
+                <p>Copyrights &copy; 2019-<span id="this_year"></span> <a href="/">胡斯凯(SiberiaHusky)</a>. All rights
+                    reserved.</p>
+
+                <ul style="margin-top: 16px;">
+                    <li><a href="https://icp.gov.moe/?keyword=20238314" target="_blank">萌ICP备20238314号</a></li>
+                    <li><a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank"
+                            data-title="CC BY-SA 4.0 DEED"><i class="fa-brands fa-creative-commons"></i> <i
+                                class="fa-brands fa-creative-commons-by"></i> <i
+                                class="fa-brands fa-creative-commons-sa"></i></a></li>
+                    <li><a href="https://ui.hooskai.top/" target="_blank" data-title="由胡斯凯使用 Welt UI 制作"><img
+                                src="https://ui.hooskai.top/assets/img/Logo_White.png" style="height: 12px;"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    /* hitokoto */
+    fetch('https://v1.hitokoto.cn/?c=d&c=i&c=k')
+        .then(response => response.json())
+        .then(data => {
+            document.querySelector('#hitokoto_from').innerText = data.from_who + '「' + data.from + '」 '
+            document.querySelector('#hitokoto_text').innerText = data.hitokoto;
+            document.querySelector('#hitokoto').href = `https://hitokoto.cn/?uuid=${data.uuid}`;
+
+            document.querySelector('#hitokoto').addEventListener('click', function (event) {
+                event.preventDefault();
+                window.open(this.href, '_blank');
+            });
+        });
+
+    /* date */
+    var date = new Date();
+
+    var todayDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
+
+    function calcYearDiff() {
+        const todayMs = new Date(todayDate).getTime()
+        const targetMs = new Date('2007-03-14').getTime()
+        const diffInMs = Math.abs(todayMs - targetMs)
+        const diffInYears = diffInMs / (1000 * 60 * 60 * 24 * 365)
+        return Math.floor(diffInYears)
+    }
+
+    document.querySelector('#age').innerText = calcYearDiff()
+
+    document.querySelector('#this_year').innerText = date.getFullYear();
+</script>
+
 </html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-hans-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1">
+    <title>北京奥运会 2008 - Husky's World view</title>
+    <link rel="icon" href="https://hooskai.top/images/beijing2008.webp">
+    <!-- Description -->
+    <meta name="description" content="One world, one dream.">
+    <!-- Keywords -->
+    <meta name="keywords" content="胡斯凯,胡斯凱,hooskai,siberia husky,SiberiaHusky">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <!-- Style -->
+    <link href="https://ui.hooskai.top/assets/style.css" rel="stylesheet">
+    <!-- Customize style -->
+    <style>
+        :root {
+            --background-color: #f5f5f5;
+            --background-color-rgb: 245, 245, 245;
+
+            --text-color-primary: black;
+            --text-color-primary-rgb: 0, 0, 0;
+
+            --text-color-secondary: #ce161e;
+            --text-color-secondary-rgb: 30, 134, 221;
+
+            --color-primary: #ce161e;
+            --color-primary-rgb: 206, 22, 301;
+
+            --color-secondary: black;
+            --color-secondary-rgb: 0, 0, 0;
+        }
+    </style>
+</head>
+
+<body class="us-n">
+    <!-- nav bar -->
+    <nav style="background-color: var(--color-primary); color: white;">
+        <div class="navbar" style="vertical-align: text-bottom;">
+            <p>北京奥运会</p>
+            <p style="font-size: large; margin-left: 2px;">2008</p>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- 2008 -->
+        <div class="card">
+            <header>
+                <h1>距2008年8月8日　开赛</h1>
+            </header>
+
+            <hr>
+
+            <div class="flex" style="align-items: center;">
+                <h1>倒计时<span id="countdown2008"
+                        style="color: #ce161e; font-size: xx-large; margin-left: 16px; margin-right: 16px;"></span>天
+                </h1>
+            </div>
+        </div>
+
+        <!-- 2007 -->
+        <div class="card">
+            <header>
+                <h1>距2007年8月8日　测试赛</h1>
+            </header>
+
+            <hr>
+
+            <div class="flex" style="align-items: center;">
+                <h1>倒计时<span id="countdown2007"
+                        style="color: #ce161e; font-size: xx-large; margin-left: 16px; margin-right: 16px;"></span>天
+                </h1>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div class="card">
+            <div>
+                <p>Copyrights &copy; 2001-2008 <a href="/">胡斯凯(SiberiaHusky)</a>. All rights
+                    reserved.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    // 获取今天的日期
+    let today = new Date();
+
+    // 设置2008年8月8日的日期
+    let targetDate2008 = new Date(2008, 8 - 1, 8);
+
+    // 设置2007年8月8日的日期
+    let targetDate2007 = new Date(2007, 11 - 1, 28);
+
+    // 计算剩余天数
+    let timeLeft2008 = Math.round((today.getTime() - targetDate2008.getTime()) / (1000 * 60 * 60 * 24));
+
+    // 计算剩余天数
+    let timeLeft2007 = Math.round((today.getTime() - targetDate2007.getTime()) / (1000 * 60 * 60 * 24));
+
+    // 在网页上显示倒计时
+    document.getElementById("countdown2008").innerText += '-' + timeLeft2008;
+
+    // 在网页上显示倒计时
+    document.getElementById("countdown2007").innerText += '-' + timeLeft2007;
+</script>
+
+</html>

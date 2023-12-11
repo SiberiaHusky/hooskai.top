@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-hans-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1">
+    <title>圆周率日倒计时 - Husky's World view</title>
+    <link rel="icon" href="https://hooskai.top/images/favicon.png">
+    <!-- Description -->
+    <meta name="description" content="One world, one dream.">
+    <!-- Keywords -->
+    <meta name="keywords" content="胡斯凯,胡斯凱,hooskai,siberia husky,SiberiaHusky">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <!-- Style -->
+    <link href="https://ui.hooskai.top/assets/style.css" rel="stylesheet">
+</head>
+
+<body class="us-n">
+    <!-- nav bar -->
+    <nav>
+        <div class="navbar" style="vertical-align: text-bottom;">
+            <p>圆周率日倒计时</p>
+            <a href="https://hooskai.top"><p style="font-size: large;">Husky's World View</p></a>
+        </div>
+    </nav>
+
+    <!-- cover & slogan -->
+    <div style="position: relative; width: 100%;">
+        <div class="image-container">
+            <img src="https://api.dujin.org/bing/1920.php" style="width: 100%;">
+            <div class="gradient-overlay"></div>
+        </div>
+        <div
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 2;">
+            <div class="countdownDiv">
+                <h1>还有</h1>
+                <h1 id="countdown" style="font-size: xx-large;"></h1>
+                <h1>到圆周率日</h1>
+            </div>
+            <div class="pidayDiv">
+                <h1>Today is Pi day!</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- contents -->
+    <div class="container">
+        <!-- links -->
+        <div class="card">
+            <header style="position: relative;">
+                <div style="padding: 0;">
+                    <p style="color: rgba(var(--text-color-primary-rgb), 0.25);">Related links</p>
+                    <h1>相关链接</h1>
+                </div>
+            </header>
+
+            <hr>
+
+            <div>
+                <ul class="flex">
+                    <li>
+                        <a href="https://www.unesco.org/zh/days/mathematics" target="_blank">
+                            <div class="card">
+                                <p>国际数学日 | UNESCO<i
+                                        class="fa-solid fa-arrow-up-right-from-square" id="icon-left"></i></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div class="card">
+            <div>
+                <p>Copyrights &copy; 2019-<span id="this_year"></span> <a href="/">胡斯凯(SiberiaHusky)</a>. All rights
+                    reserved.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    // 获取今天的日期
+    var date = new Date();
+
+    document.querySelector('#this_year').innerText = date.getFullYear();
+
+    // 设置日期为 3 月 14 日
+    let piDay = new Date(date.getFullYear(), 3 - 1, 14);
+
+    // 如果今天的日期已经超过 3 月 14 日，则将其设置为下一年并隐藏 'pidayDiv'
+    if (date > piDay) {
+        piDay.setFullYear(piDay.getFullYear() + 1);
+        document.querySelector(".pidayDiv").style.display = "none";
+    }
+
+    // 如果今天是 3 月 14 日，则隐藏倒计时并显示 'pidayDiv'
+    else if (date == piDay) {
+        document.querySelector(".countdownDiv").style.display = "none";
+        document.querySelector(".pidayDiv").style.display = "block";
+    }
+
+    // 如果今天的日期尚未达到 3 月 14 日，则隐藏 'pidayDiv'
+    else {
+        document.querySelector(".pidayDiv").style.display = "none";
+    }
+
+    // 计算剩余天数
+    let timeLeft = Math.round((piDay.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
+
+    // 在网页上显示倒计时
+    document.getElementById("countdown").innerHTML = timeLeft + ' 天'
+
+</script>
+
+</html>
