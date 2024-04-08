@@ -1,64 +1,89 @@
 <!DOCTYPE html>
-<html lang="zh-hans-CN">
+<html lang="zh-CN">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale-1">
-    <title>404 | Husky's Word View</title>
-    <link rel="icon" href="https://hooskai.top/images/favicon.png">
-    <!-- Description -->
-    <meta name="description" content="Connecting a Wider World">
-    <!-- Keywords -->
-    <meta name="keywords" content="胡斯凯,胡斯凱,hooskai,siberia husky,SiberiaHusky">
-    <!-- Fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <!-- Style -->
-    <link href="https://ui.hooskai.top/assets/style.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="https://pj.hooskai.top/assets/images/favicon.png">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="With countless designs, leave my footprints.">
+    <title>404 - Hyvo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://pj.hooskai.top/assets/style/new-style.css">
 </head>
 
-<body class="us-n">
-    <!-- nav bar -->
-    <nav>
-        <div class="navbar" style="vertical-align: text-bottom;">
-            <p>404</p>
-            <a href="https://hooskai.top/">
-                <p style="font-size: large;">Husky's World View</p>
-            </a>
+<body>
+    <nav id="navbar">
+        <div id="nav-logo">
+            <a href="/"><img src="https://pj.hooskai.top/assets/images/hyvo.png" height="24px"></a>
+        </div>
+
+        <div id="nav-div">
+            <ul style="display: flex;">
+                <li><a href="/">主页</a></li>
+                <li><a href="/links">友链</a></li>
+                <li><a href="https://fonts.hooskai.top/">字体</a></li>
+                <li><a href="https://pj.hooskai.top/">作品</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- cover & slogan -->
-    <div style="position: relative; width: 100%;">
-        <img src="https://hooskai.top/images/404.jpg" style="width: 100%;">
-    </div>
-
-    <div class="container">
-        <!--  footer -->
-        <div class="card">
-            <div>
-                <p>Copyrights &copy; 2019-<span id="this_year"></span> <a href="/">胡斯凯(SiberiaHusky)</a>. All rights
-                    reserved.</p>
-
-                <ul style="margin-top: 16px;">
-                    <li><a href="https://icp.gov.moe/?keyword=20238314" target="_blank">萌ICP备20238314号</a></li>
-                    <li><a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank"
-                            data-title="CC BY-SA 4.0 DEED"><i class="fa-brands fa-creative-commons"></i> <i
-                                class="fa-brands fa-creative-commons-by"></i> <i
-                                class="fa-brands fa-creative-commons-sa"></i></a></li>
-                    <li><a href="https://ui.hooskai.top/" target="_blank" data-title="由胡斯凯使用 Welt UI 制作"><img
-                                src="https://ui.hooskai.top/assets/img/Logo_White.png" style="height: 12px;"></a></li>
-                    <li><a href="https://httpcats.com/" target="_blank">Http Cats</a></li>
-                </ul>
+    <div id="top">
+        <div id="top_title">
+            <div id="top_title_box" style="bottom: 50vh;">
+                <h1>无法找到你所请求的页面</h1>
             </div>
         </div>
+
+        <div id="top_pic">
+            <img src="https://pj.hooskai.top/assets/images/404.jpg">
+        </div>
     </div>
+
+    <div id="container">
+        <div>
+            <h2>请确认你输入或请求的 URL 网址无误</h2>
+            <p>若问题依旧存在，请稍后再试或联系我进行反馈</p>
+        </div>
+
+        <footer style="margin-top: 256px;">
+            <div id="footer_div">
+                <p style="margin-top: 16px;">文章采用
+                    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed" target="_blank" title="CC-BY-SA 4.0">
+                        <i class="fa-brands fa-creative-commons"></i>
+                        <i class="fa-brands fa-creative-commons-by"></i>
+                        <i class="fa-brands fa-creative-commons-sa"></i>
+                    </a>
+                    许可协议
+                </p>
+                <p>关于字体和非文章内容，请参照其具体的许可声明</p>
+                <p style="margin-top: 16px;">网站由我制作，大部分创意来自于
+                    <a href="https://dribbble.com/nurpraditya" target="_blank">Nur Praditya</a>
+                </p>
+                <p>Copyright &copy; 2019~<span id="this_year"></span> 胡斯凯. All rights reserved.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript">
+        // 日期相关
+        var date = new Date();
+
+        var todayDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
+
+        function calcYearDiff() {
+            const todayMs = new Date(todayDate).getTime()
+            const targetMs = new Date('2007-03-14').getTime()
+            const diffInMs = Math.abs(todayMs - targetMs)
+            const diffInYears = diffInMs / (1000 * 60 * 60 * 24 * 365)
+            return Math.floor(diffInYears)
+        }
+
+        document.querySelector('#this_year').innerText = date.getFullYear();
+    </script>
 </body>
-
-<!-- date javasript -->
-<script type="text/javascript">
-    var date = new Date();
-
-    document.querySelector('#this_year').innerText = date.getFullYear();
-</script>
 
 </html>
