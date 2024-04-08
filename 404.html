@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,11 +21,11 @@
         </div>
 
         <div id="nav-div">
-            <ul style="display: flex;">
-                <li><a href="/">Home</a></li>
-                <li><a href="/links">Links</a></li>
-                <li><a href="https://fonts.hooskai.top/">Fonts</a></li>
-                <li><a href="https://pj.hooskai.top/">Products</a></li>
+            <ul>
+                <li><a href="/">主页</a></li>
+                <li><a href="/links">友链</a></li>
+                <li><a href="https://fonts.hooskai.top/">字体</a></li>
+                <li><a href="https://pj.hooskai.top/">作品</a></li>
             </ul>
         </div>
     </nav>
@@ -33,8 +33,7 @@
     <div id="top">
         <div id="top_title">
             <div id="top_title_box" style="bottom: 50vh;">
-                <h1>The page you requested</h1>
-                <h1>cannot be found</h1>
+                <h1>无法找到你所请求的页面</h1>
             </div>
         </div>
 
@@ -45,22 +44,22 @@
 
     <div id="container">
         <div>
-            <h2>Please make sure the URL you entered is correct.</h2>
-            <p>If the problem persists, please try again later or contact me for feedback.</p>
+            <h2>请确认你输入或请求的 URL 网址无误</h2>
+            <p>若问题依旧存在，请稍后再试或联系我进行反馈</p>
         </div>
 
         <footer style="margin-top: 256px;">
             <div id="footer_div">
-                <p>Articles licensed under the
+                <p style="margin-top: 16px;">文章采用
                     <a href="https://creativecommons.org/licenses/by-sa/4.0/deed" target="_blank" title="CC-BY-SA 4.0">
                         <i class="fa-brands fa-creative-commons"></i>
                         <i class="fa-brands fa-creative-commons-by"></i>
                         <i class="fa-brands fa-creative-commons-sa"></i>
                     </a>
+                    许可协议
                 </p>
-                <p>For fonts and non-article content, see the
-                    specific licenses mentioned.</p>
-                <p style="margin-top: 16px;">Website made by Me, with most of the ideas coming from
+                <p>关于字体和非文章内容，请参照其具体的许可声明</p>
+                <p style="margin-top: 16px;">网站由我制作，大部分创意来自于
                     <a href="https://dribbble.com/nurpraditya" target="_blank">Nur Praditya</a>
                 </p>
                 <p>Copyright &copy; 2019~<span id="this_year"></span> 胡斯凯. All rights reserved.</p>
@@ -69,24 +68,7 @@
 
     </div>
 
-    <script type="text/javascript">
-        // 日期相关
-        var date = new Date();
-
-        var todayDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
-
-        function calcYearDiff() {
-            const todayMs = new Date(todayDate).getTime()
-            const targetMs = new Date('2007-03-14').getTime()
-            const diffInMs = Math.abs(todayMs - targetMs)
-            const diffInYears = diffInMs / (1000 * 60 * 60 * 24 * 365)
-            return Math.floor(diffInYears)
-        }
-
-        document.querySelector('#age').innerText = calcYearDiff()
-
-        document.querySelector('#this_year').innerText = date.getFullYear();
-    </script>
+    <script type="text/javascript" src="https://pj.hooskai.top/assets/js/scripts.js"></script>
 </body>
 
 </html>
