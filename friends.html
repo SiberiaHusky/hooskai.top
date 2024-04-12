@@ -44,7 +44,9 @@
 
     <div id="container">
         <div>
-            <ul style="column-count: 2; color: white;">
+            <p style="color: white;">由于网站是静态网页，且本人懒得去搞 giscus 之类的评论区，所以请使用 <a href="mailto:mail@hooskai.top" title="mail@hooskai.top">我的邮箱 </a> 或 <a href="/" title="推荐使用 BiliBili 或 Twitter">其他社交平台</a> 与我联系</p>
+
+            <ul style="margin-top: 32px; column-count: 2; color: white;">
                 <li>名称：胡斯凯的足迹</li>
                 <li>描述：用无数设计，留下我的足迹</li>
                 <li>网址：https://hooskai.top/</li>
@@ -71,7 +73,8 @@
                 <li>
                     <a href="https://blog.wsm.ink">
                         <div class="links-card-box">
-                            <div class="links-card avatar" data-bgimg="https://cdn.wsm.ink/usr/uploads/2023/02/793807936.jpg">
+                            <div class="links-card avatar"
+                                data-bgimg="https://cdn.wsm.ink/usr/uploads/2023/02/793807936.jpg">
                             </div>
                             <div class="links-card-text-box">
                                 <p class="links-card-title">黄油的百宝箱</p>
@@ -117,6 +120,19 @@
     </div>
 
     <script type="text/javascript" src="https://pj.hooskai.top/assets/js/scripts.js"></script>
+    <script>
+        // 获取所有带有 data-bgimg 属性的元素
+        var elements = document.querySelectorAll('[data-bgimg]');
+
+        // 循环处理每个元素
+        elements.forEach(function (element) {
+            // 获取 data-bgimg 属性的值
+            var imgUrl = element.getAttribute('data-bgimg');
+
+            // 将 data-bgimg 属性的值设置为背景图片
+            element.style.backgroundImage = 'url(' + imgUrl + ')';
+        });
+    </script>
 </body>
 
 </html>
