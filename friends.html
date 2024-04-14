@@ -12,6 +12,15 @@
         href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://pj.hooskai.top/assets/style/new-style.css">
+    <style>
+        main * {
+            color: white;
+        }
+
+        .gsc-reactions-count {
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -44,9 +53,7 @@
 
     <div id="container">
         <div>
-            <p style="color: white;">由于网站是静态网页，且本人懒得去搞 giscus 之类的评论区，所以请使用 <a href="mailto:mail@hooskai.top" title="mail@hooskai.top">我的邮箱 </a> 或 <a href="/" title="推荐使用 BiliBili 或 Twitter">其他社交平台</a> 与我联系</p>
-
-            <ul style="margin-top: 32px; column-count: 2; color: white;">
+            <ul style="column-count: 2; color: white;">
                 <li>名称：胡斯凯的足迹</li>
                 <li>描述：用无数设计，留下我的足迹</li>
                 <li>网址：https://hooskai.top/</li>
@@ -57,49 +64,58 @@
                 <h2>朋友们</h2>
             </div>
 
-            <ul class="links-card-container">
-                <li>
-                    <a href="https://hooskai.top/">
-                        <div class="links-card-box">
-                            <div class="links-card avatar" data-bgimg="https://pj.hooskai.top/assets/images/avatar.png">
+            <div>
+                <ul class="links-card-container">
+                    <li>
+                        <a href="https://hooskai.top/">
+                            <div class="links-card-box">
+                                <div class="links-card avatar"
+                                    data-bgimg="https://pj.hooskai.top/assets/images/avatar.png">
+                                </div>
+                                <div class="links-card-text-box">
+                                    <p class="links-card-title">胡斯凯的足迹</p>
+                                    <p class="links-card-text">用无数设计，留下我的足迹</p>
+                                </div>
                             </div>
-                            <div class="links-card-text-box">
-                                <p class="links-card-title">胡斯凯的足迹</p>
-                                <p class="links-card-text">用无数设计，留下我的足迹</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://blog.wsm.ink">
+                            <div class="links-card-box">
+                                <div class="links-card avatar"
+                                    data-bgimg="https://cdn.wsm.ink/usr/uploads/2023/02/793807936.jpg">
+                                </div>
+                                <div class="links-card-text-box">
+                                    <p class="links-card-title">黄油的百宝箱</p>
+                                    <p class="links-card-text">给未来的自己，留一份美好的回忆。</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://blog.wsm.ink">
-                        <div class="links-card-box">
-                            <div class="links-card avatar"
-                                data-bgimg="https://cdn.wsm.ink/usr/uploads/2023/02/793807936.jpg">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://imfurry.com">
+                            <div class="links-card-box">
+                                <div class="links-card avatar" data-bgimg="https://imfurry.com/images/zebwq-furry.jpg">
+                                </div>
+                                <div class="links-card-text-box">
+                                    <p class="links-card-title">中二病晚期の物語</p>
+                                    <p class="links-card-text">一只狐狸敲出的一个奇迹</p>
+                                </div>
                             </div>
-                            <div class="links-card-text-box">
-                                <p class="links-card-title">黄油的百宝箱</p>
-                                <p class="links-card-text">给未来的自己，留一份美好的回忆。</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://imfurry.com">
-                        <div class="links-card-box">
-                            <div class="links-card avatar" data-bgimg="https://imfurry.com/images/zebwq-furry.jpg">
-                            </div>
-                            <div class="links-card-text-box">
-                                <p class="links-card-title">中二病晚期の物語</p>
-                                <p class="links-card-text">一只狐狸敲出的一个奇迹</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="giscus-frame" style="margin-top: 16px; width: 100%;">
+                    <div class="giscus"></div>
+                </div>
+            </div>
         </div>
 
-        <footer style="margin-top: 128px;">
+        <footer>
             <div id="footer_div">
+                <p>若 giscus 评论区无法使用，可以通过 <a href="mailto:mail@hooskai.top" title="mail@hooskai.top">我的邮箱</a> 或 <a
+                    href="/" title="推荐使用 BiliBili 或 Twitter">其他社交平台</a> 与我联系</p>
                 <p style="margin-top: 16px;">文章采用
                     <a href="https://creativecommons.org/licenses/by-sa/4.0/deed" target="_blank" title="CC-BY-SA 4.0">
                         <i class="fa-brands fa-creative-commons"></i>
@@ -133,6 +149,14 @@
             element.style.backgroundImage = 'url(' + imgUrl + ')';
         });
     </script>
+
+    <!-- giscus -->
+    <script src="https://giscus.app/client.js" data-repo="SiberiaHusky/comments-cn" data-repo-id="R_kgDOLuBFfQ"
+        data-category="Announcements" data-category-id="DIC_kwDOLuBFfc4CeroT" data-mapping="pathname" data-strict="0"
+        data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top"
+        data-theme="light" data-lang="zh-CN" data-loading="lazy"
+        crossorigin="anonymous" async>
+        </script>
 </body>
 
 </html>
