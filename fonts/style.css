@@ -44,7 +44,8 @@ a:hover {
 }
 
 .open-in-new,
-#logo {
+#logo,
+#preview {
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -74,7 +75,7 @@ a:hover {
     color: rgba(255, 255, 255, .5);
 }
 
-.blur-all *:not(:has(.highlight)):not(a) {
+.blur-all *:not(:has(.highlight)):not(a):not(#logo) {
     filter: blur(40px);
 }
 
@@ -102,4 +103,13 @@ footer *:not(a) {
     text-transform: uppercase;
     margin-top: var(--margin);
     margin-bottom: calc(var(--margin) * 2);
+}
+
+#preview {
+    height: 15vh;
+    margin-right: auto;
+    object-fit: contain;
+    padding: var(--margin);
+    background-color: white;
+    border-radius: 1vh;
 }
