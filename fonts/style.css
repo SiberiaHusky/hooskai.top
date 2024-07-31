@@ -1,0 +1,105 @@
+@font-face {
+    font-family: 'CritionFont';
+    src: local('CritionFont'),
+        url('font/CritionFont-Regular.ttf') format('truetype'),
+        url('font/CritionFont-Regular.woff') format('woff'),
+        url('font/CritionFont-Regular.woff2') format('woff2');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    color: white;
+    transition: all .1s ease-in-out;
+    font-family: 'Ubuntu', sans-serif;
+    --standard-width: 1vh;
+    --margin: calc(var(--standard-width) * 4);
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-image: url(img/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body>* {
+    margin: var(--margin);
+}
+
+p,
+a {
+    font-size: calc(var(--standard-width) * 2);
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1E86DD;
+}
+
+.open-in-new,
+#logo {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--margin);
+}
+
+.list * {
+    font-size: calc(var(--standard-width) * 2);
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: calc(var(--margin) + var(--standard-width));
+}
+
+.open-in-new {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: calc(var(--standard-width) * 2);
+    font-weight: 900;
+    color: rgba(255, 255, 255, .5);
+}
+
+.blur-all *:not(:has(.highlight)):not(a) {
+    filter: blur(40px);
+}
+
+*:has(.highlight) a:hover {
+    font-size: calc(var(--standard-width) * 2.5);
+}
+
+footer *:not(a) {
+    color: rgba(255, 255, 255, .5);
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--margin);
+}
+
+#logo {
+    height: calc(var(--standard-width) * 4);
+}
+
+#slogan {
+    font-family: 'CritionFont';
+    font-size: calc(var(--standard-width) * 5);
+    text-transform: uppercase;
+    margin-top: var(--margin);
+    margin-bottom: calc(var(--margin) * 2);
+}
