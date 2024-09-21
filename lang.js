@@ -14,26 +14,28 @@ document.addEventListener('DOMContentLoaded', function () {
     // 提取URL中的路径部分
     var path = window.location.pathname;
 
-    var filename = path.split('/').pop().split('.')[0];
+    // 尝试从路径中提取文件名
+    var filename = path.split('/').pop();
+
+    // 如果路径为空，则默认文件名为'index'，否则提取文件名
+    if (filename === '') {
+        filename = 'index';
+    } else {
+        filename = filename.split('.')[0];
+    }
 
     if (lang === 'zh') {
         // 设置页面的 title 属性
         if (filename === 'index') {
             document.title = '胡斯凯的足迹';
             var slogan = '用无数设计 留下我的足迹'
-        }
-
-        else if (filename === 'about') {
+        } else if (filename === 'about') {
             document.title = '关于 - 胡斯凯的足迹';
             var slogan = '关于我的各种故事'
-        }
-
-        else if (filename === 'links') {
+        } else if (filename === 'links') {
             document.title = '朋友们 - 胡斯凯的足迹';
             var slogan = '他们即是我的整个世界'
-        }
-
-        else if (filename === '404') {
+        } else {
             document.title = '404 - 胡斯凯的足迹';
             var slogan = '无法找到你所请求的页面'
         }
@@ -50,19 +52,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (filename === 'index') {
             document.title = 'Husky\'s Footprints';
             var slogan = 'With countless designs  leave my footprints'
-        }
-
-        else if (filename === 'about') {
+        } else if (filename === 'about') {
             document.title = 'About - Husky\'s Footprints';
             var slogan = 'About my various stories'
-        }
-
-        else if (filename === 'links') {
+        } else if (filename === 'links') {
             document.title = 'Friends - Husky\'s Footprints';
             var slogan = 'They are my whole world'
-        }
-
-        else if (filename === '404') {
+        } else {
             document.title = '404 - Husky\'s Footprints';
             var slogan = 'Cannot find the page you requested'
         }
