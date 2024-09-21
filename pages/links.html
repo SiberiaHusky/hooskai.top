@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        html {
+            --color-primary: #1e86dd;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="text-container">
+        <p id="text-fit" style="opacity: 0; user-select: none; padding: 24px;"></p>
+    </div>
+
+    <button id="btn-scroll-up">▲</button>
+
+    <div id="en" class="container">
+        <div>
+            <h1><a href="#en">My friends</a></h1>
+            <p>Welcome to <a href="#comments">leave a comment</a></p>
+        </div>
+
+        <div class="inner-container">
+            <div class="links-card-box">
+                <a href="https://hooskai.top/" target="_blank" class="links-card" style="--brand-color: #1e86dd;">
+                    <div class="image" style="--logo-image: url(https://pj.hooskai.top/assets/images/avatar.jpg);">
+                    </div>
+                </a>
+
+                <div class="links-texts">
+                    <p class="title">Husky's footprints</p>
+                    <p class="slogan">With countless designs, leave my footprints.</p>
+                </div>
+            </div>
+
+            <div class="links-card-box">
+                <a href="https://blog.wsm.ink" target="_blank" class="links-card">
+                    <div class="image"
+                        style="--logo-image: url(https://cdn.wsm.ink/usr/uploads/2023/02/793807936.jpg);"></div>
+                </a>
+
+                <div class="links-texts">
+                    <p class="title">Rominwolf's boxes</p>
+                    <p class="slogan">For the future self, leave a beautiful memory.</p>
+                </div>
+            </div>
+
+            <div class="links-card-box">
+                <a href="#" class="links-card">
+                    <div class="image"
+                        style="--logo-image: url(https://api.dujin.org/bing/1920.php);">
+                    </div>
+                </a>
+
+                <div class="links-texts">
+                    <p class="title">Null</p>
+                    <p class="slogan">Null</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="zh" class="container">
+        <div>
+            <h1><a href="#zh">我的朋友们</a></h1>
+            <p>欢迎在评论区留言</p>
+        </div>
+
+        <div class="inner-container">
+            <div class="links-card-box">
+                <a href="https://hooskai.top/" target="_blank" class="links-card" style="--brand-color: #1e86dd;">
+                    <div class="image" style="--logo-image: url(https://pj.hooskai.top/assets/images/avatar.jpg);">
+                    </div>
+                </a>
+
+                <div class="links-texts">
+                    <p class="title">胡斯凯的足迹</p>
+                    <p class="slogan">用无数设计，留下我的足迹</p>
+                </div>
+            </div>
+
+            <div class="links-card-box">
+                <a href="https://blog.wsm.ink" target="_blank" class="links-card" style="--brand-color: #1da1f2;">
+                    <div class="image"
+                        style="--logo-image: url(https://cdn.wsm.ink/usr/uploads/2023/02/793807936.jpg);"></div>
+                </a>
+
+                <div class="links-texts">
+                    <p class="title">黄油的百宝箱</p>
+                    <p class="slogan">给未来的自己，留一份美好的回忆。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="giscus-frame">
+        <div class="giscus"></div>
+    </div>
+
+    <div id="footer">
+        <p>Copyrighht &copy; 2022-<span class="this-year"></span> <a href="https://hooskai.top/">SiberiaHusky</a>. All
+            rights reserved.</p>
+        <p id="icp"><a href="https://icp.gov.moe/?keyword=20238314" target="_blank">萌ICP备20238314号</a></p>
+    </div>
+</body>
+
+<script src="/scroll-up.js"></script>
+<script src="/lang.js"></script>
+<script src="/a.js"></script>
+<script src="/texts-moving.js"></script>
+<script src="/date.js"></script>
+
+<!-- giscus -->
+<script src="https://giscus.app/client.js" data-repo="SiberiaHusky/comments-cn" data-repo-id="R_kgDOLuBFfQ"
+    data-category="Announcements" data-category-id="DIC_kwDOLuBFfc4CeroT" data-mapping="pathname" data-strict="0"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN"
+    data-loading="lazy" crossorigin="anonymous" async>
+    </script>
+
+</html>

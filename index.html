@@ -1,115 +1,83 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="icon" href="https://pj.hooskai.top/assets/images/favicon.png">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="With countless designs, leave my footprints.">
-    <title>Hyvo - Dezajnoj de Hooskai</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://pj.hooskai.top/assets/style/new-style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        html {
+            --color-primary: #1e86dd;
+        }
+    </style>
 </head>
 
 <body>
-    <nav id="navbar" style="animation-name: fadeToBottom; animation-delay: 4.5s;">
-        <div id="nav-logo">
-            <img src="https://pj.hooskai.top/assets/images/hyvo.png" height="24px">
+    <div id="text-container" style="height: 90vh;">
+        <p id="text-fit" style="opacity: 0; user-select: none; padding: 24px;"></p>
+    </div>
+
+    <button id="btn-scroll-up">▲</button>
+
+    <div id="en" class="container">
+        <div>
+            <h1><a href="#en">Hello, World.</a></h1>
+            <p>I'm Husky</p>
         </div>
 
-        <div id="nav-div">
+        <div>
             <ul>
-                <li class="activated">主页</li>
-                <li><a href="/friends">朋友们</a></li>
-                <li><a href="https://font.hooskai.top/">字体</a></li>
-                <li><a href="https://pj.hooskai.top/">作品</a></li>
+                <a href="/pages/about.html">
+                    <li>About me</li>
+                </a>
+                <a href="https://pj.hooskai.top/">
+                    <li>My projects</li>
+                </a>
+                <a href="/pages/links.html">
+                    <li>My friends</li>
+                </a>
             </ul>
         </div>
-    </nav>
+    </div>
 
-    <div id="top" style="animation-name: slideToLeftBottom;">
-        <div id="top_title">
-            <div id="top_title_box">
-                <h1 style="animation-name: fadeToTop; animation-delay: .5s;">用无数创意</h1>
-                <h1 style="animation-name: fadeToTop; animation-delay: 1s;">留下我的足迹</h1>
-            </div>
+    <div id="zh" class="container">
+        <div>
+            <h1><a href="#zh">你好，世界。</a></h1>
+            <p>我是胡斯凯</p>
         </div>
 
-        <div id="top_pic" style="animation-name: slideToBottom; animation-delay: 1.5s;">
-            <img src="https://api.dujin.org/bing/1920.php">
+        <div>
+            <ul>
+                <a href="/pages/about.html">
+                    <li>
+                        <p>关于我</p>
+                    </li>
+                </a>
+                <a href="https://pj.hooskai.top/">
+                    <li>
+                        <p>我的计划</p>
+                    </li>
+                </a>
+                <a href="/pages/links.html">
+                    <li>
+                        <p>我的朋友们</p>
+                    </li>
+                </a>
+            </ul>
         </div>
     </div>
 
-    <div id="container" style="animation-name: fadeToTop; animation-delay: 2s;">
-        <div style="padding-bottom: 0;">
-            <p style="animation-name: fadeToTop; animation-delay: 2.5s;">嗨！我是胡斯凯（不是我真名），一位来自海边城市的 Furry</p>
-            <p style="animation-name: fadeToTop; animation-delay: 2.85s;">为地球建设而生 <span id="age"></span> 年</p>
-            <p style="animation-name: fadeToTop; animation-delay: 3s;">我喜欢设计（比如 UI 设计、前端设计、字体设计和 Logo 设计），<br>
-                游戏（比如 Apex Legends、Minecraft 以及一些视觉小说）<br>
-                还有吃的（比如汉堡、炸肉、土豆、冰淇淋和牛奶/香草制品）</p>
-        </div>
-
-        <div style="animation-name: fadeToTop; animation-delay: 3.5s;">
-            <div style="display: flex; align-items: baseline;">
-                <h2>联系方式</h2>
-            </div>
-
-            <div class="social-card-box" style="animation-name: fadeToTop; animation-delay: 3.85s;">
-                <a href="https://space.bilibili.com/66560652" title="胡斯凯Husky" target="_blank" class="social-card"
-                    style="--brand-color: #18a8db; background-size: 50%; background-repeat: no-repeat; background-image: url('https://pj.hooskai.top/assets/svg/bilibili.svg'); background-position: center; background-color: #18a8db;">
-                </a>
-                <a href="https://wildbox.cn/Husky" title="胡斯凯" target="_blank" class="social-card"
-                    style="--brand-color: #e17e10; background-size: 50%; background-repeat: no-repeat; background-image: url('https://pj.hooskai.top/assets/svg/wildbox.svg'); background-position: center; background-color: #e17e10;">
-                </a>
-                <a href="https://twitter.com/hhusky0314" title="hhusky0314" target="_blank" class="social-card"
-                    style="--brand-color: #1da1f2; background-size: 50%; background-repeat: no-repeat; background-image: url('https://pj.hooskai.top/assets/svg/twitter.svg'); background-position: center; background-color: #1da1f2;">
-                </a>
-                <a href="https://github.com/siberiahusky" title="SiberiaHusky" target="_blank" class="social-card"
-                    style="--brand-color: #333; background-size: 50%; background-repeat: no-repeat; background-image: url('https://pj.hooskai.top/assets/svg/github.svg'); background-position: center; background-color: #333;">
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=100060712148438" title="胡斯凯Husky" target="_blank"
-                    class="social-card"
-                    style="--brand-color: #1877f2; background-size: 50%; background-repeat: no-repeat; background-image: url('https://pj.hooskai.top/assets/svg/facebook.svg'); background-position: center; background-color: #1877f2;">
-                </a>
-                <a href="https://www.instagram.com/invites/contact/?i=1lma9xhiy30g3&utm_content=cii89vh" title="胡斯凯"
-                    target="_blank" class="social-card"
-                    style="--brand-color: #e1306c; background-size: 50%; background-repeat: no-repeat; background-image: url('https://pj.hooskai.top/assets/svg/instagram.svg'); background-position: center; background-color: #e1306c;">
-                </a>
-                <a href="mailto:mail@hooskai.top" title="My Email" target="_blank" class="social-card"
-                    style="--brand-color: #1e86dd; background-size: 50%; background-repeat: no-repeat; background-image: url('https://pj.hooskai.top/assets/svg/email.svg'); background-position: center; background-color: #1e86dd;">
-                </a>
-            </div>
-        </div>
-
-        <footer style="animation-name: fadeToBottom; animation-delay: 4.25s;">
-            <div id="footer_div">
-                <ul style="display: flex;">
-                    <li><a href="https://ru.hooskai.top/">Русский 俄文</a></li>
-                    <li><a href="https://intl.hooskai.top/">English 英文</a></li>
-                </ul>
-                <p style="margin-top: 16px;">文章采用
-                    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed" target="_blank" title="CC-BY-SA 4.0">
-                        <i class="fa-brands fa-creative-commons"></i>
-                        <i class="fa-brands fa-creative-commons-by"></i>
-                        <i class="fa-brands fa-creative-commons-sa"></i>
-                    </a>
-                    许可协议
-                </p>
-                <p>关于字体和非文章内容，请参照其具体的许可声明</p>
-                <p style="margin-top: 16px;">网站由我制作，大部分创意来自于
-                    <a href="https://dribbble.com/nurpraditya" target="_blank">Nur Praditya</a>
-                </p>
-                <p><a href="https://icp.gov.moe/?keyword=20238314" target="_blank">萌ICP备20238314号</a></p>
-                <p>Copyright &copy; 2019~<span id="this_year"></span> 胡斯凯. All rights reserved.</p>
-            </div>
-        </footer>
-
+    <div id="footer">
+        <p>Copyrighht &copy; 2022-<span class="this-year"></span> <a href="https://hooskai.top/">SiberiaHusky</a>. All
+            rights reserved.</p>
+        <p id="icp"><a href="https://icp.gov.moe/?keyword=20238314" target="_blank">萌ICP备20238314号</a></p>
     </div>
-
-    <script type="text/javascript" src="https://pj.hooskai.top/assets/js/scripts.js"></script>
 </body>
+
+<script src="/scroll-up.js"></script>
+<script src="/lang.js"></script>
+<script src="/a.js"></script>
+<script src="/texts-moving.js"></script>
+<script src="/date.js"></script>
 
 </html>

@@ -1,75 +1,88 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="icon" href="https://pj.hooskai.top/assets/images/favicon.png">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="With countless designs, leave my footprints.">
-    <title>404 - Hyvo</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://pj.hooskai.top/assets/style/new-style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        html {
+            --color-primary: #1e86dd;
+        }
+    </style>
 </head>
 
 <body>
-    <nav id="navbar">
-        <div id="nav-logo">
-            <a href="/"><img src="https://pj.hooskai.top/assets/images/hyvo.png" height="24px"></a>
+    <div id="text-container" style="height: 90vh;">
+        <p id="text-fit" style="opacity: 0; user-select: none; padding: 24px;"></p>
+    </div>
+
+    <button id="btn-scroll-up">▲</button>
+
+    <div id="en" class="container">
+        <div>
+            <h1><a href="#en">404 Not Found</a></h1>
         </div>
 
-        <div id="nav-div">
+        <div>
             <ul>
-                <li><a href="/">主页</a></li>
-                <li><a href="/friends">朋友们</a></li>
-                <li><a href="https://font.hooskai.top/">字体</a></li>
-                <li><a href="https://pj.hooskai.top/">作品</a></li>
+                <a href="/pages/about.html#contacts">
+                    <li>
+                        <p>Contact me</p>
+                    </li>
+                </a>
+                <a href="/">
+                    <li>
+                        <p>Back to home page</p>
+                    </li>
+                </a>
+                <a href="javascript:history.back()">
+                    <li>
+                        <p>Back to previous page</p>
+                    </li>
+                </a>
             </ul>
         </div>
-    </nav>
-
-    <div id="top">
-        <div id="top_title">
-            <div id="top_title_box" style="bottom: 50vh;">
-                <h1>无法找到你所请求的页面</h1>
-            </div>
-        </div>
-
-        <div id="top_pic">
-            <img src="https://pj.hooskai.top/assets/images/404.jpg">
-        </div>
     </div>
 
-    <div id="container">
+    <div id="zh" class="container">
         <div>
-            <h2>请确认你输入或请求的 URL 网址无误</h2>
-            <p>若问题依旧存在，请稍后再试或联系我进行反馈</p>
+            <h1><a href="#zh">404 页面未找到</a></h1>
+            <p>请确认你输入或请求的网址无误</p>
         </div>
 
-        <footer style="margin-top: 256px;">
-            <div id="footer_div">
-                <p style="margin-top: 16px;">文章采用
-                    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed" target="_blank" title="CC-BY-SA 4.0">
-                        <i class="fa-brands fa-creative-commons"></i>
-                        <i class="fa-brands fa-creative-commons-by"></i>
-                        <i class="fa-brands fa-creative-commons-sa"></i>
-                    </a>
-                    许可协议
-                </p>
-                <p>关于字体和非文章内容，请参照其具体的许可声明</p>
-                <p style="margin-top: 16px;">网站由我制作，大部分创意来自于
-                    <a href="https://dribbble.com/nurpraditya" target="_blank">Nur Praditya</a>
-                </p>
-                <p><a href="https://icp.gov.moe/?keyword=20238314" target="_blank">萌ICP备20238314号</a></p>
-                <p>Copyright &copy; 2019~<span id="this_year"></span> 胡斯凯. All rights reserved.</p>
-            </div>
-        </footer>
-
+        <div>
+            <ul>
+                <a href="/pages/about.html#contacts">
+                    <li>
+                        <p>联系我</p>
+                    </li>
+                </a>
+                <a href="/">
+                    <li>
+                        <p>返回首页</p>
+                    </li>
+                </a>
+                <a href="javascript:history.back()">
+                    <li>
+                        <p>返回上一页</p>
+                    </li>
+                </a>
+            </ul>
+        </div>
     </div>
 
-    <script type="text/javascript" src="https://pj.hooskai.top/assets/js/scripts.js"></script>
+    <div id="footer">
+        <p>Copyrighht &copy; 2022-<span class="this-year"></span> <a href="https://hooskai.top/">SiberiaHusky</a>. All
+            rights reserved.</p>
+        <p id="icp"><a href="https://icp.gov.moe/?keyword=20238314" target="_blank">萌ICP备20238314号</a></p>
+    </div>
 </body>
+
+<script src="/scroll-up.js"></script>
+<script src="/lang.js"></script>
+<script src="/a.js"></script>
+<script src="/texts-moving.js"></script>
+<script src="/date.js"></script>
 
 </html>
