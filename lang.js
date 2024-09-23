@@ -41,8 +41,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         document.getElementById('zh').style.display = 'block';
-        document.getElementById('icp').style.display = 'block';
         document.getElementById('en').style.display = 'none';
+
+        var elementIcp = document.getElementById('icp');
+        if (elementIcp) {
+            elementIcp.style.display = 'block';
+        }
         // 设置html标签的lang属性
         document.documentElement.lang = 'zh-CN';
     }
@@ -64,8 +68,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         document.getElementById('zh').style.display = 'none';
-        document.getElementById('icp').style.display = 'none';
         document.getElementById('en').style.display = 'block';
+
+        var elementIcp = document.getElementById('icp');
+        if (elementIcp) {
+            elementIcp.style.display = 'none';
+        }
         // 设置html标签的lang属性
         document.documentElement.lang = 'en';
     }
