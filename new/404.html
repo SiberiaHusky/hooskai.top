@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="404错误页面 - 终端系统">
+    <meta name="keywords" content="终端, 404错误, 页面未找到">
+    <title>404 - 页面未找到 | 终端系统</title>
+
+    <!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- 引入寒蝉点阵体字体（与terminal.html一致） -->
+    <link href="https://fontsapi.zeoseven.com/359/main/result.css" onload="this.rel='stylesheet'" rel="preload"
+        as="style" crossorigin />
+    <noscript>
+        <link rel="stylesheet" href="https://fontsapi.zeoseven.com/359/main/result.css" />
+    </noscript>
+
+    <!-- 引入样式表 -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <style>
+        /* 保留原有样式不变 */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            margin-top: -10vh;
+        }
+
+        .error-code {
+            font-size: 6rem;
+            font-weight: bold;
+            text-shadow: var(--terminal-glow);
+            margin-bottom: 10px;
+            letter-spacing: 5px;
+        }
+
+        .error-message {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blinking-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.5rem;
+            background-color: var(--terminal-green);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 5px;
+            box-shadow: var(--terminal-glow);
+        }
+
+        .command-line {
+            background: rgba(0, 10, 0, 0.5);
+            padding: 15px;
+            border: 1px solid var(--terminal-green-dark);
+            margin: 20px 0;
+            text-align: left;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .error-details {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: var(--terminal-green-dark);
+            border-top: 1px dashed var(--terminal-green-dark);
+            padding-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .error-code {
+                font-size: 4rem;
+            }
+
+            .error-message {
+                font-size: 1.2rem;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .command-line {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* 语言切换按钮样式（从terminal.html复制） */
+        .lang-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 20, 0, 0.8);
+            border: 1px solid var(--terminal-green);
+            color: var(--terminal-green);
+            padding: 8px 15px;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+            font-family: var(--font-main);
+        }
+
+        .lang-toggle:hover {
+            background: rgba(0, 50, 0, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(51, 255, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- CRT屏幕滤镜（与terminal.html一致） -->
+    <div class="crt-overlay"></div>
+
+    <!-- 主内容容器 -->
+    <div class="container">
+        <div class="error-code">404</div>
+        <div class="error-message">
+            <span class="zh">错误：页面未找到</span>
+            <span class="en">ERROR: Page not found</span>
+        </div>
+
+        <div class="command-line">
+            <div><span id="current-url"></span></div>
+            <div class="zh">访问请求失败，指定的路径不存在或已移动。</div>
+            <div class="en">Access request failed.</div>
+            <div class="en">The specified path does not exist or has been moved.</div>
+            <div><span class="blinking-cursor"></span></div>
+        </div>
+
+        <a href="index.html" class="btn">
+            <span class="zh">返回首页</span>
+            <span class="en">Return Home</span>
+        </a>
+
+        <div class="error-details">
+            <p class="zh">按[ESC]键或点击上方按钮返回首页</p>
+            <p class="en">Press [ESC] key or click the button above to return home</p>
+            <br>
+            <p class="zh">建议: 请检查URL拼写或返回主页重新导航</p>
+            <p class="en">Suggestion: Check the URL spelling or return to home page and navigate again</p>
+        </div>
+    </div>
+
+    <!-- 语言切换按钮 -->
+    <button class="lang-toggle" id="lang-toggle" aria-label="切换语言">
+        <i class="fas fa-language"></i> EN/中
+    </button>
+
+    <script>
+        // 从terminal.html复制的语言切换功能
+        let currentLang = 'en'; // 默认语言
+
+        /**
+         * 检测浏览器语言并设置默认语言
+         */
+        function detectAndSetBrowserLanguage() {
+            let browserLang = navigator.language || navigator.userLanguage;
+
+            if (!browserLang) {
+                currentLang = 'en';
+            } else {
+                const isChinese = browserLang.toLowerCase().startsWith('zh');
+                currentLang = isChinese ? 'zh' : 'en';
+            }
+
+            document.documentElement.lang = currentLang;
+            updateLanguageDisplay();
+        }
+
+        /**
+         * 更新语言显示
+         */
+        function updateLanguageDisplay() {
+            document.querySelectorAll('.en').forEach(el => {
+                el.style.display = currentLang === 'en' ? 'inline' : 'none';
+            });
+            document.querySelectorAll('.zh').forEach(el => {
+                el.style.display = currentLang === 'zh' ? 'inline' : 'none';
+            });
+        }
+
+        /**
+         * 设置语言
+         */
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = currentLang;
+            updateLanguageDisplay();
+        }
+
+        // 显示当前URL路径
+        document.getElementById('current-url').textContent = window.location.pathname;
+
+        // 按ESC键返回首页
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                const btn = document.querySelector('.btn');
+                if (btn) {
+                    btn.style.transform = 'scale(0.95)';
+                    btn.style.boxShadow = '0 5px 15px rgba(255, 153, 0, 0.5)';
+                    btn.style.borderColor = '#ff9900';
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 100);
+                } else {
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
+        // 页面加载时的入场动画
+        document.addEventListener('DOMContentLoaded', function () {
+            // 检测浏览器语言
+            detectAndSetBrowserLanguage();
+
+            const container = document.querySelector('.container');
+            container.style.opacity = '0';
+            container.style.transform = 'scale(0.8) translateY(20px)';
+
+            setTimeout(() => {
+                container.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
+                container.style.opacity = '1';
+                container.style.transform = 'scale(1) translateY(0)';
+            }, 100);
+
+            // 语言切换按钮事件
+            document.getElementById('lang-toggle').addEventListener('click', () => {
+                const newLang = currentLang === 'en' ? 'zh' : 'en';
+                setLanguage(newLang);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="复古未来主义终端系统界面，包含3D列表导航功能">
+    <meta name="keywords" content="终端, 3D列表, 复古, 未来主义, 网页设计">
+    <title>终端系统</title>
+
+    <!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- 引入寒蝉点阵体字体 -->
+    <link href="https://fontsapi.zeoseven.com/359/main/result.css" onload="this.rel='stylesheet'" rel="preload"
+        as="style" crossorigin />
+    <noscript>
+        <link rel="stylesheet" href="https://fontsapi.zeoseven.com/359/main/result.css" />
+    </noscript>
+
+    <!-- 引入样式表 -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <!-- CRT屏幕滤镜 -->
+    <div class="crt-overlay"></div>
+
+    <!-- 电脑端菜单栏 -->
+    <nav class="menu-bar" role="navigation" aria-label="主导航">
+        <div class="logo">[ HUSKY'S TERMINAL ]</div>
+        <ul class="desktop-menu">
+            <li data-page="home" class="active"><i class="fas fa-home"></i> <span class="en">Home</span><span
+                    class="zh">首页</span></li>
+            <li data-page="about"><i class="fas fa-user"></i> <span class="en">About</span><span class="zh">关于</span>
+            </li>
+            <li data-page="projects"><i class="fas fa-code"></i> <span class="en">Projects</span><span
+                    class="zh">项目</span></li>
+            <li data-page="friends"><i class="fa-solid fa-child-reaching"></i> <span class="en">Friends</span><span
+                    class="zh">朋友们</span></li>
+            <li data-page="contact"><i class="fas fa-envelope"></i> <span class="en">Contact</span><span
+                    class="zh">联系</span></li>
+            <li id="desktop-shutdown"><i class="fas fa-power-off"></i> <span class="en">Shutdown</span><span
+                    class="zh">关机</span></li>
+        </ul>
+        <div class="hamburger-menu" id="hamburger" role="button" aria-label="打开菜单">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- 菜单外部覆盖层 -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+
+    <!-- 手机端菜单 -->
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="移动菜单">
+        <div class="close-btn" id="close-menu" role="button" aria-label="关闭菜单"><i class="fas fa-times"></i></div>
+        <ul>
+            <li data-page="home"><i class="fas fa-home"></i> <span class="en">Home</span><span class="zh">首页</span></li>
+            <li data-page="about"><i class="fas fa-user"></i> <span class="en">About</span><span class="zh">关于</span>
+            </li>
+            <li data-page="projects"><i class="fas fa-code"></i> <span class="en">Projects</span><span
+                    class="zh">项目</span></li>
+            <li data-page="friends"><i class="fa-solid fa-child-reaching"></i> <span class="en">Friends</span><span
+                    class="zh">朋友们</span></li>
+            <li data-page="contact"><i class="fas fa-envelope"></i> <span class="en">Contact</span><span
+                    class="zh">联系</span></li>
+            <li id="mobile-shutdown"><i class="fas fa-power-off"></i> <span class="en">Shutdown</span><span
+                    class="zh">关机</span></li>
+        </ul>
+    </div>
+
+    <!-- 主内容区域 -->
+    <main class="main-container">
+        <div class="content-area">
+            <!-- 首页 -->
+            <section class="page active" id="home" aria-labelledby="home-heading">
+                <div class="terminal-header">
+                    <h2 id="home-heading"><span class="en">Welcome</span><span class="zh">欢迎</span><span
+                            class="blinking">_</span></h2>
+                    <p><span class="en">With Countless Designs, Leave My Footprints</span><span
+                            class="zh">用无数设计，留下我的足迹</span></p>
+                    <div class="status-bar">
+                        <span><i class="fas fa-signal"></i> SYS.ON</span>
+                        <span><i class="fas fa-bolt"></i> PWR.100%</span>
+                        <div class="time-display" id="time-display"></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-list"></i> <span class="en">Navigation</span><span class="zh">导航</span></h3>
+
+                    <!-- 3D列表 -->
+                    <div class="list-3d-wrapper">
+                        <div class="list-3d-container">
+                            <div class="list-3d-slider" id="nav-slider" role="listbox" aria-label="导航列表">
+                                <!-- 列表项将通过JavaScript动态生成 -->
+                            </div>
+                        </div>
+                        <div class="list-position-indicator" id="nav-status" aria-live="polite"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 关于页面 -->
+            <section class="page" id="about" aria-labelledby="about-heading">
+                <div class="terminal-header">
+                    <h2 id="about-heading"><i class="fas fa-user"></i> <span class="en">About Me</span><span
+                            class="zh">关于我</span></h2>
+                    <p><span class="en">About all things about me</span><span class="zh">关于我的各种事</span></p>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-user-astronaut"></i> <span class="en">Profile</span><span
+                            class="zh">个人简介</span></h3>
+                    <p><span class="en">I…</span><span class="zh">我…</span></p>
+
+                    <!-- 3D列表 -->
+                    <div class="list-3d-wrapper">
+                        <div class="list-3d-container">
+                            <div class="list-3d-slider" id="aboutme-slider" role="aboutme" aria-label="关于我列表">
+                                <!-- 列表项将通过JavaScript动态生成 -->
+                            </div>
+                        </div>
+                        <div class="list-position-indicator" id="aboutme-status" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-code"></i> <span class="en">Skills</span><span class="zh">技能</span></h3>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span><span class="en">Vibe Coding</span><span class="zh">氛围编程（Vibe Coding）</span></span>
+                            <span>95%</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>Figma / <span class="en">JS.Design</span><span class="zh">即时设计</span></span>
+                            <span>90%</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>UI / UX <span class="en">Design</span><span class="zh">设计</span></span>
+                            <span>85%</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>HTML / CSS</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-heart"></i> <span class="en">Interests</span><span class="zh">兴趣</span></h3>
+
+                    <!-- 3D列表 -->
+                    <div class="list-3d-wrapper">
+                        <div class="list-3d-container">
+                            <div class="list-3d-slider" id="interests-slider" role="listbox" aria-label="兴趣列表">
+                                <!-- 列表项将通过JavaScript动态生成 -->
+                            </div>
+                        </div>
+                        <div class="list-position-indicator" id="interests-status" aria-live="polite"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 项目页面 -->
+            <section class="page" id="projects" aria-labelledby="projects-heading">
+                <div class="terminal-header">
+                    <h2 id="projects-heading"><i class="fas fa-code"></i> <span class="en">Projects</span><span
+                            class="zh">项目</span></h2>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-project-diagram"></i> <span class="en">Featured Projects</span><span
+                            class="zh">精选项目</span></h3>
+
+                    <!-- 3D列表 -->
+                    <div class="list-3d-wrapper">
+                        <div class="list-3d-container">
+                            <div class="list-3d-slider" id="projects-slider" role="listbox" aria-label="项目列表">
+                                <!-- 列表项将通过JavaScript动态生成 -->
+                            </div>
+                        </div>
+                        <div class="list-position-indicator" id="projects-status" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-tools"></i> <span class="en">Technologies Used</span><span
+                            class="zh">使用技术</span></h3>
+
+                    <!-- 3D列表 -->
+                    <div class="list-3d-wrapper">
+                        <div class="list-3d-container">
+                            <div class="list-3d-slider" id="tech-slider" role="listbox" aria-label="技术列表">
+                                <!-- 列表项将通过JavaScript动态生成 -->
+                            </div>
+                        </div>
+                        <div class="list-position-indicator" id="tech-status" aria-live="polite"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 友链页面 -->
+            <section class="page" id="friends" aria-labelledby="projects-heading">
+                <div class="terminal-header">
+                    <h2 id="projects-heading"><i class="fa-solid fa-child-reaching"></i> <span
+                            class="en">Friends</span><span class="zh">朋友们</span></h2>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fa-solid fa-sitemap"></i> <span class="en">Their Websites</span><span
+                            class="zh">他们的网站</span></h3>
+
+                    <!-- 友链列表 -->
+                    <div class="links">
+                        <a class="section item-container" href="https://fuyaoskyrocket.ing/" target="_blank">
+                            <div class="item-image"
+                                style="--avatar-image: url(https://github.com/skyrocketinghong.png);"></div>
+                            <div class="item-text" style="display: flex; flex-direction: column;">
+                                <b class="title en">Hello! I'm Fuyao skyrocketing, 26 years old</b>
+                                <span class="text en">"Try to create my own digital
+                                    footprint."</span>
+                                <b class="title zh">你好！ 我是扶摇 skyrocketing，26岁</b>
+                                <span class="text zh">“尝试在互联网上留下一些属于自己的痕迹”</span>
+                            </div>
+                        </a>
+
+                        <a class="section item-container" href="https://imyan.ren/" target="_blank">
+                            <div class="item-image" style="--avatar-image: url(https://github.com/yanren1225.png);">
+                            </div>
+                            <div class="item-text" style="display: flex; flex-direction: column;">
+                                <b class="title en">I'm Yanren</b>
+                                <span class="text en">nice -20 Game && nice 19 Code</span>
+                                <b class="title zh">I'm Yanren</b>
+                                <span class="text zh">nice -20 Game && nice 19 Code</span>
+                            </div>
+                        </a>
+
+                        <a class="section item-container" href="https://blog.sharpice.top/" target="_blank">
+                            <div class="item-image" style="--avatar-image: url(https://sharpice.top/favicon.ico);">
+                            </div>
+                            <div class="item-text" style="display: flex; flex-direction: column;">
+                                <b class="title en">Sharpice</b>
+                                <span class="text en">世界很大，只是我的才华很有限，但我会继续学习的。</span>
+                                <b class="title zh">锐冰</b>
+                                <span class="text zh">世界很大，只是我的才华很有限，但我会继续学习的。</span>
+                            </div>
+                        </a>
+
+                        <a class="section item-container" href="https://www.silverdragon.cn/?link=hooskai.top"
+                            target="_blank">
+                            <div class="item-image"
+                                style="--avatar-image: url(https://oss-fz.silverdragon.cn/loongapisources/2025/06/28/685fe4697dcc1.jpg);">
+                            </div>
+                            <div class="item-text" style="display: flex; flex-direction: column;">
+                                <b class="title en">应龙笔记</b>
+                                <span class="text en">应龙笔记是一个专注于知识分享的网站</span>
+                                <b class="title zh">应龙笔记</b>
+                                <span class="text zh">应龙笔记是一个专注于知识分享的网站</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="section links">
+                    <h3><i class="fa-solid fa-address-card"></i> <span class="en">My Friend links' Template</span><span
+                            class="zh">我的友链模板</span></h3>
+
+                    <a class="section item-container">
+                        <div class="item-image"
+                            style="--avatar-image: url(https://pj.hooskai.top/assets/images/avatar.jpg);"></div>
+                        <div class="item-text" style="display: flex; flex-direction: column;">
+                            <b class="title en">Husky's Footprints</b>
+                            <span class="text en">With Countless Designs, Leave My
+                                Footprints</span>
+                            <b class="title zh">胡斯凯的足迹</b>
+                            <span class="text zh">用无数设计，留下我的足迹</span>
+                        </div>
+                    </a>
+
+                    <div class="description">
+                        <p class="zh">标题：胡斯凯的足迹</p>
+                        <p class="zh">网址：https://hooskai.top/</p>
+                        <p class="zh">头像-1：https://pj.hooskai.top/assets/images/avatar.jpg</p>
+                        <p class="zh">头像-2：https://pj.hooskai.top/assets/images/avatar.png</p>
+                        <p class="zh">简介：用无数设计，留下我的足迹</p>
+
+                        <p class="en">Title: Husky's Footprints</p>
+                        <p class="en">URL: https://hooskai.top/</p>
+                        <p class="en">Avatar-1: https://pj.hooskai.top/assets/images/avatar.jpg</p>
+                        <p class="en">Avatar-2: https://pj.hooskai.top/assets/images/avatar.png</p>
+                        <p class="en">Description: With Countless Designs, Leave My Footprints</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fa-solid fa-comments"></i> <span class="en">Comments</span><span
+                            class="zh">评论区</span></h3>
+
+                    <div class="giscus-frame">
+                        <div class="giscus"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 联系页面 -->
+            <section class="page" id="contact" aria-labelledby="contact-heading">
+                <div class="terminal-header">
+                    <h2 id="contact-heading"><i class="fas fa-envelope"></i> <span class="en">Contact</span><span
+                            class="zh">联系</span></h2>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-paper-plane"></i> <span class="en">Communication Channels</span><span
+                            class="zh">沟通渠道</span></h3>
+                    <p><span class="en">Arranged by frequency of use</span><span class="zh">按照常用顺序排列</span></p>
+
+                    <!-- 3D列表 -->
+                    <div class="list-3d-wrapper">
+                        <div class="list-3d-container">
+                            <div class="list-3d-slider" id="comms-slider" role="listbox" aria-label="沟通渠道列表">
+                                <!-- 列表项将通过JavaScript动态生成 -->
+                            </div>
+                        </div>
+                        <div class="list-position-indicator" id="comms-status" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-map-marker-alt"></i> <span class="en">Location</span><span class="zh">位置</span>
+                    </h3>
+                    <p><span class="en">Somewhere in a Republic…</span><span class="zh">在某个共和国…</span></p>
+                    <div
+                        style="height: 150px; background: rgba(0, 30, 0, 0.3); margin-top: 10px; display: flex; justify-content: center; align-items: center; border: 1px dashed var(--terminal-green-dark);">
+                        <span style="color: var(--terminal-green-dark);"><i class="fa-solid fa-earth-asia"></i> <span
+                                class="en">MAP DATA CORRUPTED</span><span class="zh">地图数据损坏</span></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 语言切换按钮 -->
+    <button class="lang-toggle" id="lang-toggle" aria-label="切换语言">
+        <i class="fas fa-language"></i> EN/中
+    </button>
+
+    <!-- 关机确认弹窗 -->
+    <div class="dialog-modal" id="shutdown-modal" role="dialog" aria-labelledby="dialog-modal-heading">
+        <div class="dialog-content">
+            <h3 id="dialog-modal-heading"><i class="fas fa-exclamation-triangle"></i> <span class="en">Confirm
+                    Action</span><span class="zh">确认操作</span></h3>
+            <p><span class="en">WARNING: This action cannot be undone. Please proceed with caution.</span><span
+                    class="zh">警告：此操作无法撤销。请谨慎操作。</span></p>
+            <div class="dialog-buttons">
+                <button class="btn" id="confirm-dialog"><i class="fas fa-check"></i> <span
+                        class="en">Confirm</span><span class="zh">确认</span></button>
+                <button class="btn cancel" id="cancel-dialog"><i class="fas fa-times"></i> <span
+                        class="en">Cancel</span><span class="zh">取消</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 关机画面 -->
+    <div class="shutdown-screen" id="shutdown-screen" role="alert" aria-live="assertive">
+        <div class="shutdown-text">
+            <span class="en">It's now to safe turn off<br>your computer</span><span class="zh">现在您可以安全地<br>关闭计算机了</span>
+        </div>
+    </div>
+
+    <!-- 引入JavaScript文件 -->
+    <script src="./js/script.js" defer></script>
+    <!-- giscus -->
+    <script src="https://giscus.app/client.js" data-repo="SiberiaHusky/comments-cn" data-repo-id="R_kgDOLuBFfQ"
+        data-category="Announcements" data-category-id="DIC_kwDOLuBFfc4CeroT" data-mapping="pathname" data-strict="0"
+        data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="zh-CN"
+        data-loading="lazy" crossorigin="anonymous" async>
+        </script>
+</body>
+
+</html>
