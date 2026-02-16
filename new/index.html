@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="复古未来主义终端系统界面，包含3D列表导航功能">
     <meta name="keywords" content="终端, 3D列表, 复古, 未来主义, 网页设计">
-    <title>终端系统</title>
+    <link rel="icon" href="images/favicon.ico">
+    <title>Husky's Terminal</title>
 
     <!-- 引入Font Awesome图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -27,7 +28,8 @@
     <div class="crt-overlay"></div>
 
     <!-- 电脑端菜单栏 -->
-    <nav class="menu-bar" role="navigation" aria-label="主导航">
+    <nav class="menu-bar" role="navigation" aria-label="Main Navigation"
+        data-label='{"en": "Main Navigation", "zh": "主导航"}'>
         <div class="logo">[ HUSKY'S TERMINAL ]</div>
         <ul class="desktop-menu">
             <li data-page="home" class="active"><i class="fas fa-home"></i> <span class="en">Home</span><span
@@ -43,7 +45,8 @@
             <li id="desktop-shutdown"><i class="fas fa-power-off"></i> <span class="en">Shutdown</span><span
                     class="zh">关机</span></li>
         </ul>
-        <div class="hamburger-menu" id="hamburger" role="button" aria-label="打开菜单">
+        <div class="hamburger-menu" id="hamburger" role="button" aria-label="Open Menu"
+            data-label='{"en": "Open Menu", "zh": "打开菜单"}'>
             <i class="fas fa-bars"></i>
         </div>
     </nav>
@@ -52,8 +55,12 @@
     <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
 
     <!-- 手机端菜单 -->
-    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="移动菜单">
-        <div class="close-btn" id="close-menu" role="button" aria-label="关闭菜单"><i class="fas fa-times"></i></div>
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile Menu"
+        data-label='{"en": "Mobile Menu", "zh": "移动端菜单"}'>
+        <div class="close-btn" id="close-menu" role="button" aria-label="Close Menu"
+            data-label='{"en": "Close Menu", "zh": "关闭菜单"}'>
+            <i class="fas fa-times"></i>
+        </div>
         <ul>
             <li data-page="home"><i class="fas fa-home"></i> <span class="en">Home</span><span class="zh">首页</span></li>
             <li data-page="about"><i class="fas fa-user"></i> <span class="en">About</span><span class="zh">关于</span>
@@ -73,7 +80,7 @@
     <main class="main-container">
         <div class="content-area">
             <!-- 首页 -->
-            <section class="page active" id="home" aria-labelledby="home-heading">
+            <section class="page active" id="home">
                 <div class="terminal-header">
                     <h2 id="home-heading"><span class="en">Welcome</span><span class="zh">欢迎</span><span
                             class="blinking">_</span></h2>
@@ -92,7 +99,8 @@
                     <!-- 3D列表 -->
                     <div class="list-3d-wrapper">
                         <div class="list-3d-container">
-                            <div class="list-3d-slider" id="nav-slider" role="listbox" aria-label="导航列表">
+                            <div class="list-3d-slider" id="nav-slider" role="listbox" aria-label="Navigation List"
+                                data-label='{"en": "Navigation List", "zh": "导航列表"}'>
                                 <!-- 列表项将通过JavaScript动态生成 -->
                             </div>
                         </div>
@@ -102,7 +110,7 @@
             </section>
 
             <!-- 关于页面 -->
-            <section class="page" id="about" aria-labelledby="about-heading">
+            <section class="page" id="about">
                 <div class="terminal-header">
                     <h2 id="about-heading"><i class="fas fa-user"></i> <span class="en">About Me</span><span
                             class="zh">关于我</span></h2>
@@ -117,7 +125,8 @@
                     <!-- 3D列表 -->
                     <div class="list-3d-wrapper">
                         <div class="list-3d-container">
-                            <div class="list-3d-slider" id="aboutme-slider" role="aboutme" aria-label="关于我列表">
+                            <div class="list-3d-slider" id="aboutme-slider" role="aboutme" aria-label="About Me List"
+                                data-label='{"en": "About Me List", "zh": "关于我列表"}'>
                                 <!-- 列表项将通过JavaScript动态生成 -->
                             </div>
                         </div>
@@ -171,7 +180,8 @@
                     <!-- 3D列表 -->
                     <div class="list-3d-wrapper">
                         <div class="list-3d-container">
-                            <div class="list-3d-slider" id="interests-slider" role="listbox" aria-label="兴趣列表">
+                            <div class="list-3d-slider" id="interests-slider" role="listbox" aria-label="Interests List"
+                                data-label='{"en": "Interests List", "zh": "兴趣列表"}'>
                                 <!-- 列表项将通过JavaScript动态生成 -->
                             </div>
                         </div>
@@ -181,7 +191,7 @@
             </section>
 
             <!-- 项目页面 -->
-            <section class="page" id="projects" aria-labelledby="projects-heading">
+            <section class="page" id="projects">
                 <div class="terminal-header">
                     <h2 id="projects-heading"><i class="fas fa-code"></i> <span class="en">Projects</span><span
                             class="zh">项目</span></h2>
@@ -194,7 +204,8 @@
                     <!-- 3D列表 -->
                     <div class="list-3d-wrapper">
                         <div class="list-3d-container">
-                            <div class="list-3d-slider" id="projects-slider" role="listbox" aria-label="项目列表">
+                            <div class="list-3d-slider" id="projects-slider" role="listbox" aria-label="Projects List"
+                                data-label='{"en": "Projects List", "zh": "项目列表"}'>
                                 <!-- 列表项将通过JavaScript动态生成 -->
                             </div>
                         </div>
@@ -209,7 +220,8 @@
                     <!-- 3D列表 -->
                     <div class="list-3d-wrapper">
                         <div class="list-3d-container">
-                            <div class="list-3d-slider" id="tech-slider" role="listbox" aria-label="技术列表">
+                            <div class="list-3d-slider" id="tech-slider" role="listbox" aria-label="Technologies List"
+                                data-label='{"en": "Technologies List", "zh": "技术列表"}'>
                                 <!-- 列表项将通过JavaScript动态生成 -->
                             </div>
                         </div>
@@ -219,7 +231,7 @@
             </section>
 
             <!-- 友链页面 -->
-            <section class="page" id="friends" aria-labelledby="projects-heading">
+            <section class="page" id="friends">
                 <div class="terminal-header">
                     <h2 id="projects-heading"><i class="fa-solid fa-child-reaching"></i> <span
                             class="en">Friends</span><span class="zh">朋友们</span></h2>
@@ -312,8 +324,8 @@
                 </div>
 
                 <div class="section">
-                    <h3><i class="fa-solid fa-comments"></i> <span class="en">Comments</span><span
-                            class="zh">评论区</span></h3>
+                    <h3><i class="fa-solid fa-comments"></i> <span class="en">Comments</span><span class="zh">评论区</span>
+                    </h3>
 
                     <div class="giscus-frame">
                         <div class="giscus"></div>
@@ -322,7 +334,7 @@
             </section>
 
             <!-- 联系页面 -->
-            <section class="page" id="contact" aria-labelledby="contact-heading">
+            <section class="page" id="contact">
                 <div class="terminal-header">
                     <h2 id="contact-heading"><i class="fas fa-envelope"></i> <span class="en">Contact</span><span
                             class="zh">联系</span></h2>
@@ -336,7 +348,9 @@
                     <!-- 3D列表 -->
                     <div class="list-3d-wrapper">
                         <div class="list-3d-container">
-                            <div class="list-3d-slider" id="comms-slider" role="listbox" aria-label="沟通渠道列表">
+                            <div class="list-3d-slider" id="comms-slider" role="listbox"
+                                aria-label="Communication Channels"
+                                data-label='{"en": "Communication Channels List", "zh": "沟通渠道列表"}'>
                                 <!-- 列表项将通过JavaScript动态生成 -->
                             </div>
                         </div>
@@ -359,12 +373,13 @@
     </main>
 
     <!-- 语言切换按钮 -->
-    <button class="lang-toggle" id="lang-toggle" aria-label="切换语言">
+    <button class="lang-toggle" id="lang-toggle" aria-label="Toggle Language"
+        data-label='{"en": "Toggle Language", "zh": "切换语言"}'>
         <i class="fas fa-language"></i> EN/中
     </button>
 
     <!-- 关机确认弹窗 -->
-    <div class="dialog-modal" id="shutdown-modal" role="dialog" aria-labelledby="dialog-modal-heading">
+    <div class="dialog-modal" id="shutdown-modal" role="dialog">
         <div class="dialog-content">
             <h3 id="dialog-modal-heading"><i class="fas fa-exclamation-triangle"></i> <span class="en">Confirm
                     Action</span><span class="zh">确认操作</span></h3>
