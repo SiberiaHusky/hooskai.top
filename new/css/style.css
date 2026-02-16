@@ -28,8 +28,7 @@ body {
     background-color: var(--terminal-bg);
     color: var(--terminal-green);
     font-weight: normal;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow: hidden;
     line-height: 1.6;
     height: 100vh;
     perspective: 1000px;
@@ -155,6 +154,7 @@ body {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
+    overflow: hidden;
 }
 
 .mobile-menu-overlay.active {
@@ -331,7 +331,7 @@ body {
     top: 50%;
     left: 0;
     width: 100%;
-    height: 80px;
+    min-height: 80px;
     background: rgba(10, 20, 10, 0.8);
     border: 1px solid rgba(51, 255, 0, 0.4);
     transform: translateZ(0) translateY(-50%);
@@ -391,6 +391,7 @@ body {
 }
 
 .item-text-3d {
+    padding: 10px 0;
     flex: 1;
     font-size: 1.1rem;
     letter-spacing: 1px;
@@ -799,7 +800,7 @@ body {
 
     /* 3D列表响应式 */
     .list-item-3d {
-        height: 70px;
+        min-height: 70px;
         font-size: 0.9rem;
     }
 
@@ -819,7 +820,7 @@ body {
 
 @media (max-width: 600px) {
     .list-item-3d {
-        height: 65px;
+        min-height: 65px;
         padding: 0 10px;
     }
 
@@ -839,7 +840,7 @@ body {
 
 @media (max-width: 400px) {
     .list-item-3d {
-        height: 60px;
+        min-height: 60px;
         padding: 0 8px;
     }
 
