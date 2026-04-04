@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>斯凯的塑形训练打卡</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- 圆润字体 -->
+    <link href="https://fonts.zeoseven.com/css?family=Zen+Antique+Soft&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+			-webkit-tap-highlight-color: transparent;
+			tap-highlight-color: transparent;
+        }
+
+        body {
+            background: linear-gradient(145deg, #e8f5e9 0%, #c8e6d9 100%);
+            min-height: 100vh;
+            padding: 24px 16px 40px;
+            font-family: 'Zen Antique Soft', 'Comic Neue', 'Segoe UI Emoji', cursive, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .app-container {
+            max-width: 560px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 24px;          /* 圆角减小 */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+            overflow: hidden;
+            transition: all 0.2s;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* 头部 - 多邻国风格亮绿色 */
+        .header {
+            background: #58cc71;
+            padding: 18px 22px 14px;
+            text-align: center;
+            border-bottom: none;
+        }
+
+        .header h1 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 2px 0 #3b9e4e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .header h1 i {
+            background: #ffb441;
+            padding: 8px;
+            border-radius: 50%;
+            color: white;
+            box-shadow: none;
+        }
+
+        .curve-badge {
+            background: #f9f9f9;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 6px 20px;
+            border-radius: 40px;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            color: #2c6e3c;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .curve-badge span {
+            background: #e8f5e9;
+            padding: 3px 12px;
+            border-radius: 60px;
+        }
+
+        /* 日历卡片 */
+        .calendar-card {
+            background: #fff9ef;
+            margin: 12px 18px 8px;
+            border-radius: 20px;
+            padding: 12px 12px 16px;
+            border: 1px solid #ffe0b5;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+        }
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 12px;
+            font-weight: bold;
+            color: #58cc71;
+        }
+        .calendar-header button {
+            background: #f0f4f0;
+            border: none;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: #2c6e3c;
+            box-shadow: 0 2px 0 #c0d6c0;
+            transition: 0.05s linear;
+        }
+        .calendar-header button:active {
+            transform: translateY(2px);
+            box-shadow: 0 0px 0 #c0d6c0;
+        }
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            margin: 12px 0 6px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #8c8c8c;
+        }
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            text-align: center;
+        }
+        .day-cell {
+            background: #fff2e2;
+            border-radius: 30px;
+            padding: 8px 0;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #9b5a2a;
+            transition: 0.1s;
+            position: relative;
+        }
+        .day-cell.checked {
+            background: #d9e8bd;
+            color: #3e6b0c;
+        }
+        .day-cell.checked i {
+            margin-left: 4px;
+            font-size: 0.7rem;
+        }
+        .day-cell.today {
+            border: 2px solid #ffb441;
+            background: #ffefcf;
+        }
+        .day-cell.other-month {
+            opacity: 0.4;
+        }
+        .calendar-legend {
+            font-size: 0.7rem;
+            text-align: center;
+            margin-top: 12px;
+            color: #b9834e;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        /* 进度条区域 */
+        .progress-area {
+            padding: 10px 24px 8px;
+            background: #ffffff;
+        }
+        .progress-bar-bg {
+            background: #e8f0e8;
+            border-radius: 30px;
+            height: 16px;
+            border: none;
+            overflow: hidden;
+        }
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: #58cc71;
+            background: linear-gradient(90deg, #6fcf97, #2ecc71);
+            border-radius: 30px;
+            transition: width 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-weight: bold;
+            color: #3c8c4a;
+            font-size: 0.85rem;
+        }
+
+        /* 动作卡片 - 圆角更小，白色卡片 */
+        .action-card {
+            background: #ffffff;
+            margin: 16px 18px;
+            border-radius: 20px;
+            padding: 20px 18px;
+            border: 1px solid #e8e8e8;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+            transition: 0.1s;
+        }
+        @keyframes cardFlash {
+            0% { background: #ffffff; }
+            50% { background: #fef9e6; }
+            100% { background: #ffffff; }
+        }
+        .card-flash {
+            animation: cardFlash 0.4s ease;
+        }
+        .action-name {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #58cc71;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .action-name i { 
+            background: #f0f9f0; 
+            padding: 8px; 
+            border-radius: 18px; 
+            box-shadow: none; 
+            color: #58cc71;
+        }
+        .type-label { 
+            background: #fff0db; 
+            border-radius: 60px; 
+            padding: 4px 16px; 
+            font-size: 0.7rem; 
+            font-weight: bold; 
+            color: #e67e22; 
+            margin-left: 8px; 
+        }
+        .spec-badge { 
+            background: #f9f9f9; 
+            border-radius: 20px; 
+            padding: 6px 16px; 
+            display: inline-block; 
+            margin: 8px 0; 
+            font-weight: bold; 
+            color: #e67e22; 
+            font-size: 0.9rem; 
+            border-left: 5px solid #ffb441; 
+        }
+        .tips-box { 
+            background: #fef9ef; 
+            border-radius: 20px; 
+            padding: 10px 14px; 
+            margin: 12px 0; 
+            border: 1px solid #ffe0b5; 
+        }
+        .tips-box p { margin: 6px 0; display: flex; align-items: center; gap: 8px; color: #7c471f; }
+        .tips-box i { width: 24px; color: #f39c12; }
+        .group-status { display: flex; gap: 20px; margin: 16px 0 12px; justify-content: center; }
+        .group-chip { 
+            background: #f0f4f0; 
+            border-radius: 40px; 
+            padding: 6px 18px; 
+            font-weight: bold; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            border: 1px solid #d0e0d0; 
+            color: #2c6e3c; 
+        }
+        .group-chip.completed { 
+            background: #d9e8bd; 
+            border-color: #88bc3c; 
+            color: #3e6b0c; 
+            text-decoration: line-through; 
+        }
+        @keyframes btnPulse {
+            0% { transform: scale(1); box-shadow: 0 4px 0 #3b9e4e; }
+            50% { transform: scale(1.02); box-shadow: 0 6px 0 #3b9e4e; background: #6fd989; }
+            100% { transform: scale(1); box-shadow: 0 4px 0 #3b9e4e; }
+        }
+        .btn-complete {
+            background: #58cc71;
+            border: none;
+            width: 100%;
+            padding: 16px 0;
+            font-size: 1.4rem;
+            font-weight: bold;
+            font-family: inherit;
+            color: white;
+            border-radius: 60px;
+            margin-top: 12px;
+            box-shadow: 0 4px 0 #3b9e4e;
+            cursor: pointer;
+            transition: 0.05s linear;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .btn-complete:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #3b9e4e;
+        }
+        .btn-complete.disabled {
+            opacity: 0.55;
+            pointer-events: none;
+            filter: grayscale(0.05);
+        }
+        .pulse-animation {
+            animation: btnPulse 0.3s ease-out;
+        }
+        .float-text {
+            position: fixed;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffb441;
+            text-shadow: 2px 2px 0 white;
+            pointer-events: none;
+            z-index: 2000;
+            animation: floatUp 1s ease-out forwards;
+        }
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(0) scale(0.8); }
+            70% { opacity: 0.8; transform: translateY(-50px) scale(1.2); }
+            100% { opacity: 0; transform: translateY(-80px) scale(1.5); }
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            backdrop-filter: blur(4px);
+        }
+        .modal-box {
+            background: #ffffff;
+            border-radius: 32px;
+            max-width: 280px;
+            width: 80%;
+            padding: 24px 20px;
+            text-align: center;
+            border: 2px solid #ffb441;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+            font-family: inherit;
+        }
+        .modal-box p {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #58cc71;
+            margin: 16px 0;
+        }
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 12px;
+        }
+        .modal-buttons button {
+            background: #f0f4f0;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: inherit;
+            color: #2c6e3c;
+            box-shadow: 0 2px 0 #c0d6c0;
+        }
+        .modal-buttons button:active {
+            transform: translateY(2px);
+            box-shadow: 0 0px 0 #c0d6c0;
+        }
+        .rest-panel { 
+            background: #fff9ef; 
+            margin: 8px 18px 20px; 
+            border-radius: 20px; 
+            padding: 12px; 
+            text-align: center; 
+            border: 1px solid #ffe0b5; 
+        }
+        .rest-timer { 
+            font-size: 2.3rem; 
+            font-weight: 800; 
+            font-family: monospace; 
+            background: #ffffff; 
+            display: inline-block; 
+            padding: 6px 24px; 
+            border-radius: 60px; 
+            margin: 6px 0; 
+            color: #e67e22; 
+        }
+        .skip-rest { 
+            background: #ffe0b5; 
+            border: none; 
+            padding: 5px 18px; 
+            border-radius: 40px; 
+            font-weight: bold; 
+            color: #a5511f; 
+            cursor: pointer; 
+            margin-left: 12px; 
+            box-shadow: 0 2px 0 #c57a42; 
+        }
+        .reset-btn { 
+            background: #f0f4f0; 
+            margin: 0 18px 24px 18px; 
+            width: calc(100% - 36px); 
+            padding: 12px; 
+            border-radius: 60px; 
+            border: none; 
+            font-weight: bold; 
+            font-size: 1rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 10px; 
+            cursor: pointer; 
+            color: #2c6e3c; 
+            box-shadow: 0 2px 0 #c0d6c0; 
+        }
+        .reset-btn:active { 
+            transform: translateY(2px); 
+            box-shadow: 0 0px 0 #c0d6c0; 
+        }
+        .finish-celebrate { 
+            text-align: center; 
+            padding: 18px; 
+            background: #fef9ef; 
+            border-radius: 24px; 
+            margin: 12px 18px 20px; 
+            font-size: 1.2rem; 
+            font-weight: bold; 
+            color: #e67e22; 
+        }
+        footer { 
+            text-align: center; 
+            font-size: 0.7rem; 
+            padding: 14px; 
+            color: #8c8c8c; 
+        }
+        .aux-timer { 
+            background: #f9f9f9; 
+            border-radius: 60px; 
+            padding: 6px 12px; 
+            margin: 10px 0 6px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            flex-wrap: wrap; 
+            gap: 8px; 
+        }
+        .aux-timer-display { 
+            background: #e8f5e9; 
+            padding: 4px 14px; 
+            border-radius: 40px; 
+            font-weight: bold; 
+        }
+        .aux-btn { 
+            background: #ffb441; 
+            border: none; 
+            border-radius: 30px; 
+            padding: 4px 16px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            color: white; 
+        }
+        .aux-btn:active { 
+            transform: scale(0.96); 
+        }
+        .flash-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(255,255,200,0.6) 0%, rgba(255,200,100,0) 80%);
+            pointer-events: none;
+            z-index: 1500;
+            animation: flashFade 0.5s ease-out forwards;
+        }
+        @keyframes flashFade {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+<canvas id="confetti-canvas"></canvas>
+<div class="app-container" id="app">
+    <div class="header">
+        <h1><i class="fas fa-chart-line"></i> 斯凯的塑形训练打卡 <i class="fas fa-moon"></i></h1>
+        <div class="curve-badge">
+            <span><i class="fas fa-temperature-low"></i> 热身激活</span>
+            <span><i class="fas fa-charging-station"></i> 核心稳定</span>
+            <span><i class="fas fa-arrow-up"></i> 下腹强化</span>
+            <span><i class="fas fa-leaf"></i> 静力收尾</span>
+        </div>
+        <div class="badge-total" style="background:#ffffff; display:inline-block; padding:4px 18px; border-radius:50px; margin-top:10px; font-size:0.8rem; color:#2c6e3c;">
+            <i class="fas fa-hourglass-start"></i> 约10分钟 · 徒手塑形 · 零基础
+        </div>
+    </div>
+
+    <div class="calendar-card" id="calendarCard">
+        <div class="calendar-header">
+            <button id="prevMonthBtn"><i class="fas fa-chevron-left"></i></button>
+            <span id="monthYearDisplay" style="font-size:1.2rem; font-weight:800;">2025年4月</span>
+            <button id="nextMonthBtn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="weekdays"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+        <div class="calendar-days" id="calendarDays"></div>
+        <div class="calendar-legend"><span><i class="fas fa-check-circle" style="color:#6f9e2f;"></i> 已打卡</span><span><i class="far fa-circle" style="color:#ffb441;"></i> 未打卡</span></div>
+    </div>
+
+    <div class="progress-area">
+        <div class="progress-bar-bg"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="stats-row"><span><i class="fas fa-dumbbell"></i> 今日曲线挑战</span><span id="progressText">0 / 8 组完成</span></div>
+    </div>
+    <div id="dynamicZone"></div>
+    <button class="reset-btn" id="resetBtn"><i class="fas fa-undo-alt"></i> 重新开始训练</button>
+    <footer><p><i class="fas fa-hand-sparkles"></i> 依顺序完成 · 组间休息40s · 动作间休息60s</p><br/><p>由豆包与 DeepSeek 提供技术支持</p></footer>
+</div>
+
+<script>
+    // ========== 打卡记录模块 ==========
+    let checkInMap = new Map();
+    const STORAGE_KEY = "fitness_checkin_v2";
+    function loadCheckIns() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) { try { const obj = JSON.parse(stored); checkInMap = new Map(Object.entries(obj)); } catch(e) {} }
+        else checkInMap = new Map();
+    }
+    function saveCheckIns() { localStorage.setItem(STORAGE_KEY, JSON.stringify(Object.fromEntries(checkInMap))); }
+    function getTodayStr() { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+    function markTodayCheckIn() {
+        const today = getTodayStr();
+        if (!checkInMap.get(today)) {
+            checkInMap.set(today, true);
+            saveCheckIns();
+            renderCalendar(currentYear, currentMonth);
+            playCheckInFanfare();
+            showFloatingText("🎉 打卡成功！", "#6f9e2f");
+            showFlashOverlay();
+            return true;
+        } else {
+            showFloatingText("🌟 今日已打卡", "#f9a26c");
+            return false;
+        }
+    }
+    function playCheckInFanfare() {
+        if (!audioCtx) initAudio();
+        if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+        playTone(587,0.15,'sine',0.2); playTone(784,0.2,'sine',0.2,0.12); playTone(1046,0.3,'sine',0.2,0.3);
+        startConfetti(45, undefined, undefined, false);
+    }
+    let currentYear = new Date().getFullYear();
+    let currentMonth = new Date().getMonth();
+    function renderCalendar(year, month) {
+        const firstDay = new Date(year, month, 1);
+        let startWeekday = firstDay.getDay(); let startOffset = startWeekday === 0 ? 6 : startWeekday - 1;
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const prevMonthDays = new Date(year, month, 0).getDate();
+        const container = document.getElementById('calendarDays'); if (!container) return;
+        container.innerHTML = '';
+        const todayStr = getTodayStr();
+        for (let i = 0; i < startOffset; i++) {
+            const prevDateNum = prevMonthDays - startOffset + i + 1;
+            const prevDate = new Date(year, month-1, prevDateNum);
+            const dateStr = `${prevDate.getFullYear()}-${String(prevDate.getMonth()+1).padStart(2,'0')}-${String(prevDateNum).padStart(2,'0')}`;
+            const isChecked = checkInMap.get(dateStr) === true;
+            const div = document.createElement('div'); div.className = `day-cell other-month ${isChecked ? 'checked' : ''}`;
+            div.innerHTML = `${prevDateNum} ${isChecked ? '<i class="fas fa-check-circle"></i>' : ''}`; container.appendChild(div);
+        }
+        for (let d = 1; d <= daysInMonth; d++) {
+            const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+            const isChecked = checkInMap.get(dateStr) === true;
+            const isToday = (dateStr === todayStr);
+            const div = document.createElement('div'); div.className = `day-cell ${isChecked ? 'checked' : ''} ${isToday ? 'today' : ''}`;
+            div.innerHTML = `${d} ${isChecked ? '<i class="fas fa-check-circle"></i>' : ''}`; container.appendChild(div);
+        }
+        const totalCells = 42; const currentCells = startOffset + daysInMonth; const remaining = totalCells - currentCells;
+        for (let i = 1; i <= remaining; i++) {
+            const nextDate = new Date(year, month+1, i);
+            const dateStr = `${nextDate.getFullYear()}-${String(nextDate.getMonth()+1).padStart(2,'0')}-${String(i).padStart(2,'0')}`;
+            const isChecked = checkInMap.get(dateStr) === true;
+            const div = document.createElement('div'); div.className = `day-cell other-month ${isChecked ? 'checked' : ''}`;
+            div.innerHTML = `${i} ${isChecked ? '<i class="fas fa-check-circle"></i>' : ''}`; container.appendChild(div);
+        }
+        const monthNames = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+        document.getElementById('monthYearDisplay').innerText = `${year}年 ${monthNames[month]}`;
+    }
+    function prevMonth() { if (currentMonth === 0) { currentMonth = 11; currentYear--; } else currentMonth--; renderCalendar(currentYear, currentMonth); }
+    function nextMonth() { if (currentMonth === 11) { currentMonth = 0; currentYear++; } else currentMonth++; renderCalendar(currentYear, currentMonth); }
+    
+    // ========== 动效函数 ==========
+    function showFloatingText(text, color = "#ffb441") {
+        const div = document.createElement('div');
+        div.className = 'float-text';
+        div.innerText = text;
+        div.style.color = color;
+        div.style.left = (window.innerWidth / 2 - 40) + 'px';
+        div.style.top = (window.innerHeight / 2) + 'px';
+        document.body.appendChild(div);
+        setTimeout(() => div.remove(), 1000);
+    }
+    function showFlashOverlay() {
+        const flash = document.createElement('div');
+        flash.className = 'flash-overlay';
+        document.body.appendChild(flash);
+        setTimeout(() => flash.remove(), 500);
+    }
+    function triggerButtonPulse(btnElement) {
+        if (!btnElement) return;
+        btnElement.classList.add('pulse-animation');
+        setTimeout(() => btnElement.classList.remove('pulse-animation'), 300);
+    }
+    function cardFlashAnimation() {
+        const card = document.querySelector('.action-card');
+        if (card) {
+            card.classList.add('card-flash');
+            setTimeout(() => card.classList.remove('card-flash'), 400);
+        }
+    }
+    function showConfirmModal(message, onConfirm) {
+        const overlay = document.createElement('div');
+        overlay.className = 'modal-overlay';
+        overlay.innerHTML = `
+            <div class="modal-box">
+                <i class="fas fa-question-circle" style="font-size: 3rem; color:#ffb441;"></i>
+                <p>${message}</p>
+                <div class="modal-buttons">
+                    <button id="modalConfirmBtn">✅ 确认</button>
+                    <button id="modalCancelBtn">❌ 取消</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+        const confirmBtn = overlay.querySelector('#modalConfirmBtn');
+        const cancelBtn = overlay.querySelector('#modalCancelBtn');
+        const cleanup = () => overlay.remove();
+        confirmBtn.addEventListener('click', () => { onConfirm(); cleanup(); });
+        cancelBtn.addEventListener('click', cleanup);
+    }
+    
+    // ========== 彩带 & 音效 ==========
+    let particles = [], animationId = null;
+    const canvas = document.getElementById('confetti-canvas'); let ctx = null;
+    function resizeCanvas() { if(canvas) { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } }
+    window.addEventListener('resize', resizeCanvas);
+    class Particle { constructor(x,y,vx,vy,size,color,shape='rect') { this.x=x; this.y=y; this.vx=vx; this.vy=vy; this.size=size; this.color=color; this.shape=shape; this.alpha=1; this.gravity=0.2; this.friction=0.98; }
+    update() { this.vx*=this.friction; this.vy*=this.friction; this.vy+=this.gravity; this.x+=this.vx; this.y+=this.vy; this.alpha-=0.008; return this.alpha>0 && this.y<canvas.height+100; }
+    draw(ctx) { ctx.save(); ctx.globalAlpha=Math.min(this.alpha,0.9); ctx.fillStyle=this.color; if(this.shape==='rect') ctx.fillRect(this.x,this.y,this.size,this.size*0.6); else { ctx.beginPath(); ctx.arc(this.x,this.y,this.size*0.6,0,Math.PI*2); ctx.fill(); } ctx.restore(); } }
+    function startConfetti(count, x, y, isBig=false) { if(!canvas) return; if(!ctx) ctx=canvas.getContext('2d'); resizeCanvas(); if(animationId) cancelAnimationFrame(animationId); particles=[]; const colors=['#ff595e','#ffca3a','#8ac926','#1982c4','#6a4e9b','#ff924c','#f15bb5']; const centerX = x!==undefined?x:canvas.width/2; const centerY = y!==undefined?y:canvas.height/2; const c = isBig? count*1.5 : count; for(let i=0;i<c;i++){ const angle=Math.random()*Math.PI*2; const speed=isBig? (4+Math.random()*8):(2+Math.random()*5); const vx=Math.cos(angle)*speed*(Math.random()-0.5)*1.8; const vy=Math.sin(angle)*speed*(Math.random()-0.8)-(isBig?3:2); const size=6+Math.random()*10; const col=colors[Math.floor(Math.random()*colors.length)]; const shape=Math.random()>0.6?'circle':'rect'; particles.push(new Particle(centerX,centerY,vx,vy,size,col,shape)); } animateConfetti(); }
+    function animateConfetti(){ if(!ctx||!canvas) return; ctx.clearRect(0,0,canvas.width,canvas.height); let any=false; for(let i=0;i<particles.length;i++){ if(particles[i].update()){ any=true; particles[i].draw(ctx); } else{ particles.splice(i,1); i--; } } if(any && particles.length>0) animationId=requestAnimationFrame(animateConfetti); else { cancelAnimationFrame(animationId); animationId=null; ctx.clearRect(0,0,canvas.width,canvas.height); } }
+    let audioCtx=null; let soundEnabled=true;
+    function initAudio(){ if(!audioCtx) try{ audioCtx=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ soundEnabled=false; } }
+    function playTone(freq,duration,type='sine',vol=0.2,delay=0){ if(!audioCtx) return; const now=audioCtx.currentTime+delay; const osc=audioCtx.createOscillator(); const gain=audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination); osc.type=type; osc.frequency.value=freq; gain.gain.setValueAtTime(vol,now); gain.gain.exponentialRampToValueAtTime(0.0001,now+duration); osc.start(now); osc.stop(now+duration); }
+    function playHappySound(){ if(!audioCtx) initAudio(); if(audioCtx&&audioCtx.state==='suspended') audioCtx.resume(); playTone(660,0.12,'sine',0.2); playTone(880,0.15,'sine',0.2,0.1); playTone(1046,0.2,'sine',0.15,0.22); }
+    function playBeep(type){ if(!audioCtx) initAudio(); if(audioCtx&&audioCtx.state==='suspended') audioCtx.resume(); if(type==='complete') playHappySound(); else if(type==='restEnd') playTone(523,0.25,'sine',0.15); else playTone(660,0.1,'sine',0.1); }
+    function bigCelebration(){ startConfetti(140,canvas.width/2,canvas.height/2,true); showFlashOverlay(); showFloatingText("🏆 完美通关！", "#ff6600"); if(!audioCtx) initAudio(); if(audioCtx&&audioCtx.state==='suspended') audioCtx.resume(); playTone(523,0.3,'triangle',0.25); playTone(659,0.3,'triangle',0.25,0.25); playTone(784,0.4,'triangle',0.3,0.5); playTone(1046,0.8,'triangle',0.3,0.85); setTimeout(()=>playTone(1318,0.4,'sine',0.2),1000); }
+    function smallCelebration(){ const rect=document.querySelector('.btn-complete'); let x=canvas.width/2, y=canvas.height/2; if(rect){ const r=rect.getBoundingClientRect(); x=r.left+r.width/2; y=r.top+r.height/2; } startConfetti(40,x,y,false); playHappySound(); showFloatingText("+1 组完成！", "#f9a26c"); showFlashOverlay(); cardFlashAnimation(); }
+    
+    // ========== 训练核心 ==========
+    const ACTIONS = [
+        { id:0, name:"臀桥", groups:2, unitType:"reps", targetDesc:"15 次 / 组", defaultReps:15, intensity:"🔥 热身激活 · 低强度", keyPoints:["平躺屈膝，脚跟踩地发力","臀部顶起身体成直线","顶峰停留1秒，缓慢下放"], correctFeeling:"臀部、大腿后侧明显酸胀", wrongTip:"避免腰部拱起，核心微收" },
+        { id:1, name:"平板支撑", groups:2, unitType:"duration", targetDesc:"20-30秒 / 组", defaultSec:25, intensity:"⚡ 核心稳定 · 中强度", keyPoints:["手肘撑地位于肩膀正下方","身体呈一条直线，不塌腰","肚子收紧，均匀呼吸"], correctFeeling:"腹部、肩膀深层酸胀", wrongTip:"腰疼立即调整姿势，臀稍抬高" },
+        { id:2, name:"仰卧抬腿", groups:2, unitType:"reps", targetDesc:"10-12 次 / 组", defaultReps:11, intensity:"💪 下腹强化 · 中高强度", keyPoints:["双手垫在臀部下方","后腰全程贴紧地面","膝盖微弯，小幅度抬放双腿"], correctFeeling:"下腹部紧绷酸胀", wrongTip:"禁止腰部悬空、弓腰借力" },
+        { id:3, name:"靠墙静蹲", groups:2, unitType:"duration", targetDesc:"20-30秒 / 组", defaultSec:25, intensity:"🌿 下肢静力 · 收尾放松", keyPoints:["背部全程贴紧墙面","膝盖不超过脚尖，不内扣","不用蹲太深，舒适发力即可"], correctFeeling:"大腿前侧酸胀", wrongTip:"膝盖刺痛就减小下蹲角度" }
+    ];
+    let currentActionIdx=0, currentGroupCompleted=0, totalGroups=8, completedGroupsCount=0, trainingActive=true, isResting=false, restTimerInterval=null, restSecondsLeft=0, currentRestType=null;
+    const dynamicZone=document.getElementById('dynamicZone'), progressFill=document.getElementById('progressFill'), progressTextSpan=document.getElementById('progressText'), resetBtnDom=document.getElementById('resetBtn');
+    function clearRestTimer(){ if(restTimerInterval){ clearInterval(restTimerInterval); restTimerInterval=null; } }
+    function endRestPeriod(){ if(!isResting) return; clearRestTimer(); isResting=false; playBeep('restEnd'); renderCurrentView(); }
+    function startRest(seconds,restType){ if(restTimerInterval) clearRestTimer(); isResting=true; currentRestType=restType; restSecondsLeft=seconds; renderCurrentView(); restTimerInterval=setInterval(()=>{ if(restSecondsLeft<=1){ clearRestTimer(); endRestPeriod(); } else{ restSecondsLeft--; updateRestDisplay(); } },1000); }
+    function updateRestDisplay(){ const span=document.querySelector('.rest-timer-number'); if(span) span.innerText=restSecondsLeft; }
+    function skipRest(){ if(!isResting) return; clearRestTimer(); endRestPeriod(); }
+    function updateProgressBar(){ const percent=(completedGroupsCount/totalGroups)*100; progressFill.style.width=`${percent}%`; progressTextSpan.innerText=`${completedGroupsCount} / ${totalGroups} 组完成`; }
+    function completeCurrentGroup(){
+        if(!trainingActive||isResting) return; if(currentActionIdx>=ACTIONS.length) return;
+        const action=ACTIONS[currentActionIdx]; if(currentGroupCompleted>=action.groups) return;
+        smallCelebration(); triggerButtonPulse(document.querySelector('.btn-complete'));
+        currentGroupCompleted++; completedGroupsCount++; updateProgressBar();
+        if(currentGroupCompleted===action.groups){
+            const isLastAction=(currentActionIdx===ACTIONS.length-1);
+            if(isLastAction){
+                trainingActive=false; isResting=false; clearRestTimer(); renderCurrentView();
+                bigCelebration(); showCelebrationMessage();
+                tryRecordDailyCheckIn();
+                return;
+            } else { currentActionIdx++; currentGroupCompleted=0; startRest(60,'inter'); renderCurrentView(); return; }
+        } else { startRest(40,'intra'); renderCurrentView(); return; }
+    }
+    function tryRecordDailyCheckIn() {
+        if (!trainingActive && completedGroupsCount === totalGroups) {
+            markTodayCheckIn();
+        }
+    }
+    function showCelebrationMessage(){
+        const existing=document.querySelector('.finish-celebrate'); if(existing) existing.remove();
+        const finishDiv=document.createElement('div'); finishDiv.className='finish-celebrate';
+        finishDiv.innerHTML=`<i class="fas fa-trophy" style="font-size:2rem; color:#ffb441;"></i> 🎉🎊 完美完成塑形曲线！ 🎊🎉<i class="fas fa-heart" style="color:#ff6b4a"></i><br><span style="font-size:0.9rem">打卡成功，明日再战 ✨</span>`;
+        dynamicZone.appendChild(finishDiv); setTimeout(()=>{ if(finishDiv&&finishDiv.parentNode) finishDiv.remove(); },5000);
+    }
+    let auxInterval=null, auxSeconds=0;
+    function stopAuxTimer(){ if(auxInterval){ clearInterval(auxInterval); auxInterval=null; } const disp=document.querySelector('.aux-timer-display'); if(disp) disp.innerText=`⏱️ 辅助计时`; const btn=document.querySelector('.aux-timer-start'); if(btn) btn.disabled=false; }
+    function startAuxTimer(seconds,onEnd){ stopAuxTimer(); auxSeconds=seconds; const disp=document.querySelector('.aux-timer-display'); if(disp) disp.innerText=`${auxSeconds}s`; const btn=document.querySelector('.aux-timer-start'); if(btn) btn.disabled=true; auxInterval=setInterval(()=>{ if(auxSeconds<=1){ clearInterval(auxInterval); auxInterval=null; if(disp) disp.innerText=`0s 时间到!`; if(onEnd) onEnd(); playBeep('restEnd'); if(btn) btn.disabled=false; setTimeout(()=>{ if(disp) disp.innerText=`⏱️ 辅助计时`; },2000); } else{ auxSeconds--; if(disp) disp.innerText=`${auxSeconds}s`; } },1000); }
+    function resetTraining() {
+        clearRestTimer(); isResting=false; trainingActive=true; currentActionIdx=0; currentGroupCompleted=0; completedGroupsCount=0; updateProgressBar();
+        const finishDiv=document.querySelector('.finish-celebrate'); if(finishDiv) finishDiv.remove();
+        renderCurrentView(); if(!audioCtx) initAudio(); if(audioCtx&&audioCtx.state==='suspended') audioCtx.resume(); if(animationId) cancelAnimationFrame(animationId); if(ctx) ctx.clearRect(0,0,canvas.width,canvas.height); particles=[];
+        showFloatingText("🔄 重新开始", "#ffaa66");
+    }
+    function resetWithConfirm() {
+        showConfirmModal("确定要重新开始训练吗？当前进度将会丢失", () => resetTraining());
+    }
+    function renderCurrentView() {
+        if(!dynamicZone) return;
+        if(!trainingActive && completedGroupsCount===totalGroups){ dynamicZone.innerHTML=`<div class="finish-celebrate" style="margin:20px 18px;"><i class="fas fa-crown" style="font-size:2rem; color:#ffb441;"></i> 今晚曲线打卡成功！ 8组全完成 🌙<br><span style="font-size:0.85rem">臀腿·核心·腹部·静力 全部激活</span></div>`; return; }
+        if(currentActionIdx>=ACTIONS.length){ dynamicZone.innerHTML=`<div class="action-card">🎉 训练完成 🎉</div>`; return; }
+        const action=ACTIONS[currentActionIdx]; const isGroup1Done=currentGroupCompleted>=1, isGroup2Done=currentGroupCompleted>=2, showAux=(action.unitType==='duration'), defaultSec=action.defaultSec||25;
+        let restPanelHtml= isResting? `<div class="rest-panel"><div><i class="fas fa-hourglass-half"></i> ${currentRestType==='intra'?'🧘 组间休息 (40秒) 深呼吸':'✨ 准备下一个动作 · 60秒休息'}</div><div class="rest-timer"><span class="rest-timer-number">${restSecondsLeft}</span> 秒</div><button class="skip-rest" id="skipRestBtn"><i class="fas fa-forward-step"></i> 跳过休息</button></div>` : '';
+        const groupChips=`<div class="group-status"><div class="group-chip ${isGroup1Done?'completed':''}"><i class="fas ${isGroup1Done?'fa-check-circle':'fa-clock'}"></i> 第1组</div><div class="group-chip ${isGroup2Done?'completed':''}"><i class="fas ${isGroup2Done?'fa-check-circle':'fa-clock'}"></i> 第2组</div></div>`;
+        let auxHtml=''; if(showAux && !isResting) auxHtml=`<div class="aux-timer"><span><i class="fas fa-stopwatch"></i> 推荐计时 ${action.targetDesc}</span><div style="display:flex; gap:8px;"><span class="aux-timer-display">⏱️ 辅助计时</span><button class="aux-btn aux-timer-start" id="auxStartBtn"><i class="fas fa-play"></i> ${defaultSec}秒</button><button class="aux-btn" id="auxStopBtn"><i class="fas fa-stop"></i></button></div></div>`;
+        const disableComplete=(isResting||!trainingActive||(isGroup2Done&&currentGroupCompleted===2)); const btnText=(isGroup2Done&&currentGroupCompleted===2)?'✔️ 已完成两组':'✅ 打卡 · 完成这组';
+        const html=`<div class="action-card"><div class="action-name"><i class="fas ${action.name==='臀桥'?'fa-bridge':action.name==='平板支撑'?'fa-hand-peace':action.name==='仰卧抬腿'?'fa-person-walking':'fa-building'}"></i>${action.name}<span class="type-label">${action.intensity}</span></div><div class="spec-badge"><i class="fas fa-bullseye"></i> 目标：${action.targetDesc}</div><div class="tips-box"><p><i class="fas fa-check-circle"></i> <strong>要点</strong>：${action.keyPoints.join(' · ')}</p><p><i class="fas fa-fire"></i> <strong>正确感受</strong>：${action.correctFeeling}</p><p><i class="fas fa-shield-alt"></i> <strong>注意</strong>：${action.wrongTip}</p></div>${groupChips}${auxHtml}<button class="btn-complete ${disableComplete?'disabled':''}" id="completeGroupBtn"><i class="fas fa-clipboard-list"></i> ${btnText}</button></div>${restPanelHtml}`;
+        dynamicZone.innerHTML=html;
+        const completeBtn=document.getElementById('completeGroupBtn'); if(completeBtn&&!disableComplete) completeBtn.addEventListener('click',()=>{ if(!audioCtx) initAudio(); if(audioCtx&&audioCtx.state==='suspended') audioCtx.resume(); completeCurrentGroup(); });
+        const skipBtn=document.getElementById('skipRestBtn'); if(skipBtn) skipBtn.addEventListener('click',()=>{ if(audioCtx&&audioCtx.state==='suspended') audioCtx.resume(); skipRest(); });
+        const auxStart=document.getElementById('auxStartBtn'), auxStop=document.getElementById('auxStopBtn');
+        if(auxStart&&showAux) auxStart.addEventListener('click',()=>{ if(!audioCtx) initAudio(); if(audioCtx&&audioCtx.state==='suspended') audioCtx.resume(); stopAuxTimer(); startAuxTimer(defaultSec,()=>playBeep('restEnd')); });
+        if(auxStop&&showAux) auxStop.addEventListener('click',()=>stopAuxTimer());
+    }
+    function unlockAudio(){ if(audioCtx&&audioCtx.state==='suspended') audioCtx.resume(); }
+    document.body.addEventListener('touchstart', unlockAudio, { once: true });
+    document.body.addEventListener('click', unlockAudio);
+    
+    // 初始化
+    loadCheckIns(); renderCalendar(currentYear, currentMonth);
+    document.getElementById('prevMonthBtn')?.addEventListener('click', prevMonth);
+    document.getElementById('nextMonthBtn')?.addEventListener('click', nextMonth);
+    resetBtnDom.removeEventListener('click', resetWithConfirm);
+    resetBtnDom.addEventListener('click', () => { if(!audioCtx) initAudio(); if(audioCtx&&audioCtx.state==='suspended') audioCtx.resume(); resetWithConfirm(); });
+    (function init() { trainingActive=true; currentActionIdx=0; currentGroupCompleted=0; completedGroupsCount=0; updateProgressBar(); renderCurrentView(); resizeCanvas(); })();
+</script>
+</body>
+</html>
