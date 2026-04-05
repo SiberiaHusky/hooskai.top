@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
     <title>斯凯的塑形训练打卡 | 由豆包与DeepSeek共同开发</title>
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<link href="https://fontsapi.zeoseven.com/3/main/result.css" onload="this.rel='stylesheet'" rel="preload" as="style" crossorigin />
+<noscript><link rel="stylesheet" href="https://fontsapi.zeoseven.com/3/main/result.css" /></noscript>
     <style>
         @import url("https://fontsapi.zeoseven.com/3/main/result.css");
         
@@ -47,9 +49,8 @@
             tap-highlight-color: transparent;
         }
         body {
-            font-family: "寒蝉全圆体", "Zen Antique Soft", "Comic Neue", "Segoe UI Emoji", cursive, sans-serif;
+            font-family: "寒蝉全圆体", "Comic Neue", "Segoe UI Emoji", cursive, sans-serif;
             font-weight: normal;
-            background: linear-gradient(145deg, #e8f5e9 0%, #c8e6d9 100%);
             min-height: 100vh;
             padding: 0;
             margin: 0;
@@ -587,8 +588,8 @@
         }
         .aux-timer { 
             background: #f9f9f9; 
-            border-radius: var(--radius-small); 
-            padding: 6px 12px; 
+            border-radius: calc(var(--radius-small)/1.5); 
+            padding: 12px; 
             margin: 10px 0 6px; 
             display: flex; 
             align-items: center; 
@@ -600,7 +601,7 @@
         .aux-timer-display { 
             background: #e8f5e9; 
             padding: 4px 14px; 
-            border-radius: var(--radius-small); 
+            border-radius: calc(var(--radius-small)/2); 
             font-weight: bold; 
             border: var(--border-width) solid var(--color-shadow);
         }
