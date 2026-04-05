@@ -6,9 +6,13 @@
     <title>斯凯的塑形训练打卡</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- 圆润字体 -->
-    <link href="https://fonts.zeoseven.com/css?family=Zen+Antique+Soft&display=swap" rel="stylesheet">
+    <!-- 寒蝉全圆体 字体 -->
+	<link href="https://fontsapi.zeoseven.com/3/main/result.css" onload="this.rel='stylesheet'" rel="preload" as="style" crossorigin />
+	<noscript><link rel="stylesheet" href="https://fontsapi.zeoseven.com/3/main/result.css" /></noscript>
+
     <style>
+        @import url("https://fontsapi.zeoseven.com/3/main/result.css");
+
         * {
             margin: 0;
             padding: 0;
@@ -18,11 +22,12 @@
 			tap-highlight-color: transparent;
         }
 
-        body {
+		body {
+            font-family: "寒蝉全圆体", "Zen Antique Soft", "Comic Neue", "Segoe UI Emoji", cursive, sans-serif;
+            font-weight: normal;
             background: linear-gradient(145deg, #e8f5e9 0%, #c8e6d9 100%);
             min-height: 100vh;
             padding: 24px 16px 40px;
-            font-family: 'Zen Antique Soft', 'Comic Neue', 'Segoe UI Emoji', cursive, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
