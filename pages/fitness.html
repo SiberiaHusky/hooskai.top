@@ -3,26 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-    <title>斯凯的塑形训练打卡</title>
+    <title>塑形训练·多邻国风 | 曲线打卡+补打卡</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- 寒蝉全圆体 字体 -->
-	<link href="https://fontsapi.zeoseven.com/3/main/result.css" onload="this.rel='stylesheet'" rel="preload" as="style" crossorigin />
-	<noscript><link rel="stylesheet" href="https://fontsapi.zeoseven.com/3/main/result.css" /></noscript>
-
     <style>
         @import url("https://fontsapi.zeoseven.com/3/main/result.css");
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             user-select: none;
-			-webkit-tap-highlight-color: transparent;
-			tap-highlight-color: transparent;
+            -webkit-tap-highlight-color: transparent;
+            tap-highlight-color: transparent;
         }
 
-		body {
+        body {
             font-family: "寒蝉全圆体", "Zen Antique Soft", "Comic Neue", "Segoe UI Emoji", cursive, sans-serif;
             font-weight: normal;
             background: linear-gradient(145deg, #e8f5e9 0%, #c8e6d9 100%);
@@ -48,7 +44,7 @@
             max-width: 560px;
             width: 100%;
             background: #ffffff;
-            border-radius: 24px;          /* 圆角减小 */
+            border-radius: 24px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.05);
             border: 1px solid #e0e0e0;
             overflow: hidden;
@@ -57,7 +53,6 @@
             z-index: 10;
         }
 
-        /* 头部 - 多邻国风格亮绿色 */
         .header {
             background: #58cc71;
             padding: 18px 22px 14px;
@@ -106,7 +101,6 @@
             border-radius: 60px;
         }
 
-        /* 日历卡片 */
         .calendar-card {
             background: #fff9ef;
             margin: 12px 18px 8px;
@@ -163,6 +157,7 @@
             color: #9b5a2a;
             transition: 0.1s;
             position: relative;
+            cursor: pointer;
         }
         .day-cell.checked {
             background: #d9e8bd;
@@ -179,6 +174,10 @@
         .day-cell.other-month {
             opacity: 0.4;
         }
+        .day-cell.future {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
         .calendar-legend {
             font-size: 0.7rem;
             text-align: center;
@@ -189,7 +188,6 @@
             gap: 16px;
         }
 
-        /* 进度条区域 */
         .progress-area {
             padding: 10px 24px 8px;
             background: #ffffff;
@@ -218,7 +216,6 @@
             font-size: 0.85rem;
         }
 
-        /* 动作卡片 - 圆角更小，白色卡片 */
         .action-card {
             background: #ffffff;
             margin: 16px 18px;
@@ -515,7 +512,7 @@
 <canvas id="confetti-canvas"></canvas>
 <div class="app-container" id="app">
     <div class="header">
-        <h1><i class="fas fa-chart-line"></i> 斯凯的塑形训练打卡 <i class="fas fa-moon"></i></h1>
+        <h1><i class="fas fa-chart-line"></i> 塑形曲线·打卡 <i class="fas fa-moon"></i></h1>
         <div class="curve-badge">
             <span><i class="fas fa-temperature-low"></i> 热身激活</span>
             <span><i class="fas fa-charging-station"></i> 核心稳定</span>
@@ -535,7 +532,7 @@
         </div>
         <div class="weekdays"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
         <div class="calendar-days" id="calendarDays"></div>
-        <div class="calendar-legend"><span><i class="fas fa-check-circle" style="color:#6f9e2f;"></i> 已打卡</span><span><i class="far fa-circle" style="color:#ffb441;"></i> 未打卡</span></div>
+        <div class="calendar-legend"><span><i class="fas fa-check-circle" style="color:#6f9e2f;"></i> 已打卡</span><span><i class="far fa-circle" style="color:#ffb441;"></i> 未打卡</span><span><i class="fas fa-hand-sparkles"></i> 点击日期补打卡</span></div>
     </div>
 
     <div class="progress-area">
@@ -544,11 +541,11 @@
     </div>
     <div id="dynamicZone"></div>
     <button class="reset-btn" id="resetBtn"><i class="fas fa-undo-alt"></i> 重新开始训练</button>
-    <footer><p><i class="fas fa-hand-sparkles"></i> 依顺序完成 · 组间休息40s · 动作间休息60s</p><br/><p>由豆包与 DeepSeek 提供技术支持</p></footer>
+    <footer><i class="fas fa-hand-sparkles"></i> 依顺序完成 · 组间休息40s · 动作间休息60s</footer>
 </div>
 
 <script>
-    // ========== 打卡记录模块 ==========
+    // ========== 打卡记录模块（支持补打卡）==========
     let checkInMap = new Map();
     const STORAGE_KEY = "fitness_checkin_v2";
     function loadCheckIns() {
@@ -558,6 +555,28 @@
     }
     function saveCheckIns() { localStorage.setItem(STORAGE_KEY, JSON.stringify(Object.fromEntries(checkInMap))); }
     function getTodayStr() { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+    
+    // 通用打卡记录（补打卡或今日完成调用）
+    function markCheckInForDate(dateStr, showFeedback = true) {
+        if (!checkInMap.get(dateStr)) {
+            checkInMap.set(dateStr, true);
+            saveCheckIns();
+            renderCalendar(currentYear, currentMonth);
+            if (showFeedback) {
+                playCheckInFanfare();
+                showFloatingText(`🎉 补打卡成功！ ${dateStr} 🎉`, "#6f9e2f");
+                showFlashOverlay();
+            }
+            return true;
+        } else {
+            if (showFeedback) {
+                showFloatingText("📅 这一天已经打卡过啦", "#f9a26c");
+            }
+            return false;
+        }
+    }
+    
+    // 今日打卡（训练完成时调用）
     function markTodayCheckIn() {
         const today = getTodayStr();
         if (!checkInMap.get(today)) {
@@ -565,20 +584,23 @@
             saveCheckIns();
             renderCalendar(currentYear, currentMonth);
             playCheckInFanfare();
-            showFloatingText("🎉 打卡成功！", "#6f9e2f");
+            showFloatingText("🎉 今日打卡成功！", "#6f9e2f");
             showFlashOverlay();
             return true;
         } else {
-            showFloatingText("🌟 今日已打卡", "#f9a26c");
+            showFloatingText("🌟 今日已完成打卡", "#f9a26c");
             return false;
         }
     }
+    
     function playCheckInFanfare() {
         if (!audioCtx) initAudio();
         if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
         playTone(587,0.15,'sine',0.2); playTone(784,0.2,'sine',0.2,0.12); playTone(1046,0.3,'sine',0.2,0.3);
         startConfetti(45, undefined, undefined, false);
     }
+    
+    // 日历渲染（支持点击补打卡）
     let currentYear = new Date().getFullYear();
     let currentMonth = new Date().getMonth();
     function renderCalendar(year, month) {
@@ -589,28 +611,79 @@
         const container = document.getElementById('calendarDays'); if (!container) return;
         container.innerHTML = '';
         const todayStr = getTodayStr();
+        const todayDate = new Date();
+        todayDate.setHours(0,0,0,0);
+        
+        // 辅助函数：判断日期是否未来
+        function isFutureDate(y, m, d) {
+            const target = new Date(y, m, d);
+            target.setHours(0,0,0,0);
+            return target > todayDate;
+        }
+        
+        // 渲染上月日期
         for (let i = 0; i < startOffset; i++) {
             const prevDateNum = prevMonthDays - startOffset + i + 1;
-            const prevDate = new Date(year, month-1, prevDateNum);
-            const dateStr = `${prevDate.getFullYear()}-${String(prevDate.getMonth()+1).padStart(2,'0')}-${String(prevDateNum).padStart(2,'0')}`;
+            const prevYear = month === 0 ? year - 1 : year;
+            const prevMonthIndex = month === 0 ? 11 : month - 1;
+            const dateStr = `${prevYear}-${String(prevMonthIndex+1).padStart(2,'0')}-${String(prevDateNum).padStart(2,'0')}`;
             const isChecked = checkInMap.get(dateStr) === true;
-            const div = document.createElement('div'); div.className = `day-cell other-month ${isChecked ? 'checked' : ''}`;
-            div.innerHTML = `${prevDateNum} ${isChecked ? '<i class="fas fa-check-circle"></i>' : ''}`; container.appendChild(div);
+            const isFuture = isFutureDate(prevYear, prevMonthIndex, prevDateNum);
+            const div = document.createElement('div');
+            div.className = `day-cell other-month ${isChecked ? 'checked' : ''} ${isFuture ? 'future' : ''}`;
+            div.innerHTML = `${prevDateNum} ${isChecked ? '<i class="fas fa-check-circle"></i>' : ''}`;
+            if (!isFuture && !isChecked) {
+                div.style.cursor = 'pointer';
+                div.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showConfirmModal(`补打卡 ${prevYear}年${prevMonthIndex+1}月${prevDateNum}日？`, () => markCheckInForDate(dateStr, true));
+                });
+            } else if (isFuture) {
+                div.title = "不能补打卡未来日期";
+            }
+            container.appendChild(div);
         }
+        // 渲染当月日期
         for (let d = 1; d <= daysInMonth; d++) {
             const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
             const isChecked = checkInMap.get(dateStr) === true;
             const isToday = (dateStr === todayStr);
-            const div = document.createElement('div'); div.className = `day-cell ${isChecked ? 'checked' : ''} ${isToday ? 'today' : ''}`;
-            div.innerHTML = `${d} ${isChecked ? '<i class="fas fa-check-circle"></i>' : ''}`; container.appendChild(div);
+            const isFuture = isFutureDate(year, month, d);
+            const div = document.createElement('div');
+            div.className = `day-cell ${isChecked ? 'checked' : ''} ${isToday ? 'today' : ''} ${isFuture ? 'future' : ''}`;
+            div.innerHTML = `${d} ${isChecked ? '<i class="fas fa-check-circle"></i>' : ''}`;
+            if (!isFuture && !isChecked) {
+                div.style.cursor = 'pointer';
+                div.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showConfirmModal(`补打卡 ${year}年${month+1}月${d}日？`, () => markCheckInForDate(dateStr, true));
+                });
+            } else if (isFuture) {
+                div.title = "不能补打卡未来日期";
+            }
+            container.appendChild(div);
         }
+        // 渲染下月日期（补齐42格）
         const totalCells = 42; const currentCells = startOffset + daysInMonth; const remaining = totalCells - currentCells;
         for (let i = 1; i <= remaining; i++) {
-            const nextDate = new Date(year, month+1, i);
-            const dateStr = `${nextDate.getFullYear()}-${String(nextDate.getMonth()+1).padStart(2,'0')}-${String(i).padStart(2,'0')}`;
+            const nextYear = month === 11 ? year + 1 : year;
+            const nextMonthIndex = month === 11 ? 0 : month + 1;
+            const dateStr = `${nextYear}-${String(nextMonthIndex+1).padStart(2,'0')}-${String(i).padStart(2,'0')}`;
             const isChecked = checkInMap.get(dateStr) === true;
-            const div = document.createElement('div'); div.className = `day-cell other-month ${isChecked ? 'checked' : ''}`;
-            div.innerHTML = `${i} ${isChecked ? '<i class="fas fa-check-circle"></i>' : ''}`; container.appendChild(div);
+            const isFuture = isFutureDate(nextYear, nextMonthIndex, i);
+            const div = document.createElement('div');
+            div.className = `day-cell other-month ${isChecked ? 'checked' : ''} ${isFuture ? 'future' : ''}`;
+            div.innerHTML = `${i} ${isChecked ? '<i class="fas fa-check-circle"></i>' : ''}`;
+            if (!isFuture && !isChecked) {
+                div.style.cursor = 'pointer';
+                div.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showConfirmModal(`补打卡 ${nextYear}年${nextMonthIndex+1}月${i}日？`, () => markCheckInForDate(dateStr, true));
+                });
+            } else if (isFuture) {
+                div.title = "不能补打卡未来日期";
+            }
+            container.appendChild(div);
         }
         const monthNames = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
         document.getElementById('monthYearDisplay').innerText = `${year}年 ${monthNames[month]}`;
